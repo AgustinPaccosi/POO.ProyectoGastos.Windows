@@ -29,5 +29,6 @@ namespace POO.ProyectoGastos.Windows.Helpers.Combos
             combo.SelectedIndex = 0;
 
         }
+        //
     }
 }
