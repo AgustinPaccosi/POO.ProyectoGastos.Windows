@@ -1,4 +1,3 @@
-﻿using Dapper;
 using POO.ProyectoGastos.Comun.Interfaces;
 using POO.ProyectoGastos.Entidades.Entidades;
 using System;
