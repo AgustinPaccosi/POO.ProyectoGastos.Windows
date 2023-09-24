@@ -1,14 +1,11 @@
-using POO.ProyectoGastos.Comun.Interfaces;
+﻿using POO.ProyectoGastos.Comun.Interfaces;
 using POO.ProyectoGastos.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Dapper;
 namespace POO.ProyectoGastos.Datos.Repositorios
 {
     public class RepositorioPersonas : IRepositorioPersonas
@@ -29,14 +26,24 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 
         }
 
-        public void Borrar(int idPersona)
+        public void Borrar(int Idpersona)
         {
-            throw new NotImplementedException();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string deleteQuery = "DELETE FROM Personas WHERE IdPersona=@IdPersona";
+                conn.Execute(deleteQuery, new { IdPersona = Idpersona });
+            }
         }
 
-        public void Editar(Persona presona)
+        public void Editar(Persona persona)
         {
-            throw new NotImplementedException();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                conn.Open();
+                string updateQuery = @"UPDATE Persona SET Nombre=@Nombre, Apellido=@Apellido
+                            WHERE IdPersona=@IdPersona";
+                conn.Execute(updateQuery, persona);
+            }
         }
 
         public bool Existe(Persona persona)
@@ -72,13 +79,13 @@ namespace POO.ProyectoGastos.Datos.Repositorios
         public List<Persona> GetPersonas()
         {
             List<Persona> lista = new List<Persona>();
-            using (var conn= new SqlConnection(cadenaConexion))
+            using (var conn = new SqlConnection(cadenaConexion))
             {
                 string SelectQuery = @"SELECT p.IdPersona, p.Nombre, p.Apellido, r.Rol, p.IdRol
                             FROM Personas p
                             INNER JOIN Roles r ON p.IdRol = r.IdRol
                             ORDER BY Apellido";
-                lista=conn.Query<Persona>(SelectQuery).ToList();
+                lista = conn.Query<Persona>(SelectQuery).ToList();
             }
             return lista;
         }

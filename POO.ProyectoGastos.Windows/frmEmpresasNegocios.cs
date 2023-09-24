@@ -2,7 +2,6 @@
 using POO.ProyectoGastos.Servicios.Servicios;
 using POO.ProyectoGastos.Windows.Helpers.GridHelper;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,22 +13,21 @@ using System.Windows.Forms;
 
 namespace POO.ProyectoGastos.Windows
 {
-    public partial class frmPersonas : Form
+    public partial class frmEmpresasNegocios : Form
     {
-        public frmPersonas()
+        public frmEmpresasNegocios()
         {
             InitializeComponent();
-            _servicioPersonas= new ServiciosPersonas();
+            _serviciosEmpresasNegocios = new ServiciosEmpresasNegocios();
         }
+        private readonly ServiciosEmpresasNegocios _serviciosEmpresasNegocios;
+        private List<EmpresasNegocios> listaEmpresas;
 
-        private readonly ServiciosPersonas _servicioPersonas;
-        private List<Persona> listaPersonas;
-
-        private void Personas_Load(object sender, EventArgs e)
+        private void frmEmpNeg_Load(object sender, EventArgs e)
         {
             try
             {
-                listaPersonas = _servicioPersonas.GetPersonas();
+                listaEmpresas = _serviciosEmpresasNegocios.GetEmpresasNegocios();
                 MostrarDatosEnGrilla();
             }
             catch (Exception)
@@ -37,35 +35,34 @@ namespace POO.ProyectoGastos.Windows
 
                 throw;
             }
+
         }
 
         private void MostrarDatosEnGrilla()
         {
             GridHelper.LimpiarGrilla(dgvDatos);
-            foreach (var persona in listaPersonas)
+            foreach (var empresa in listaEmpresas)
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
-                GridHelper.SetearFila(r, persona);
+                GridHelper.SetearFila(r, empresa);
                 GridHelper.AgregarFila(dgvDatos, r);
             }
-
         }
+
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            frmPersonasAE frm= new frmPersonasAE(_servicioPersonas);
-            DialogResult dr= frm.ShowDialog(this);
-            MostrarDatosEnGrilla();
+
         }
 
-        private void tsbBorrar_Click(object sender, EventArgs e)
+        private void tsbBorrar_Click_1(object sender, EventArgs e)
         {
             if (dgvDatos.SelectedRows.Count == 0)
             {
                 return;
             }
             var r = dgvDatos.SelectedRows[0];
-            Persona persona = (Persona)r.Tag;
+            EmpresasNegocios empresa = (EmpresasNegocios)r.Tag;
             try
             {
                 //TODO: Se debe controlar que no este relacionado
@@ -74,7 +71,7 @@ namespace POO.ProyectoGastos.Windows
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (dr == DialogResult.No) { return; }
-                _servicioPersonas.Borrar(persona.IdPersona);
+                _serviciosEmpresasNegocios.Borrar(empresa.IdEmpNeg);
                 GridHelper.QuitarFila(dgvDatos, r);
                 //lblCantidad.Text = _servicio.GetCantidad().ToString();
                 MessageBox.Show("Registro borrado", "Mensaje",
@@ -87,6 +84,7 @@ namespace POO.ProyectoGastos.Windows
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+            MostrarDatosEnGrilla();
 
         }
 
@@ -97,34 +95,34 @@ namespace POO.ProyectoGastos.Windows
                 return;
             }
             var r = dgvDatos.SelectedRows[0];
-            Persona persona = (Persona)r.Tag;
-            Persona personaCopia = (Persona)persona.Clone();
+            EmpresasNegocios empresa = (EmpresasNegocios)r.Tag;
+            EmpresasNegocios empresaCopia = (EmpresasNegocios)empresa.Clone();
             try
             {
-                frmPersonasAE frm = new frmPersonasAE(_servicioPersonas) { Text = "Editar Persona" };
-                frm.SetPersona(persona);
+                frmEmpresasNegociosAE frm = new frmEmpresasNegociosAE(_serviciosEmpresasNegocios) { Text = "Editar EmpresasNegocio" };
+                frm.SetEmpresasNegocio(empresa);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.Cancel)
                 {
-                    GridHelper.SetearFila(r, personaCopia);
+                    GridHelper.SetearFila(r, empresaCopia);
 
                     return;
                 }
-                persona = frm.GetPersona();
-                if (persona != null)
+                empresa = frm.GetEmpresasNegocio();
+                if (empresa != null)
                 {
-                    GridHelper.SetearFila(r, persona);
+                    GridHelper.SetearFila(r, empresa);
 
                 }
                 else
                 {
-                    GridHelper.SetearFila(r, personaCopia);
+                    GridHelper.SetearFila(r, empresaCopia);
 
                 }
             }
             catch (Exception ex)
             {
-                GridHelper.SetearFila(r, personaCopia);
+                GridHelper.SetearFila(r, empresaCopia);
                 MessageBox.Show(ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 

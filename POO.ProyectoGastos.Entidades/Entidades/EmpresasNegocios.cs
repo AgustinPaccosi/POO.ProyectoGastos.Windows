@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace POO.ProyectoGastos.Entidades.Entidades
 {
-    public class Persona:ICloneable
+    public class EmpresasNegocios: ICloneable
     {
-        public int IdPersona { get; set; }
+        public int IdEmpNeg { get; set; }
         public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Rol { get; set; }
-        public int IdRol { get; set; }
+        public string Direccion { get; set; }
+        public string Telefono { get; set; }
 
         public object Clone()
         {

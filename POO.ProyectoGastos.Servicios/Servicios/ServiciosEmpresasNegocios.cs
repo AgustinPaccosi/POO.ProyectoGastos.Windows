@@ -10,19 +10,18 @@ using System.Threading.Tasks;
 
 namespace POO.ProyectoGastos.Servicios.Servicios
 {
-    public class ServiciosPersonas : IServiciosPersonas
+    public class ServiciosEmpresasNegocios : IServiciosEmpresasNegocios
     {
-        private readonly IRepositorioPersonas _repositorioPersonas;
-
-        public ServiciosPersonas()
+        private readonly IRepositorioEmpresasNegocios _repositorio;
+        public ServiciosEmpresasNegocios()
         {
-            _repositorioPersonas= new RepositorioPersonas();
+            _repositorio = new RepositorioEmpresasNegocios();
         }
-        public void Borrar(int idPersona)
+        public void Borrar(int Idempresa)
         {
             try
             {
-                _repositorioPersonas.Borrar(idPersona);
+                _repositorio.Borrar(Idempresa);
             }
             catch (Exception)
             {
@@ -31,18 +30,17 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        public bool Existe(Persona persona)
+        public bool Existe(EmpresasNegocios empresa)
         {
             try
             {
-                return _repositorioPersonas.Existe(persona);
+                return _repositorio.Existe(empresa);
             }
             catch (Exception)
             {
 
                 throw;
             }
-
         }
 
         public int GetCantidad()
@@ -50,11 +48,11 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             throw new NotImplementedException();
         }
 
-        public List<Persona> GetPersonas()
+        public List<EmpresasNegocios> GetEmpresasNegocios()
         {
             try
             {
-                return _repositorioPersonas.GetPersonas();
+                return _repositorio.GetEmpresasNegocios();
             }
             catch (Exception)
             {
@@ -63,17 +61,17 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        public void Guardar(Persona persona)
+        public void Guardar(EmpresasNegocios empresa)
         {
             try
             {
-                if (persona.IdPersona == 0)
+                if (empresa.IdEmpNeg == 0)
                 {
-                    _repositorioPersonas.Agregar(persona);
+                    _repositorio.Agregar(empresa);
                 }
                 else
                 {
-                    _repositorioPersonas.Editar(persona);
+                    _repositorio.Editar(empresa);
                 }
             }
             catch (Exception)
@@ -81,7 +79,6 @@ namespace POO.ProyectoGastos.Servicios.Servicios
 
                 throw;
             }
-
         }
     }
 }

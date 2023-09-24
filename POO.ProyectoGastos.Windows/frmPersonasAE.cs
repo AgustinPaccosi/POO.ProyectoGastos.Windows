@@ -39,7 +39,7 @@ namespace POO.ProyectoGastos.Windows
                 comboRol.SelectedIndex = persona.IdRol;
             }
         }
-        public Persona GetPais()
+        public Persona GetPersona()
         {
             return persona;
         }
@@ -135,5 +135,9 @@ namespace POO.ProyectoGastos.Windows
 
         }
 
+        public void SetPersona(Persona persona)
+        {
+            this.persona = persona;
+        }
     }
 }

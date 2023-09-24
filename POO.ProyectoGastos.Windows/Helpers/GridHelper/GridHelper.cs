@@ -39,7 +39,13 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
                     r.Cells[1].Value = persona.Apellido;
                     r.Cells[2].Value = persona.Rol;
                     break;
+                case EmpresasNegocios empresa:
+                    r.Cells[0].Value = empresa.Nombre;
+                    r.Cells[1].Value = $"{empresa.Direccion}, {empresa.Telefono}";
+                    break;
             }
+            r.Tag = obj;
+
         }
     }
 }
