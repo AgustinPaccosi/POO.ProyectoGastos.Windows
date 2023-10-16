@@ -29,5 +29,16 @@ namespace POO.ProyectoGastos.Windows
             frmPersonas frm=new frmPersonas();
             frm.ShowDialog(this);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmEmpresasNegocios frm=new frmEmpresasNegocios();
+            frm.ShowDialog(this);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

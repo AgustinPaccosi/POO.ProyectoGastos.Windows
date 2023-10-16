@@ -29,7 +29,6 @@ namespace POO.ProyectoGastos.Windows
         {
             try
             {
-                listaPersonas = _servicioPersonas.GetPersonas();
                 MostrarDatosEnGrilla();
             }
             catch (Exception)
@@ -42,6 +41,8 @@ namespace POO.ProyectoGastos.Windows
         private void MostrarDatosEnGrilla()
         {
             GridHelper.LimpiarGrilla(dgvDatos);
+            listaPersonas = _servicioPersonas.GetPersonas();
+
             foreach (var persona in listaPersonas)
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
@@ -130,6 +131,16 @@ namespace POO.ProyectoGastos.Windows
 
             }
 
+        }
+
+        private void tsbCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void tsbActualizar_Click(object sender, EventArgs e)
+        {
+            MostrarDatosEnGrilla();
         }
     }
 }

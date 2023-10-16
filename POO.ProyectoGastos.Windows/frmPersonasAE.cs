@@ -18,7 +18,7 @@ namespace POO.ProyectoGastos.Windows
     public partial class frmPersonasAE : Form
     {
         private IServiciosPersonas _servicioPersona;
-        private IServiciosRoles _serviciosRoles;
+        //private IServiciosRoles _serviciosRoles;
         public frmPersonasAE(ServiciosPersonas servicioPersona)
         {
             InitializeComponent();

@@ -3,12 +3,6 @@ using POO.ProyectoGastos.Servicios.Servicios;
 using POO.ProyectoGastos.Windows.Helpers.GridHelper;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POO.ProyectoGastos.Windows
@@ -22,12 +16,10 @@ namespace POO.ProyectoGastos.Windows
         }
         private readonly ServiciosEmpresasNegocios _serviciosEmpresasNegocios;
         private List<EmpresasNegocios> listaEmpresas;
-
-        private void frmEmpNeg_Load(object sender, EventArgs e)
+        private void frmEmpresasNegocios_Load(object sender, EventArgs e)
         {
             try
             {
-                listaEmpresas = _serviciosEmpresasNegocios.GetEmpresasNegocios();
                 MostrarDatosEnGrilla();
             }
             catch (Exception)
@@ -35,12 +27,12 @@ namespace POO.ProyectoGastos.Windows
 
                 throw;
             }
-
         }
 
         private void MostrarDatosEnGrilla()
         {
             GridHelper.LimpiarGrilla(dgvDatos);
+            listaEmpresas = _serviciosEmpresasNegocios.GetEmpresasNegocios();
             foreach (var empresa in listaEmpresas)
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
@@ -49,9 +41,11 @@ namespace POO.ProyectoGastos.Windows
             }
         }
 
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
+            frmEmpresasNegociosAE frm = new frmEmpresasNegociosAE(_serviciosEmpresasNegocios);
+            DialogResult dr = frm.ShowDialog(this);
+            MostrarDatosEnGrilla();
 
         }
 
@@ -76,6 +70,8 @@ namespace POO.ProyectoGastos.Windows
                 //lblCantidad.Text = _servicio.GetCantidad().ToString();
                 MessageBox.Show("Registro borrado", "Mensaje",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarDatosEnGrilla();
+
             }
             catch (Exception ex)
             {
@@ -84,7 +80,6 @@ namespace POO.ProyectoGastos.Windows
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            MostrarDatosEnGrilla();
 
         }
 
@@ -128,6 +123,16 @@ namespace POO.ProyectoGastos.Windows
 
             }
 
+        }
+
+        private void tsbActualizar_Click(object sender, EventArgs e)
+        {
+            MostrarDatosEnGrilla();
+        }
+
+        private void tsbCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
