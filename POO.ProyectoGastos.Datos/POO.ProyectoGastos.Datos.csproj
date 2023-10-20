@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\RepositorioDatosTarjetas.cs" />
     <Compile Include="Repositorios\RepositorioGastos.cs" />
     <Compile Include="Repositorios\RepositorioPersonas.cs" />
     <Compile Include="Repositorios\RepositorioRoles.cs" />

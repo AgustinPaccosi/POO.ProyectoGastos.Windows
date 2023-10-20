@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmDatosTarjetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDatosTarjetas.Designer.cs">
+      <DependentUpon>frmDatosTarjetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDatosTarjetasAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDatosTarjetasAE.Designer.cs">
+      <DependentUpon>frmDatosTarjetasAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpresasNegocios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +99,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmDatosTarjetas.resx">
+      <DependentUpon>frmDatosTarjetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDatosTarjetasAE.resx">
+      <DependentUpon>frmDatosTarjetasAE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmpresasNegocios.resx">
       <DependentUpon>frmEmpresasNegocios.cs</DependentUpon>
     </EmbeddedResource>

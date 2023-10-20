@@ -124,12 +124,13 @@
             this.button7.Text = "Datos Guardados";
             this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 607);
+            this.ClientSize = new System.Drawing.Size(1132, 603);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button4);
@@ -137,6 +138,8 @@
             this.Controls.Add(this.btnPersonas);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.btnGastosHgr);
+            this.MaximumSize = new System.Drawing.Size(1150, 650);
+            this.MinimumSize = new System.Drawing.Size(1150, 650);
             this.Name = "frmPrincipal";
             this.Text = "Principal";
             this.ResumeLayout(false);

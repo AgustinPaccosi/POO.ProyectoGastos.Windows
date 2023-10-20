@@ -36,9 +36,15 @@ namespace POO.ProyectoGastos.Windows
             frm.ShowDialog(this);
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            frmDatosTarjetas frm=new frmDatosTarjetas();
+            frm.ShowDialog(this);
+        }
         private void button5_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
     }
 }

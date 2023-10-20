@@ -46,6 +46,7 @@
     <Compile Include="Dtos\Roles\ComboRolDto.cs" />
     <Compile Include="Dtos\TipoGastos\ComboTipoGastosDto.cs" />
     <Compile Include="Dtos\TiposDeVencimiento\ComboTiposDeVencimientosDto.cs" />
+    <Compile Include="Entidades\DatosTarjetas.cs" />
     <Compile Include="Entidades\EmpresasNegocios.cs" />
     <Compile Include="Entidades\GastosHogar.cs" />
     <Compile Include="Entidades\Persona.cs" />

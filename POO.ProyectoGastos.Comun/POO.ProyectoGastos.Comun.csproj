@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IRepositorioDatosTarjetas.cs" />
     <Compile Include="Interfaces\IRepositorioEmpresasNegocios.cs" />
     <Compile Include="Interfaces\IRepositorioPersonas.cs" />
     <Compile Include="Interfaces\IRepositorioRoles.cs" />
