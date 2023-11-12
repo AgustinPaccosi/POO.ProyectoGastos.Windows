@@ -1,4 +1,5 @@
-﻿using POO.ProyectoGastos.Entidades.Entidades;
+﻿using POO.ProyectoGastos.Entidades.Dtos.ComboPersonas;
+using POO.ProyectoGastos.Entidades.Entidades;
 using POO.ProyectoGastos.Servicios.Servicios;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
         bool Existe(Persona persona);
         int GetCantidad();
         List<Persona> GetPersonas();
+        List<ComboPersonasDto> GetComboPersonasDtos();
 
     }
 }

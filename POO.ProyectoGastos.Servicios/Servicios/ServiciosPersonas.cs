@@ -1,5 +1,6 @@
 ﻿using POO.ProyectoGastos.Comun.Interfaces;
 using POO.ProyectoGastos.Datos.Repositorios;
+using POO.ProyectoGastos.Entidades.Dtos.ComboPersonas;
 using POO.ProyectoGastos.Entidades.Entidades;
 using POO.ProyectoGastos.Servicios.Interfaces;
 using System;
@@ -48,6 +49,19 @@ namespace POO.ProyectoGastos.Servicios.Servicios
         public int GetCantidad()
         {
             throw new NotImplementedException();
+        }
+
+        public List<ComboPersonasDto> GetComboPersonasDtos()
+        {
+            try
+            {
+                return _repositorioPersonas.GetComboPersonasDtos();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Persona> GetPersonas()

@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using POO.ProyectoGastos.Comun.Interfaces;
+using POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto;
 using POO.ProyectoGastos.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -54,15 +55,25 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             return cantidad > 0;
         }
 
-        public List<DatosTarjetas> GetDatosTarjetas()
+        public List<DatosTarjetasDto> GetDatosTarjetas()
         {
-            List<DatosTarjetas> lista = new List<DatosTarjetas>();
+            List<DatosTarjetasDto> lista = new List<DatosTarjetasDto>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string SelectQuery = @"SELECT IdTarjetas, Numero, IdPersona
-                            FROM DatosTarjetas 
-                            ORDER BY Numero";
-                lista = conn.Query<DatosTarjetas>(SelectQuery).ToList();
+                string SelectQuery = @"SELECT D.IdTarjeta, D.Numero, CONCAT(P.Nombre, ', ',  P.Apellido) As NombreCompleto
+                            FROM DatosTarjetas D
+                            INNER JOIN Personas P on p.IdPersona=D.IdPersona
+                            ORDER BY NombreCompleto";
+
+//                //SELECT
+//                D.IdTarjeta,
+//    D.Numero,
+//    CONCAT(P.Apellido, ', ', P.Nombre) AS NombreCompleto
+//FROM
+//    DatosTarjetas D
+//INNER JOIN
+//    Personas P ON P.IdPERSONA = D.IdPersona;
+                lista = conn.Query<DatosTarjetasDto>(SelectQuery).ToList();
             }
 
             return lista;

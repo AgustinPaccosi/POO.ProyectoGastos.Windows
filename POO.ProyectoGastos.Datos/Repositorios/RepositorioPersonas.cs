@@ -6,6 +6,8 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
+using POO.ProyectoGastos.Entidades.Dtos.ComboPersonas;
+
 namespace POO.ProyectoGastos.Datos.Repositorios
 {
     public class RepositorioPersonas : IRepositorioPersonas
@@ -69,6 +71,19 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             }
             return cantidad > 0;
 
+        }
+
+        public List<ComboPersonasDto> GetComboPersonasDtos()
+        {
+            List<ComboPersonasDto> lista = new List<ComboPersonasDto>();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string SelectQuery = @"SELECT IdPersona, CONCAT(Apellido, ' ' ,Nombre) As NombreCompleto
+                            FROM Personas 
+                            ORDER BY Apellido";
+                lista = conn.Query<ComboPersonasDto>(SelectQuery).ToList();
+            }
+            return lista;
         }
 
         public Persona GetPersonaPorId(int idPersona)

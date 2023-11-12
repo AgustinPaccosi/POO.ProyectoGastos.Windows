@@ -1,4 +1,5 @@
-﻿using POO.ProyectoGastos.Entidades.Entidades;
+﻿using POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto;
+using POO.ProyectoGastos.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,10 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
                 case EmpresasNegocios empresa:
                     r.Cells[0].Value = empresa.Nombre;
                     r.Cells[1].Value = $"{empresa.Direccion}, {empresa.Telefono}";
+                    break;
+                case DatosTarjetasDto datos:
+                    r.Cells[0].Value = datos.NombreCompleto;
+                    r.Cells[1].Value = datos.Numero;
                     break;
             }
             r.Tag = obj;

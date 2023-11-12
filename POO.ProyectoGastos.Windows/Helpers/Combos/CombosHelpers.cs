@@ -1,4 +1,5 @@
-﻿using POO.ProyectoGastos.Entidades.Dtos.Roles;
+﻿using POO.ProyectoGastos.Entidades.Dtos.ComboPersonas;
+using POO.ProyectoGastos.Entidades.Dtos.Roles;
 using POO.ProyectoGastos.Entidades.Dtos.TipoGastos;
 using POO.ProyectoGastos.Entidades.Dtos.TiposDeVencimiento;
 using POO.ProyectoGastos.Entidades.Entidades;
@@ -60,6 +61,22 @@ namespace POO.ProyectoGastos.Windows.Helpers.Combos
             combo.DataSource = lista;
             combo.DisplayMember = "TipoDeVencimiento";
             combo.ValueMember = "IdTipoDeVencimiento";
+            combo.SelectedIndex = 0;
+
+        }
+        public static void CargarComboPersonas(ref ComboBox combo)
+        {
+            IServiciosPersonas serviciosPersonas = new ServiciosPersonas();
+            var lista = serviciosPersonas.GetComboPersonasDtos();
+            var defaultPersona = new ComboPersonasDto()
+            {
+                IdPersona = 0,
+                NombreCompleto = "Seleccione Persona"
+            };
+            lista.Insert(0, defaultPersona);
+            combo.DataSource = lista;
+            combo.DisplayMember = "NombreCompleto";
+            combo.ValueMember = "IdPersona";
             combo.SelectedIndex = 0;
 
         }

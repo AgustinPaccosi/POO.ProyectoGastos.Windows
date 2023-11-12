@@ -1,5 +1,6 @@
 ﻿using POO.ProyectoGastos.Comun.Interfaces;
 using POO.ProyectoGastos.Datos.Repositorios;
+using POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto;
 using POO.ProyectoGastos.Entidades.Entidades;
 using POO.ProyectoGastos.Servicios.Interfaces;
 using System;
@@ -43,7 +44,7 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        public List<DatosTarjetas> GetDatos()
+        public List<DatosTarjetasDto> GetDatos()
         {
             return _repositorioDatos.GetDatosTarjetas();
         }

@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\ComboPersonas\ComboPersonasDto.cs" />
+    <Compile Include="Dtos\DatosTrjetasDto\DatosTarjetasDto.cs" />
     <Compile Include="Dtos\GastosHogar\GastosHogarDto.cs" />
     <Compile Include="Dtos\Roles\ComboRolDto.cs" />
     <Compile Include="Dtos\TipoGastos\ComboTipoGastosDto.cs" />

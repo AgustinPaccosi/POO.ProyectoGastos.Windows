@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace POO.ProyectoGastos.Entidades.Entidades
+namespace POO.ProyectoGastos.Entidades.Dtos.ComboPersonas
 {
-    public class DatosTarjetas
+    public class ComboPersonasDto
     {
-        public int IdTarjeta { get; set; }
-        public string Numero { get; set; }
         public int IdPersona { get; set; }
-
+        public string NombreCompleto { get; set; }
     }
 }
