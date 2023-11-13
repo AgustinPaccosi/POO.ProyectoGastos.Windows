@@ -48,6 +48,7 @@
             this.colFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColResto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -83,7 +84,8 @@
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colFecha,
             this.colMes,
-            this.colCantidad});
+            this.colCantidad,
+            this.ColResto});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 59);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(4);
@@ -241,6 +243,14 @@
             this.colCantidad.Name = "colCantidad";
             this.colCantidad.ReadOnly = true;
             // 
+            // ColResto
+            // 
+            this.ColResto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColResto.HeaderText = "Resto";
+            this.ColResto.MinimumWidth = 6;
+            this.ColResto.Name = "ColResto";
+            this.ColResto.ReadOnly = true;
+            // 
             // frmFondosComunes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -265,9 +275,6 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCantidad;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbBorrar;
@@ -280,5 +287,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColResto;
     }
 }

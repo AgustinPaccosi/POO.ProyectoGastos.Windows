@@ -1,16 +1,8 @@
-﻿using POO.ProyectoGastos.Entidades.Dtos.Roles;
-using POO.ProyectoGastos.Entidades.Entidades;
+﻿using POO.ProyectoGastos.Entidades.Entidades;
 using POO.ProyectoGastos.Servicios.Interfaces;
 using POO.ProyectoGastos.Servicios.Servicios;
 using POO.ProyectoGastos.Windows.Helpers.Combos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POO.ProyectoGastos.Windows
@@ -54,12 +46,12 @@ namespace POO.ProyectoGastos.Windows
         {
             if (ValidarDatos())
             {
-                if (persona==null)
+                if (persona == null)
                 {
                     persona = new Persona();
                 }
-                persona.Nombre=txtNombre.Text;
-                persona.Apellido=txtApellido.Text;
+                persona.Nombre = txtNombre.Text;
+                persona.Apellido = txtApellido.Text;
                 persona.IdRol = (int)comboRol.SelectedValue;
                 try
                 {
@@ -98,7 +90,7 @@ namespace POO.ProyectoGastos.Windows
                         persona = null;
                     }
 
-                
+
                 }
                 catch (Exception)
                 {

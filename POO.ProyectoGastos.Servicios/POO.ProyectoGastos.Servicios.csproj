@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IServiciosDatosTarjetas.cs" />
     <Compile Include="Interfaces\IServiciosEmpresasNegocios.cs" />
+    <Compile Include="Interfaces\IServiciosFondosComunes.cs" />
     <Compile Include="Interfaces\IServiciosPersonas.cs" />
     <Compile Include="Interfaces\IServiciosRoles.cs" />
     <Compile Include="Interfaces\IServiciosTiposDeVencimientos.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\ServiciosDatosTarjetas.cs" />
     <Compile Include="Servicios\ServiciosEmpresasNegocios.cs" />
+    <Compile Include="Servicios\ServiciosFondosComunes.cs" />
     <Compile Include="Servicios\ServiciosPersonas.cs" />
     <Compile Include="Servicios\ServiciosRoles.cs" />
     <Compile Include="Servicios\ServiciosTiposDeVencimientos.cs" />
