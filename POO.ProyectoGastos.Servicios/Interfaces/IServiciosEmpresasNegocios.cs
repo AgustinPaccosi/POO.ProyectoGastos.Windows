@@ -9,11 +9,11 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
 {
     public interface IServiciosEmpresasNegocios
     {
-        void Guardar(EmpresasNegocios empresa);
+        void Guardar(EmpresaNegocio empresa);
         void Borrar(int Idempresa);
-        bool Existe(EmpresasNegocios empresa);
+        bool Existe(EmpresaNegocio empresa);
         int GetCantidad();
-        List<EmpresasNegocios> GetEmpresasNegocios();
+        List<EmpresaNegocio> GetEmpresasNegocios();
 
 
     }

@@ -31,7 +31,7 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        public bool Existe(DatosTarjetas datos)
+        public bool Existe(DatoTarjeta datos)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             return _repositorioDatos.GetDatosTarjetas();
         }
 
-        public void Guardar(DatosTarjetas datos)
+        public void Guardar(DatoTarjeta datos)
         {
             try
             {

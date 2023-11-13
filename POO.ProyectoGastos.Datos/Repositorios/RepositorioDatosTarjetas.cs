@@ -19,7 +19,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
         {
             cadenaConexion= ConfigurationManager.ConnectionStrings["MiConexion"].ToString();
         }
-        public void Agregar(DatosTarjetas datos)
+        public void Agregar(DatoTarjeta datos)
         {
             using (var conn = new SqlConnection(cadenaConexion))
             {
@@ -41,7 +41,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             }
         }
 
-        public bool Existe(DatosTarjetas datos)
+        public bool Existe(DatoTarjeta datos)
         {
             var cantidad = 0;
             using (var conn = new SqlConnection(cadenaConexion))

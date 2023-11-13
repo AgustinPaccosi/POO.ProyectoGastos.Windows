@@ -9,7 +9,7 @@ namespace POO.ProyectoGastos.Windows
     public partial class frmEmpresasNegociosAE : Form
     {
         private IServiciosEmpresasNegocios _serviciosEmpresasNegocios;
-        private EmpresasNegocios empresaNegocio;
+        private EmpresaNegocio empresaNegocio;
         private bool esEdicion = false;
         public frmEmpresasNegociosAE(ServiciosEmpresasNegocios _ServiciosEmpresas)
         {
@@ -27,12 +27,12 @@ namespace POO.ProyectoGastos.Windows
                 txtTelefono.Text = empresaNegocio.Telefono;
             }
         }
-        public EmpresasNegocios GetEmpresasNegocio()
+        public EmpresaNegocio GetEmpresasNegocio()
         {
             return empresaNegocio;
         }
 
-        public void SetEmpresasNegocio(EmpresasNegocios empresa)
+        public void SetEmpresasNegocio(EmpresaNegocio empresa)
         {
             this.empresaNegocio = empresa;
         }
@@ -43,7 +43,7 @@ namespace POO.ProyectoGastos.Windows
             {
                 if (empresaNegocio == null)
                 {
-                    empresaNegocio = new EmpresasNegocios();
+                    empresaNegocio = new EmpresaNegocio();
                 }
                 empresaNegocio.Nombre = txtNombre.Text;
                 empresaNegocio.Direccion = txtDireccion.Text;

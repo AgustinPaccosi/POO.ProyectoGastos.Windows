@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POO.ProyectoGastos.Entidades.Entidades
 {
-    public class DatosTarjetas
+    public class DatoTarjeta
     {
         public int IdTarjeta { get; set; }
         public string Numero { get; set; }

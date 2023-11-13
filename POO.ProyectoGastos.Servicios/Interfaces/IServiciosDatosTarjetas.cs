@@ -10,9 +10,9 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
 {
     public interface IServiciosDatosTarjetas
     {
-        void Guardar(DatosTarjetas datos);
+        void Guardar(DatoTarjeta datos);
         void Borrar(int IdTarjeta);
-        bool Existe(DatosTarjetas datos);
+        bool Existe(DatoTarjeta datos);
         List<DatosTarjetasDto> GetDatos();
 
     }

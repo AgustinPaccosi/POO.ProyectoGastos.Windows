@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POO.ProyectoGastos.Entidades.Entidades
 {
-    public class GastosHogar
+    public class GastoHogar
     {
         public int IdGasto { get; set; }
         public  DateTime Fecha { get; set; }

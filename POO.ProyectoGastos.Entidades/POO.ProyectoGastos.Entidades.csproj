@@ -44,15 +44,18 @@
   <ItemGroup>
     <Compile Include="Dtos\ComboPersonas\ComboPersonasDto.cs" />
     <Compile Include="Dtos\DatosTrjetasDto\DatosTarjetasDto.cs" />
+    <Compile Include="Dtos\FondoComunDto\FondoComunDto.cs" />
     <Compile Include="Dtos\GastosHogar\GastosHogarDto.cs" />
     <Compile Include="Dtos\Roles\ComboRolDto.cs" />
     <Compile Include="Dtos\TipoGastos\ComboTipoGastosDto.cs" />
     <Compile Include="Dtos\TiposDeVencimiento\ComboTiposDeVencimientosDto.cs" />
-    <Compile Include="Entidades\DatosTarjetas.cs" />
-    <Compile Include="Entidades\EmpresasNegocios.cs" />
-    <Compile Include="Entidades\GastosHogar.cs" />
+    <Compile Include="Entidades\DatoTarjeta.cs" />
+    <Compile Include="Entidades\EmpresaNegocio.cs" />
+    <Compile Include="Entidades\FondoComun.cs" />
+    <Compile Include="Entidades\GastoHogar.cs" />
     <Compile Include="Entidades\Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

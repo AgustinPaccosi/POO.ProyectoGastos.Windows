@@ -10,9 +10,9 @@ namespace POO.ProyectoGastos.Comun.Interfaces
 {
     public interface IRepositorioDatosTarjetas
     {
-        void Agregar(DatosTarjetas datos);
+        void Agregar(DatoTarjeta datos);
         void Borrar(int IdTarjeta);
-        bool Existe(DatosTarjetas datos);
+        bool Existe(DatoTarjeta datos);
         List<DatosTarjetasDto> GetDatosTarjetas();
     }
 }

@@ -15,7 +15,7 @@ namespace POO.ProyectoGastos.Windows
             _serviciosEmpresasNegocios = new ServiciosEmpresasNegocios();
         }
         private readonly ServiciosEmpresasNegocios _serviciosEmpresasNegocios;
-        private List<EmpresasNegocios> listaEmpresas;
+        private List<EmpresaNegocio> listaEmpresas;
         private void frmEmpresasNegocios_Load(object sender, EventArgs e)
         {
             try
@@ -56,7 +56,7 @@ namespace POO.ProyectoGastos.Windows
                 return;
             }
             var r = dgvDatos.SelectedRows[0];
-            EmpresasNegocios empresa = (EmpresasNegocios)r.Tag;
+            EmpresaNegocio empresa = (EmpresaNegocio)r.Tag;
             try
             {
                 //TODO: Se debe controlar que no este relacionado
@@ -90,8 +90,8 @@ namespace POO.ProyectoGastos.Windows
                 return;
             }
             var r = dgvDatos.SelectedRows[0];
-            EmpresasNegocios empresa = (EmpresasNegocios)r.Tag;
-            EmpresasNegocios empresaCopia = (EmpresasNegocios)empresa.Clone();
+            EmpresaNegocio empresa = (EmpresaNegocio)r.Tag;
+            EmpresaNegocio empresaCopia = (EmpresaNegocio)empresa.Clone();
             try
             {
                 frmEmpresasNegociosAE frm = new frmEmpresasNegociosAE(_serviciosEmpresasNegocios) { Text = "Editar EmpresasNegocio" };

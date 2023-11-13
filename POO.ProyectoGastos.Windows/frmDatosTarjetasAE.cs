@@ -17,7 +17,7 @@ namespace POO.ProyectoGastos.Windows
     public partial class frmDatosTarjetasAE : Form
     {
         private IServiciosDatosTarjetas _serviciosDatosTarjetas;
-        private DatosTarjetas datos;
+        private DatoTarjeta datos;
 
         public frmDatosTarjetasAE(ServiciosDatosTarjetas _Servicios)
         {
@@ -31,7 +31,7 @@ namespace POO.ProyectoGastos.Windows
         {
             if (ValidarDatos())
             {
-                datos = new DatosTarjetas();
+                datos = new DatoTarjeta();
                 datos.Numero = txtNumero.Text;
                 datos.IdPersona = (int)ComboPersonas.SelectedValue;
                 try
@@ -65,7 +65,6 @@ namespace POO.ProyectoGastos.Windows
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
             }
@@ -80,6 +79,12 @@ namespace POO.ProyectoGastos.Windows
         private bool ValidarDatos()
         {
             bool valido = true;
+            if ((int)ComboPersonas.SelectedValue == 0)
+            {
+                valido = false;
+                errorProvider1.SetError(ComboPersonas, "Debe Elegir una Persona");
+
+            }
             if (string.IsNullOrEmpty(txtNumero.Text))
             {
                 valido = false;

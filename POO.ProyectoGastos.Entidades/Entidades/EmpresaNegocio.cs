@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POO.ProyectoGastos.Entidades.Entidades
 {
-    public class EmpresasNegocios: ICloneable
+    public class EmpresaNegocio: ICloneable
     {
         public int IdEmpNeg { get; set; }
         public string Nombre { get; set; }

@@ -9,11 +9,11 @@ namespace POO.ProyectoGastos.Comun.Interfaces
 {
     public interface IRepositorioEmpresasNegocios
     {
-        void Agregar(EmpresasNegocios empresa);
+        void Agregar(EmpresaNegocio empresa);
         void Borrar(int IdEmpresa);
-        void Editar(EmpresasNegocios empresa);
-        bool Existe(EmpresasNegocios empresa);
-        List<EmpresasNegocios> GetEmpresasNegocios();
+        void Editar(EmpresaNegocio empresa);
+        bool Existe(EmpresaNegocio empresa);
+        List<EmpresaNegocio> GetEmpresasNegocios();
 
     }
 }

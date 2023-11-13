@@ -19,7 +19,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             cadenaConexion = ConfigurationManager.ConnectionStrings["MiConexion"].ToString();
         }
 
-        public void Agregar(EmpresasNegocios empresa)
+        public void Agregar(EmpresaNegocio empresa)
         {
             using (var conn = new SqlConnection(cadenaConexion))
             {
@@ -38,7 +38,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             }
         }
 
-        public void Editar(EmpresasNegocios empresa)
+        public void Editar(EmpresaNegocio empresa)
         {
             using (var conn = new SqlConnection(cadenaConexion))
             {
@@ -49,7 +49,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             }
         }
 
-        public bool Existe(EmpresasNegocios empresa)
+        public bool Existe(EmpresaNegocio empresa)
         {
             var cantidad = 0;
             using (var conn = new SqlConnection(cadenaConexion))
@@ -73,15 +73,15 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             return cantidad > 0;
         }
 
-        public List<EmpresasNegocios> GetEmpresasNegocios()
+        public List<EmpresaNegocio> GetEmpresasNegocios()
         {
-            List<EmpresasNegocios> lista = new List<EmpresasNegocios>();
+            List<EmpresaNegocio> lista = new List<EmpresaNegocio>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
                 string SelectQuery = @"SELECT IdEmpNeg, Nombre, Direccion, Telefono
                             FROM EmpresasNegocios
                             ORDER BY Nombre";
-                lista = conn.Query<EmpresasNegocios>(SelectQuery).ToList();
+                lista = conn.Query<EmpresaNegocio>(SelectQuery).ToList();
             }
 
             return lista;

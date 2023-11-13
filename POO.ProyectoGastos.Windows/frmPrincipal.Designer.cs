@@ -35,6 +35,7 @@
             this.btnGastosHgr = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.btnFondosComunes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button5
@@ -126,6 +127,19 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // btnFondosComunes
+            // 
+            this.btnFondosComunes.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnFondosComunes.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.city_50px;
+            this.btnFondosComunes.Location = new System.Drawing.Point(876, 63);
+            this.btnFondosComunes.Name = "btnFondosComunes";
+            this.btnFondosComunes.Size = new System.Drawing.Size(207, 181);
+            this.btnFondosComunes.TabIndex = 0;
+            this.btnFondosComunes.Text = "Fondos Comunes";
+            this.btnFondosComunes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFondosComunes.UseVisualStyleBackColor = false;
+            this.btnFondosComunes.Click += new System.EventHandler(this.button3_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -134,6 +148,7 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnFondosComunes);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnPersonas);
             this.Controls.Add(this.button6);
@@ -155,5 +170,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnFondosComunes;
     }
 }

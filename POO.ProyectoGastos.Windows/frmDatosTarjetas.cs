@@ -67,7 +67,7 @@ namespace POO.ProyectoGastos.Windows
                 return;
             }
             var r = dgvDatos.SelectedRows[0];
-            DatosTarjetas datos = (DatosTarjetas)r.Tag;
+            DatosTarjetasDto datos = (DatosTarjetasDto)r.Tag;
             try
             {
                 //TODO: Se debe controlar que no este relacionado

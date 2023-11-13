@@ -30,7 +30,7 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        public bool Existe(EmpresasNegocios empresa)
+        public bool Existe(EmpresaNegocio empresa)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             throw new NotImplementedException();
         }
 
-        public List<EmpresasNegocios> GetEmpresasNegocios()
+        public List<EmpresaNegocio> GetEmpresasNegocios()
         {
             try
             {
@@ -61,7 +61,7 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        public void Guardar(EmpresasNegocios empresa)
+        public void Guardar(EmpresaNegocio empresa)
         {
             try
             {
