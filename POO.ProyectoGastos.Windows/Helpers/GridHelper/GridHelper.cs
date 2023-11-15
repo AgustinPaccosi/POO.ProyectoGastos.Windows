@@ -1,5 +1,6 @@
 ﻿using POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto;
 using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
+using POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto;
 using POO.ProyectoGastos.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,12 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
                     r.Cells[1].Value = fondo.Fecha.ToString("MMMM").ToUpper();
                     r.Cells[2].Value = $" $ {fondo.Monto}";
                     r.Cells[3].Value = $" $ {fondo.RestoFinMes}";
+                    break;
+                case DetalleFondoComunDto detalle:
+                    r.Cells[0].Value = detalle.FechaDeCreacion.ToString("MMMM").ToUpper();
+                    r.Cells[1].Value = detalle.FechaDeAporte.ToShortDateString();
+                    r.Cells[2].Value = detalle.NombreCompleto;
+                    r.Cells[3].Value = $"$ {detalle.Monto}";
                     break;
             }
             r.Tag = obj;

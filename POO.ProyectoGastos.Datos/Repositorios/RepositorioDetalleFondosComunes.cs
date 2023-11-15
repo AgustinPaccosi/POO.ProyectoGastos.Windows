@@ -39,15 +39,17 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             throw new NotImplementedException();
         }
 
-        public List<DetalleFondoComunDto> GetFondoComunDtos()
+        public List<DetalleFondoComunDto> GetDetalleFondoComunDtos()
         {
             List<DetalleFondoComunDto> lista = new List<DetalleFondoComunDto>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
                 string SelectQuery = @"Select Pf.IdFondoComun, Pf.IdPersona, 
-                            CONCAT(p.Apellido, ', ', p.Nombre) As NombreCompleto, Pf.Monto, pf.Fecha 
+                            CONCAT(p.Apellido, ', ', p.Nombre) As NombreCompleto,F.Fecha As FechaDeCreacion,
+                            Pf.Monto, pf.Fecha As FechaDeAporte
                             from [Personas/FondosComunes] pf
-                            Inner Join Personas P ON P.IdPersona=pf.IdPersona";
+                            Inner Join Personas P ON P.IdPersona=pf.IdPersona
+                            inner Join FondosComunes F On F.IdFondoComun= pf.IdFondoComun";
                 lista = conn.Query<DetalleFondoComunDto>(SelectQuery).ToList();
             }
             return lista;
