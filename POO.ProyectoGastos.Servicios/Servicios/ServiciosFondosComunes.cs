@@ -36,7 +36,7 @@ namespace POO.ProyectoGastos.Servicios.Servicios
         {
             try
             {
-                _repositorioFondosComunes.Existe(fondo);
+                return _repositorioFondosComunes.Existe(fondo);
             }
             catch (Exception)
             {
@@ -54,7 +54,7 @@ namespace POO.ProyectoGastos.Servicios.Servicios
         {
             try
             {
-                _repositorioFondosComunes.GetFondoComunDtos();
+                return _repositorioFondosComunes.GetFondoComunDtos();
             }
             catch (Exception)
             {
@@ -65,7 +65,23 @@ namespace POO.ProyectoGastos.Servicios.Servicios
 
         public void Guardar(FondoComun fondo)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                if (fondo.IdFondoComun == 0)
+                {
+                    _repositorioFondosComunes.Agregar(fondo);
+
+                }
+                else
+                {
+                    _repositorioFondosComunes.Editar(fondo);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }       
+         }
     }
 }

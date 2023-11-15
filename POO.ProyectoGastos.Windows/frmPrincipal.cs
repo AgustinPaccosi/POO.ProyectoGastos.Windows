@@ -46,5 +46,10 @@ namespace POO.ProyectoGastos.Windows
             Application.Exit();
         }
 
+        private void btnFondosComunes_Click(object sender, EventArgs e)
+        {
+            frmFondosComunes frm = new frmFondosComunes();
+            frm.ShowDialog(this);
+        }
     }
 }

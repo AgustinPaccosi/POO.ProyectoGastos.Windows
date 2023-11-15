@@ -78,7 +78,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             List<ComboPersonasDto> lista = new List<ComboPersonasDto>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string SelectQuery = @"SELECT IdPersona, CONCAT(Apellido, ' ' ,Nombre) 
+                string SelectQuery = @"SELECT IdPersona, CONCAT(Apellido, ' ' ,Nombre) As NombreCompleto
                             FROM Personas 
                             ORDER BY Apellido";
                 lista = conn.Query<ComboPersonasDto>(SelectQuery).ToList();

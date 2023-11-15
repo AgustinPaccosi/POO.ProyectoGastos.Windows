@@ -9,7 +9,7 @@ namespace POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto
     public class DatosTarjetasDto
     {
         public int IdTarjeta { get; set; }
-        public int Numero { get; set; }
+        public string Numero { get; set; }
         public string NombreCompleto { get; set; }
     }
 }

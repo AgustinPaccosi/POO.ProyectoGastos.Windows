@@ -1,4 +1,5 @@
 ﻿using POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto;
+using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
 using POO.ProyectoGastos.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,12 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
                 case DatosTarjetasDto datos:
                     r.Cells[0].Value = datos.NombreCompleto;
                     r.Cells[1].Value = datos.Numero;
+                    break;
+                case FondoComunDto fondo:
+                    r.Cells[0].Value = fondo.Fecha.ToShortDateString();
+                    r.Cells[1].Value = fondo.Fecha.ToString("MMMM").ToUpper();
+                    r.Cells[2].Value = $" $ {fondo.Monto}";
+                    r.Cells[3].Value = $" $ {fondo.RestoFinMes}";
                     break;
             }
             r.Tag = obj;
