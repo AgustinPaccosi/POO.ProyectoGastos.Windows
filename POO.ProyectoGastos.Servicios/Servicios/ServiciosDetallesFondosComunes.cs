@@ -5,6 +5,7 @@ using POO.ProyectoGastos.Entidades.Entidades;
 using POO.ProyectoGastos.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,11 +29,11 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             throw new NotImplementedException();
         }
 
-        public List<DetalleFondoComunDto> GetDetallesFondoComun()
+        public List<DetalleFondoComunDto> GetDetallesFondoComun(int idFondo)
         {
             try
             {
-                return _repositorioDetalles.GetDetalleFondoComunDtos();
+                return _repositorioDetalles.GetDetalleFondoComunDtos(idFondo);
             }
             catch (Exception)
             {

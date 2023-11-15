@@ -15,7 +15,7 @@ namespace POO.ProyectoGastos.Comun.Interfaces
         void Borrar(int idFondoPersona);
         void Editar(DetalleFondoComun fondoPersona);
         bool Existe(DetalleFondoComun fondoPersona);
-        List<DetalleFondoComunDto> GetDetalleFondoComunDtos();
+        List<DetalleFondoComunDto> GetDetalleFondoComunDtos(int idFondo);
 
     }
 }

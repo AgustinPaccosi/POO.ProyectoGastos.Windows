@@ -1,4 +1,5 @@
 ﻿using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
+using POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto;
 using POO.ProyectoGastos.Servicios.Interfaces;
 using POO.ProyectoGastos.Servicios.Servicios;
 using POO.ProyectoGastos.Windows.Helpers.GridHelper;
@@ -52,9 +53,24 @@ namespace POO.ProyectoGastos.Windows
 
         private void tsbDetalles_Click(object sender, EventArgs e)
         {
+            if (dgvDatos.SelectedRows.Count==0)
+            {
+
+
+            }
+            var r = dgvDatos.SelectedRows[0];
+            FondoComunDto fondo = (FondoComunDto)r.Tag;
+
             frmDetallesFondosComunes frm = new frmDetallesFondosComunes();
+            frm.SetFondo(fondo);
             frm.ShowDialog(this);
             MostrarDatosEnGrilla();
+
+        }
+
+        private void tsbCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

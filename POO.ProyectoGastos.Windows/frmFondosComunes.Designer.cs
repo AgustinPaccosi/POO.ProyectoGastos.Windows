@@ -237,6 +237,7 @@
             this.tsbCerrar.Size = new System.Drawing.Size(53, 56);
             this.tsbCerrar.Text = "Cerrar";
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
             // dataGridView1
             // 

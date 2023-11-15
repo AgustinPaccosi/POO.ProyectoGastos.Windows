@@ -1,4 +1,5 @@
-﻿using POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto;
+﻿using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
+using POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto;
 using POO.ProyectoGastos.Entidades.Entidades;
 using POO.ProyectoGastos.Servicios.Servicios;
 using POO.ProyectoGastos.Windows.Helpers.GridHelper;
@@ -18,6 +19,7 @@ namespace POO.ProyectoGastos.Windows
     {
         private readonly ServiciosDetallesFondosComunes _servicioDetalles;
         private List<DetalleFondoComunDto> listaDetallesFondo;
+        private FondoComunDto fondo;
 
         public frmDetallesFondosComunes()
         {
@@ -25,11 +27,16 @@ namespace POO.ProyectoGastos.Windows
             _servicioDetalles = new ServiciosDetallesFondosComunes();
         }
 
+        public void SetFondo(FondoComunDto fondo)
+        {
+            this.fondo = fondo;
+        }
+
         private void frmDetallesFondosComunes_Load(object sender, EventArgs e)
         {
             try
             {
-                MostrarDatosEnGrilla();
+                MostrarDatosEnGrilla(fondo.IdFondoComun);
 
             }
             catch (Exception)
@@ -38,11 +45,11 @@ namespace POO.ProyectoGastos.Windows
                 throw;
             }
         }
-        //TODO: FALTA TRAER EL FONDO POR SELECCION
-        private void MostrarDatosEnGrilla()
+
+        private void MostrarDatosEnGrilla(int idFondo)
         {
             GridHelper.LimpiarGrilla(dgvDatos);
-            listaDetallesFondo = _servicioDetalles.GetDetallesFondoComun();
+            listaDetallesFondo = _servicioDetalles.GetDetallesFondoComun(idFondo);
 
             foreach (var detalle in listaDetallesFondo)
             {
@@ -51,6 +58,11 @@ namespace POO.ProyectoGastos.Windows
                 GridHelper.AgregarFila(dgvDatos, r);
             }
 
+        }
+
+        private void tsbCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -39,18 +39,23 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             throw new NotImplementedException();
         }
 
-        public List<DetalleFondoComunDto> GetDetalleFondoComunDtos()
+        public List<DetalleFondoComunDto> GetDetalleFondoComunDtos(int idFondo)
         {
             List<DetalleFondoComunDto> lista = new List<DetalleFondoComunDto>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string SelectQuery = @"Select Pf.IdFondoComun, Pf.IdPersona, 
-                            CONCAT(p.Apellido, ', ', p.Nombre) As NombreCompleto,F.Fecha As FechaDeCreacion,
+                string SelectQuery = @"Select Pf.IdFondoComun, Pf.IdPersona,
+                            CASE 
+                                WHEN Pf.IdPersona IS NOT NULL THEN CONCAT(P.Apellido, ', ', P.Nombre)
+                                ELSE 'Resto Del Mes Anterior'
+                            END AS NombreCompleto,
+                            F.Fecha As FechaDeCreacion,
                             Pf.Monto, pf.Fecha As FechaDeAporte
                             from [Personas/FondosComunes] pf
-                            Inner Join Personas P ON P.IdPersona=pf.IdPersona
-                            inner Join FondosComunes F On F.IdFondoComun= pf.IdFondoComun";
-                lista = conn.Query<DetalleFondoComunDto>(SelectQuery).ToList();
+                            LEFT Join Personas P ON P.IdPersona=pf.IdPersona
+                            inner Join FondosComunes F On F.IdFondoComun= pf.IdFondoComun
+                            where pf.IdFondoComun=@idFondo";
+                lista = conn.Query<DetalleFondoComunDto>(SelectQuery, new { idFondo }).ToList();
             }
             return lista;
         }

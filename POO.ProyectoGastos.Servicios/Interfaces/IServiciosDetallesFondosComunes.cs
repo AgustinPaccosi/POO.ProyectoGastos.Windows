@@ -14,7 +14,7 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
         void Guardar(DetalleFondoComun detalleFondo);
         void Borrar(int IdDetalleFondo);
         bool Existe(DetalleFondoComun detalleFondo);
-        List<DetalleFondoComunDto> GetDetallesFondoComun();
+        List<DetalleFondoComunDto> GetDetallesFondoComun(int idFondo);
 
     }
 }
