@@ -59,6 +59,12 @@
     <Compile Include="frmDatosTarjetasAE.Designer.cs">
       <DependentUpon>frmDatosTarjetasAE.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDetallesFondosComunes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetallesFondosComunes.Designer.cs">
+      <DependentUpon>frmDetallesFondosComunes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpresasNegocios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDatosTarjetasAE.resx">
       <DependentUpon>frmDatosTarjetasAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetallesFondosComunes.resx">
+      <DependentUpon>frmDetallesFondosComunes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpresasNegocios.resx">
       <DependentUpon>frmEmpresasNegocios.cs</DependentUpon>

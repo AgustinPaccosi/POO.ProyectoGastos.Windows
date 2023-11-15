@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using POO.ProyectoGastos.Comun.Interfaces;
-using POO.ProyectoGastos.Entidades.Dtos.ComboPersonas;
 using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
 using POO.ProyectoGastos.Entidades.Entidades;
 using System;
@@ -8,9 +7,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace POO.ProyectoGastos.Datos.Repositorios
 {
@@ -87,16 +83,16 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             return lista;
         }
         //sELECT * FROM FondosComunes order by Fecha desc
-//        SELECT
-//    [IdFondoComun],
-//    [Fecha],
-//    [Monto],
-//    ISNULL([RestoFinMes], 0) AS RestoFinMes
-//FROM
-//    [dbo].[FondosComunes]
-//        ORDER BY
-//    [Fecha] DESC
-//GO
+        //        SELECT
+        //    [IdFondoComun],
+        //    [Fecha],
+        //    [Monto],
+        //    ISNULL([RestoFinMes], 0) AS RestoFinMes
+        //FROM
+        //    [dbo].[FondosComunes]
+        //        ORDER BY
+        //    [Fecha] DESC
+        //GO
 
         public List<FondoComun> GetFondos()
         {

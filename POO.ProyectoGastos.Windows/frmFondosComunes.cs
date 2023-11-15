@@ -49,5 +49,12 @@ namespace POO.ProyectoGastos.Windows
                 GridHelper.AgregarFila(dgvDatos, r);
             }
         }
+
+        private void tsbDetalles_Click(object sender, EventArgs e)
+        {
+            frmDetallesFondosComunes frm = new frmDetallesFondosComunes();
+            frm.ShowDialog(this);
+            MostrarDatosEnGrilla();
+        }
     }
 }
