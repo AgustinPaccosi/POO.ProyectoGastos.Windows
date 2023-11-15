@@ -132,7 +132,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Name = "frmPersonasAE";
-            this.Text = "frmPersonasAE";
+            this.Text = "Personas";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

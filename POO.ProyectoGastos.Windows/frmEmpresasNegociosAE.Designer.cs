@@ -135,7 +135,7 @@
             this.MaximumSize = new System.Drawing.Size(623, 497);
             this.MinimumSize = new System.Drawing.Size(623, 497);
             this.Name = "frmEmpresasNegociosAE";
-            this.Text = "frmEmpresasNegociosAE";
+            this.Text = "Empresas Negocios";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

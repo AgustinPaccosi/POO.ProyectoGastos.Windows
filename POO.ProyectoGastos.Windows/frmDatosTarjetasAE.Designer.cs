@@ -140,7 +140,7 @@
             this.MaximumSize = new System.Drawing.Size(600, 500);
             this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "frmDatosTarjetasAE";
-            this.Text = "DatosTarjetasAE";
+            this.Text = "Datos Guardados";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -260,7 +260,7 @@
             this.ClientSize = new System.Drawing.Size(962, 556);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmFondosComunes";
-            this.Text = "frmFondosComunes";
+            this.Text = "Fondos Comunes";
             this.Load += new System.EventHandler(this.frmFondosComunes_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
