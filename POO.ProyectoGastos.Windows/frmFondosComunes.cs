@@ -1,5 +1,6 @@
 ﻿using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
 using POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto;
+using POO.ProyectoGastos.Entidades.Entidades;
 using POO.ProyectoGastos.Servicios.Interfaces;
 using POO.ProyectoGastos.Servicios.Servicios;
 using POO.ProyectoGastos.Windows.Helpers.GridHelper;
@@ -29,7 +30,35 @@ namespace POO.ProyectoGastos.Windows
         {
             try
             {
+                if (_servicioFondos.ExisteFUltimoMes())
+                {
+                    //if (_servicioFondos.CreacionFondoAutomatico())
+                    //{
+                    //    MessageBox.Show("Actualización Exitosa", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    //if (_servicioFondos.CreacionFondoAutomatico())
+                    //{
+                    //    MessageBox.Show("Actualización Exitosa", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+
+                }
+                else
+                {
+                    // El fondo no existe, intenta crearlo
+                    if (_servicioFondos.CreacionFondoAutomatico())
+                    {
+                        MessageBox.Show("Actualización Exitosa", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
                 MostrarDatosEnGrilla();
+                
+                //var ultimovalorfondo = listaFondos[listaFondos.Count - 1];
+                //var mesultimofondo=ultimovalorfondo.Fecha.Month;
+                //if (mesultimofondo != DateTime.Now.Month)
+                //{
+                    
+                //    _servicioFondos.Guardar()
+                //}
             }
             catch (Exception)
             {
@@ -55,7 +84,7 @@ namespace POO.ProyectoGastos.Windows
         {
             if (dgvDatos.SelectedRows.Count==0)
             {
-
+                return;
 
             }
             var r = dgvDatos.SelectedRows[0];
@@ -71,6 +100,43 @@ namespace POO.ProyectoGastos.Windows
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbBorrar_Click(object sender, EventArgs e)
+        {
+            if (dgvDatos.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = dgvDatos.SelectedRows[0];
+            FondoComunDto fondo = (FondoComunDto)r.Tag;
+            try
+            {
+                //TODO: Se debe controlar que no este relacionado
+                DialogResult dr = MessageBox.Show("¿Desea borrar el registro seleccionado?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dr == DialogResult.No) { return; }
+                _servicioFondos.Borrar(fondo.IdFondoComun);
+                GridHelper.QuitarFila(dgvDatos, r);
+                //lblCantidad.Text = _servicio.GetCantidad().ToString();
+                MessageBox.Show("Registro borrado", "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
     }
 }

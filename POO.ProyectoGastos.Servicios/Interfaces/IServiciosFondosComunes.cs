@@ -12,7 +12,8 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
     {
         void Guardar(FondoComun fondo);
         void Borrar(int idFndo);
-        bool Existe(FondoComun fondo);
+        bool ExisteFUltimoMes();
+        bool CreacionFondoAutomatico();
         int GetCantidad();
         List<FondoComunDto> GetFondoComunDtos();
 

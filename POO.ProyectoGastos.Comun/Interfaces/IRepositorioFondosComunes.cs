@@ -10,7 +10,8 @@ namespace POO.ProyectoGastos.Comun.Interfaces
         void Agregar(FondoComun fondo);
         void Borrar(int idFondo);
         void Editar(FondoComun fondo);
-        bool Existe(FondoComun fondo);
+        bool ExisteUltimoMes();
+        bool CreacionFondoAutomatico();
         List<FondoComun> GetFondos();
         List<FondoComunDto> GetFondoComunDtos();
     }

@@ -31,12 +31,24 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }      
         }
 
-
-        public bool Existe(FondoComun fondo)
+        public bool CreacionFondoAutomatico()
         {
             try
             {
-                return _repositorioFondosComunes.Existe(fondo);
+                return _repositorioFondosComunes.CreacionFondoAutomatico();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool ExisteFUltimoMes()
+        {
+            try
+            {
+                return _repositorioFondosComunes.ExisteUltimoMes();
             }
             catch (Exception)
             {
