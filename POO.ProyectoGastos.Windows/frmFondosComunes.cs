@@ -30,35 +30,20 @@ namespace POO.ProyectoGastos.Windows
         {
             try
             {
-                if (_servicioFondos.ExisteFUltimoMes())
+                if (!_servicioFondos.ExisteFUltimoMes())
                 {
-                    //if (_servicioFondos.CreacionFondoAutomatico())
-                    //{
-                    //    MessageBox.Show("Actualización Exitosa", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
+                    if (_servicioFondos.CreacionFondoAutomatico())
+                    {
+                        MessageBox.Show("Actualización Exitosa", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     //if (_servicioFondos.CreacionFondoAutomatico())
                     //{
                     //    MessageBox.Show("Actualización Exitosa", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //}
 
                 }
-                else
-                {
-                    // El fondo no existe, intenta crearlo
-                    if (_servicioFondos.CreacionFondoAutomatico())
-                    {
-                        MessageBox.Show("Actualización Exitosa", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
                 MostrarDatosEnGrilla();
                 
-                //var ultimovalorfondo = listaFondos[listaFondos.Count - 1];
-                //var mesultimofondo=ultimovalorfondo.Fecha.Month;
-                //if (mesultimofondo != DateTime.Now.Month)
-                //{
-                    
-                //    _servicioFondos.Guardar()
-                //}
             }
             catch (Exception)
             {
@@ -104,7 +89,9 @@ namespace POO.ProyectoGastos.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-
+            frmFondosComunesAE frm=new frmFondosComunesAE(_servicioFondos);
+            DialogResult dr= frm.ShowDialog(this);
+            MostrarDatosEnGrilla();
         }
 
         private void tsbBorrar_Click(object sender, EventArgs e)

@@ -53,7 +53,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             using (var conn = new SqlConnection(cadenaConexion))
             {
                 string selectQuery = @"SELECT COUNT(*) FROM FondosComunes
-                               WHERE MONTH(Fecha) = MONTH(GETDATE())";
+                               WHERE MONTH(Fecha) = MONTH(GETDATE()) AND YEAR(Fecha) = YEAR(GETDATE())";
 
                 cantidad = conn.ExecuteScalar<int>(selectQuery);
             }
@@ -84,29 +84,29 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 
             return true;  // Puedes ajustar el valor de retorno según tus necesidades
         }
-        //public bool Existe(FondoComun fondo)
-        //{
-        //    var cantidad = 0;
-        //    using (var conn = new SqlConnection(cadenaConexion))
-        //    {
-        //        string selectQuery;
-        //        if (fondo.IdFondoComun == 0)
-        //        {
-        //            selectQuery = @"SELECT COUNT(*) FROM FondosComunes
-        //                WHERE MONTH(Fecha) = MONTH(GETDATE())";
-        //            cantidad = conn.ExecuteScalar<int>(selectQuery, fondo);
-        //        }
-        //        //else
-        //        //{
-        //        //    selectQuery = @"SELECT COUNT(*) FROM FondosComunes
-        //        //        WHERE Fecha = @Fecha AND IdFondoComun!=@IdFondoComun";
-        //        //    cantidad = conn.ExecuteScalar<int>(selectQuery,
-        //        //            fondo);
+        public bool Existe(FondoComun fondo)
+        {
+            var cantidad = 0;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery;
+                if (fondo.IdFondoComun == 0)
+                {
+                    selectQuery = @"SELECT COUNT(*) FROM FondosComunes
+                            WHERE MONTH(Fecha) = MONTH(@Fecha) AND YEAR(Fecha) = YEAR(@Fecha)";
+                    cantidad = conn.ExecuteScalar<int>(selectQuery, fondo);
+                }
+                //else
+                //{
+                //    selectQuery = @"SELECT COUNT(*) FROM FondosComunes
+                //        WHERE Fecha = @Fecha AND IdFondoComun!=@IdFondoComun";
+                //    cantidad = conn.ExecuteScalar<int>(selectQuery,
+                //            fondo);
 
-        //        //}
-        //    }
-        //    return cantidad > 0;
-        //}
+                //}
+            }
+            return cantidad > 0;
+        }
 
         public List<FondoComunDto> GetFondoComunDtos()
         {

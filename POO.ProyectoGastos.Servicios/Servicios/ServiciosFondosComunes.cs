@@ -44,6 +44,19 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
+        public bool Existe(FondoComun fondo)
+        {
+            try
+            {
+                return _repositorioFondosComunes.Existe(fondo);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public bool ExisteFUltimoMes()
         {
             try
