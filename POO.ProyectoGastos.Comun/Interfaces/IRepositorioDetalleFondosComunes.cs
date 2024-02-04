@@ -13,7 +13,7 @@ namespace POO.ProyectoGastos.Comun.Interfaces
     {
         void Agregar(DetalleFondoComun fondoPersona);
         void Borrar(int idFondoPersona);
-        void Editar(DetalleFondoComun fondoPersona);
+        //void Editar(DetalleFondoComun fondoPersona);
         bool Existe(DetalleFondoComun fondoPersona);
         List<DetalleFondoComunDto> GetDetalleFondoComunDtos(int idFondo);
 

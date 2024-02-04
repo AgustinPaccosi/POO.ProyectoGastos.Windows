@@ -21,7 +21,15 @@ namespace POO.ProyectoGastos.Servicios.Servicios
         }
         public void Borrar(int IdDetalleFondo)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }        
         }
 
         public bool Existe(DetalleFondoComun detalleFondo)

@@ -1,6 +1,7 @@
 ﻿using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
 using POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto;
 using POO.ProyectoGastos.Entidades.Entidades;
+using POO.ProyectoGastos.Servicios.Interfaces;
 using POO.ProyectoGastos.Servicios.Servicios;
 using POO.ProyectoGastos.Windows.Helpers.GridHelper;
 using System;
@@ -67,7 +68,9 @@ namespace POO.ProyectoGastos.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-
+            frmDetallesFondosComunAE frm= new frmDetallesFondosComunAE(_servicioDetalles);
+            DialogResult dr = frm.ShowDialog(this);
+            MostrarDatosEnGrilla(fondo.IdFondoComun);
         }
     }
 }

@@ -19,24 +19,45 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             cadenaConexion = ConfigurationManager.ConnectionStrings["MiConexion"].ToString();
 
         }
-        public void Agregar(DetalleFondoComun fondoPersona)
+        public void Agregar(DetalleFondoComun fondo)
         {
-            throw new NotImplementedException();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+
+                string insertQuery = @"INSERT INTO [Personas/FondosComunes] 
+                        (IdFondoComun, IdPersona, Monto, Fecha)
+                        VALUES (@IdFondoComun , @IdPersona , @Monto, GETDATE()";
+                int id = conn.QuerySingle<int>(insertQuery, fondo);
+                fondo.IdFondoComun = id;
+            }
         }
 
-        public void Borrar(int idFondoPersona)
+        public void Borrar(int IdFondoComun, int IdPersona)
         {
-            throw new NotImplementedException();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string deleteQuery = @"DELETE FROM [Personas/FondosComunes] 
+                     WHERE IdFondoComun=@IdFondoComun and IdPersona=@IdPersona and MONTH(Fecha) = MONTH(GETDATE()) ";
+                conn.Execute(deleteQuery, new { IdFondoComun = IdFondoComun, IdPersona= IdPersona });
+            }
         }
 
-        public void Editar(DetalleFondoComun fondoPersona)
-        {
-            throw new NotImplementedException();
-        }
+        //public void Editar(DetalleFondoComun fondoPersona)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public bool Existe(DetalleFondoComun fondoPersona)
+        public bool Existe(DetalleFondoComun detalleFondo)
         {
-            throw new NotImplementedException();
+            var cantidad = 0;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT COUNT(*) FROM [Personas/FondosComunes] 
+                        WHERE IdFondoComun = @IdFondoComun AND IdPersona = @IdPersona and MONTH(Fecha) = MONTH(GETDATE());";
+
+                cantidad = conn.ExecuteScalar<int>(selectQuery);
+            }
+            return cantidad > 0;
         }
 
         public List<DetalleFondoComunDto> GetDetalleFondoComunDtos(int idFondo)
