@@ -19,11 +19,11 @@ namespace POO.ProyectoGastos.Servicios.Servicios
         {
             _repositorioDetalles = new RepositorioDetalleFondosComunes();
         }
-        public void Borrar(int IdDetalleFondo)
+        public void Borrar(int IdFondo, int idPersona)
         {
             try
             {
-
+                _repositorioDetalles.Borrar(IdFondo, idPersona);
             }
             catch (Exception)
             {
@@ -34,7 +34,15 @@ namespace POO.ProyectoGastos.Servicios.Servicios
 
         public bool Existe(DetalleFondoComun detalleFondo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _repositorioDetalles.Existe(detalleFondo);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }        
         }
 
         public List<DetalleFondoComunDto> GetDetallesFondoComun(int idFondo)
@@ -52,7 +60,15 @@ namespace POO.ProyectoGastos.Servicios.Servicios
 
         public void Guardar(DetalleFondoComun detalleFondo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _repositorioDetalles.Agregar(detalleFondo);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using POO.ProyectoGastos.Servicios.Interfaces;
 using POO.ProyectoGastos.Servicios.Servicios;
 using POO.ProyectoGastos.Windows.Helpers.Combos;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace POO.ProyectoGastos.Windows
@@ -13,6 +14,7 @@ namespace POO.ProyectoGastos.Windows
     {
         private IServiciosDetallesFondosComunes _serviciosFondo;
         private DetalleFondoComun detalleFondo;
+        private FondoComunDto fondo;
         //private bool esEdicion = false;
 
         public frmDetallesFondosComunAE(ServiciosDetallesFondosComunes _ServiciosFondo)
@@ -22,15 +24,15 @@ namespace POO.ProyectoGastos.Windows
             CombosHelpers.CargarComboPersonas(ref CboPersonas);
 
         }
-        public void SetEmpresasNegocio(DetalleFondoComun detalle)
+        public void SetFondoComun(FondoComunDto fondo)
         {
-            this.detalleFondo = detalle;
+            this.fondo = fondo;
         }
 
-        public DetalleFondoComun GetDetalleFondo()
-        {
-            return detalleFondo;
-        }
+        //public DetalleFondoComun GetDetalleFondo()
+        //{
+        //    return detalleFondo;
+        //}
 
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -41,33 +43,46 @@ namespace POO.ProyectoGastos.Windows
                 {
                     detalleFondo = new DetalleFondoComun();
                 }
+                detalleFondo.IdFondoComun = fondo.IdFondoComun;
+                detalleFondo.IdPersona = (int)CboPersonas.SelectedValue;
+                detalleFondo.Monto = double.Parse(txtcantidad.Text);
+                detalleFondo.Fecha = DateTime.Now;
                 try
                 {
-                    if (!_serviciosFondo.Existe(detalleFondo))
+                    if (fondo.Fecha.Month==DateTime.Now.Month)
                     {
-                        _serviciosFondo.Guardar(detalleFondo);
-                        //if (!esEdicion)
-
-                        MessageBox.Show("Registro agregado",
-                            "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DialogResult dr = MessageBox.Show("¿Desea agregar otro registro?",
-                            "Pregunta",
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                            MessageBoxDefaultButton.Button2);
-                        if (dr == DialogResult.No)
+                        if (!_serviciosFondo.Existe(detalleFondo))
                         {
-                            DialogResult = DialogResult.OK;
-                        }
-                        InicializarControles();
+                            _serviciosFondo.Guardar(detalleFondo);
+                            //if (!esEdicion)
 
+                            MessageBox.Show("Registro agregado",
+                                "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DialogResult dr = MessageBox.Show("¿Desea agregar otro registro?",
+                                "Pregunta",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                                MessageBoxDefaultButton.Button2);
+                            if (dr == DialogResult.No)
+                            {
+                                DialogResult = DialogResult.OK;
+                            }
+                            InicializarControles();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Registro duplicado, Borre el anterior y actualizar",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //empresaNegocio = null;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Registro duplicado, Borre el anterior y actualizar",
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //empresaNegocio = null;
-                    }
+                        MessageBox.Show("Solo se podra agregar registros en el fondo del mes corriente",
+                            "Error"
+                            , MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                    }
                 }
                 catch (Exception)
                 {
@@ -99,7 +114,18 @@ namespace POO.ProyectoGastos.Windows
                 errorProvider1.SetError(txtcantidad, "Debe ingresar un Numero");
 
             }
+            if (!txtcantidad.Text.All(char.IsDigit))
+            {
+                valido = false;
+                errorProvider1.SetError(txtcantidad, "Solo se permiten caracteres numéricos");
+            }
+
             return valido;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

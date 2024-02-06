@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFondosComunes));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
@@ -40,7 +40,6 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDetalles = new System.Windows.Forms.ToolStripButton();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
@@ -78,8 +77,8 @@
             this.dgvDatos.AllowUserToAddRows = false;
             this.dgvDatos.AllowUserToResizeColumns = false;
             this.dgvDatos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colFecha,
@@ -101,8 +100,8 @@
             // colFecha
             // 
             this.colFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colFecha.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colFecha.DefaultCellStyle = dataGridViewCellStyle2;
             this.colFecha.HeaderText = "Fecha";
             this.colFecha.MinimumWidth = 6;
             this.colFecha.Name = "colFecha";
@@ -138,7 +137,6 @@
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNuevo,
             this.tsbBorrar,
-            this.tsbEditar,
             this.toolStripSeparator1,
             this.tsbDetalles,
             this.tsbActualizar,
@@ -174,16 +172,6 @@
             this.tsbBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbBorrar.Click += new System.EventHandler(this.tsbBorrar_Click);
             // 
-            // tsbEditar
-            // 
-            this.tsbEditar.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.edit_file_32px;
-            this.tsbEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(52, 56);
-            this.tsbEditar.Text = "Editar";
-            this.tsbEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -209,6 +197,7 @@
             this.tsbActualizar.Size = new System.Drawing.Size(79, 56);
             this.tsbActualizar.Text = "Actualizar";
             this.tsbActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbActualizar.Click += new System.EventHandler(this.tsbActualizar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -283,7 +272,6 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbBorrar;
-        private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsbDetalles;
         private System.Windows.Forms.ToolStripButton tsbActualizar;

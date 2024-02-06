@@ -40,7 +40,6 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -137,7 +136,6 @@
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNuevo,
             this.tsbBorrar,
-            this.tsbEditar,
             this.toolStripSeparator1,
             this.tsbActualizar,
             this.toolStripSeparator2,
@@ -170,16 +168,7 @@
             this.tsbBorrar.Size = new System.Drawing.Size(54, 56);
             this.tsbBorrar.Text = "Borrar";
             this.tsbBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsbEditar
-            // 
-            this.tsbEditar.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.edit_file_32px;
-            this.tsbEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(52, 56);
-            this.tsbEditar.Text = "Editar";
-            this.tsbEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbBorrar.Click += new System.EventHandler(this.tsbBorrar_Click);
             // 
             // toolStripSeparator1
             // 
@@ -195,6 +184,7 @@
             this.tsbActualizar.Size = new System.Drawing.Size(79, 56);
             this.tsbActualizar.Text = "Actualizar";
             this.tsbActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbActualizar.Click += new System.EventHandler(this.tsbActualizar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -268,7 +258,6 @@
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton tsbBorrar;
-        private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsbActualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;

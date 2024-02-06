@@ -26,9 +26,16 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 
                 string insertQuery = @"INSERT INTO [Personas/FondosComunes] 
                         (IdFondoComun, IdPersona, Monto, Fecha)
-                        VALUES (@IdFondoComun , @IdPersona , @Monto, GETDATE()";
-                int id = conn.QuerySingle<int>(insertQuery, fondo);
-                fondo.IdFondoComun = id;
+                        VALUES (@IdFondoComun , @IdPersona , @Monto, GETDATE())";
+                try
+                {
+                    conn.Execute(insertQuery, fondo);
+                }
+                catch (SqlException ex)
+                {
+                    // Manejo de la excepción: imprime el mensaje de error detallado
+                    Console.WriteLine("Error al insertar: " + ex.Message);
+                }
             }
         }
 
@@ -44,6 +51,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 
         //public void Editar(DetalleFondoComun fondoPersona)
         //{
+
         //    throw new NotImplementedException();
         //}
 
@@ -55,7 +63,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
                 string selectQuery = @"SELECT COUNT(*) FROM [Personas/FondosComunes] 
                         WHERE IdFondoComun = @IdFondoComun AND IdPersona = @IdPersona and MONTH(Fecha) = MONTH(GETDATE());";
 
-                cantidad = conn.ExecuteScalar<int>(selectQuery);
+                cantidad = conn.ExecuteScalar<int>(selectQuery, new { detalleFondo.IdFondoComun, detalleFondo.IdPersona });
             }
             return cantidad > 0;
         }

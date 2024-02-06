@@ -69,7 +69,65 @@ namespace POO.ProyectoGastos.Windows
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
             frmDetallesFondosComunAE frm= new frmDetallesFondosComunAE(_servicioDetalles);
+            frm.SetFondoComun(fondo);
             DialogResult dr = frm.ShowDialog(this);
+            MostrarDatosEnGrilla(fondo.IdFondoComun);
+        }
+
+        private void tsbBorrar_Click(object sender, EventArgs e)
+        {
+            if (dgvDatos.SelectedRows.Count==0)
+            {
+                return;
+            }
+            var r = dgvDatos.SelectedRows[0];
+            DetalleFondoComunDto detalleFondo = (DetalleFondoComunDto)r.Tag;
+            if (detalleFondo.IdPersona == null)
+            {
+                MessageBox.Show(@"No se puede Borrar el Registro ya que es el resto del 
+                    mes anterior ", "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else 
+            {
+                _servicioDetalles.Borrar(detalleFondo.IdFondoComun, detalleFondo.IdPersona ?? 0);
+
+            }
+            //else
+            //{
+            //    var idPersona = detalleFondo.IdPersona;
+            //    if (idPersona == null)
+            //    {
+            //        idPersona = 0;
+            //        _servicioDetalles.Borrar(detalleFondo.IdFondoComun, idPersona?? 0);
+
+            //    }
+            //}
+
+            try
+            {
+                DialogResult dr = MessageBox.Show("¿Desea borrar el registro seleccionado?",
+                    "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dr == DialogResult.No) { return; }
+                //_servicioDetalles.Borrar(fondo.IdFondoComun, fondo.IdPersona)
+                GridHelper.QuitarFila(dgvDatos, r);
+                //lblCantidad.Text = _servicio.GetCantidad().ToString();
+                MessageBox.Show("Registro borrado", "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarDatosEnGrilla(fondo.IdFondoComun);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void tsbActualizar_Click(object sender, EventArgs e)
+        {
             MostrarDatosEnGrilla(fondo.IdFondoComun);
         }
     }

@@ -125,5 +125,10 @@ namespace POO.ProyectoGastos.Windows
             }
 
         }
+
+        private void tsbActualizar_Click(object sender, EventArgs e)
+        {
+            MostrarDatosEnGrilla();
+        }
     }
 }
