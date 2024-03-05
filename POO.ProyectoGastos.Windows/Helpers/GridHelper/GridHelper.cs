@@ -1,9 +1,11 @@
 ﻿using POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto;
 using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
 using POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto;
+using POO.ProyectoGastos.Entidades.Dtos.GastosHogar;
 using POO.ProyectoGastos.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,6 +63,13 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
                     r.Cells[1].Value = detalle.FechaDeAporte.ToShortDateString();
                     r.Cells[2].Value = detalle.NombreCompleto;
                     r.Cells[3].Value = $"$ {detalle.Monto}";
+                    break;
+                case GastosHogarDto gastosHogar:
+                    r.Cells[0].Value = gastosHogar.TipoGasto;
+                    r.Cells[1].Value = gastosHogar.Persona;
+                    r.Cells[2].Value = gastosHogar.Fecha.ToShortDateString();
+                    r.Cells[3].Value = $" $ {gastosHogar.Valor}";
+                    r.Cells[4].Value = gastosHogar.Detalle != null ? gastosHogar.Detalle : "S/D";
                     break;
             }
             r.Tag = obj;
