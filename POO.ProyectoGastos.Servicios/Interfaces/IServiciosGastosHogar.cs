@@ -14,6 +14,7 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
         void Guardar(GastoHogar gastoHogar);
         void Borrar(int IdGasto);
         bool Existe(GastoHogar gastoHogar);
+        void Editar(int IdGasto);
         int GetCantidad();
         List<GastosHogarDto> GetGastosHogar();
         //List<ComboPersonasDto> GetComboPersonasDtos();

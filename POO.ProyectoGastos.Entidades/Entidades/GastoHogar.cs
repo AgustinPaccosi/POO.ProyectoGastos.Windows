@@ -11,12 +11,14 @@ namespace POO.ProyectoGastos.Entidades.Entidades
         public int IdGasto { get; set; }
         public  DateTime Fecha { get; set; }
         public decimal Valor { get; set;}
-        public string TipoGasto { get; set; }   
-        public string EmpNeg { get; set; }
-        public string Persona { get; set; }
-        public string FondoComun { get; set;}
-        public string GastoFijo { get; set;}
-        public string FormasPago { get;set; }
-
+        public int IdTipoGasto { get; set; }   
+        public int IdEmpNeg { get; set; }
+        public int IdPersona { get; set; }
+        public int IdFondoComun { get; set;}
+        public int IdGastoFijo { get; set;}
+        public int IdFormaPago { get;set; }
+        public int IdDatosTarjeta { get; set; }
+        public string Detalle { get; set; }
+        public bool Pagado { get; set; }
     }
 }

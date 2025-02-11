@@ -15,6 +15,16 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
 {
     public static class GridHelper
     {
+        internal static void MostrarDatosEnGrilla<T>(DataGridView dgv, List<T> lista)
+        {
+            GridHelper.LimpiarGrilla(dgv);
+            foreach (var obj in lista)
+            {
+                DataGridViewRow r = GridHelper.ConstruirFila(dgv);
+                GridHelper.SetearFila(r, obj);
+                GridHelper.AgregarFila(dgv, r);
+            }
+        }
         public static void LimpiarGrilla(DataGridView dgv)
         {
             dgv.Rows.Clear();

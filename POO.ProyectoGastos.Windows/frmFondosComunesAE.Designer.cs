@@ -67,6 +67,7 @@
             // 
             // cboAnio
             // 
+            this.cboAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAnio.FormattingEnabled = true;
             this.cboAnio.Location = new System.Drawing.Point(193, 115);
             this.cboAnio.Name = "cboAnio";
@@ -100,6 +101,7 @@
             // 
             // CboMeses
             // 
+            this.CboMeses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboMeses.FormattingEnabled = true;
             this.CboMeses.Location = new System.Drawing.Point(193, 73);
             this.CboMeses.Name = "CboMeses";

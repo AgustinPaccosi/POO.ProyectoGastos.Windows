@@ -21,12 +21,33 @@ namespace POO.ProyectoGastos.Servicios.Servicios
 
         public void Borrar(int IdGasto)
         {
+            try
+            {
+                _repositorioGastosHogar.Borrar(IdGasto);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void Editar(int IdGasto)
+        {
             throw new NotImplementedException();
         }
 
         public bool Existe(GastoHogar gastoHogar)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _repositorioGastosHogar.Existe(gastoHogar);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public int GetCantidad()
@@ -48,7 +69,22 @@ namespace POO.ProyectoGastos.Servicios.Servicios
 
         public void Guardar(GastoHogar gastoHogar)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (gastoHogar.IdGasto == 0)
+                {
+                    _repositorioGastosHogar.Agregar(gastoHogar);
+                }
+                else
+                {
+                    _repositorioGastosHogar.Editar(gastoHogar);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

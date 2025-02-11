@@ -42,7 +42,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             using (var conn = new SqlConnection(cadenaConexion))
             {
                 conn.Open();
-                string updateQuery = @"UPDATE Persona SET Nombre=@Nombre, Apellido=@Apellido
+                string updateQuery = @"UPDATE Personas SET Nombre=@Nombre, Apellido=@Apellido, IdRol=@IdRol
                             WHERE IdPersona=@IdPersona";
                 conn.Execute(updateQuery, persona);
             }
@@ -63,7 +63,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
                 else
                 {
                     selectQuery = "SELECT COUNT(*) FROM Personas" +
-                        " WHERE Nombre=@Nombre AND IdPersona!=@IdPersona";
+                        " WHERE Nombre=@Nombre AND Apellido= @Apellido and IdPersona!=@IdPersona";
                     cantidad = conn.ExecuteScalar<int>(selectQuery,
                             persona);
 

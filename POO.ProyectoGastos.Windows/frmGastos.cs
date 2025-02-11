@@ -55,5 +55,10 @@ namespace POO.ProyectoGastos.Windows
             }
 
         }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

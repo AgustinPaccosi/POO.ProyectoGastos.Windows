@@ -12,10 +12,11 @@ namespace POO.ProyectoGastos.Comun.Interfaces
     public interface IRepositorioGastosHogar
     {
         void Agregar(GastoHogar gastoHogar);
-        void Borrar(GastoHogar gastoHogar);
-        //void Editar(DetalleFondoComun fondoPersona);
+        void Borrar(int IdGasto);
         bool Existe(GastoHogar gastoHogar);
+        void Editar(GastoHogar gastoHogar);
         List<GastosHogarDto> GetGastosHogar();
+        int GetCantidad();
 
     }
 }

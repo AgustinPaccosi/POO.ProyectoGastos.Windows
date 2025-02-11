@@ -86,6 +86,7 @@
             // 
             // CboPersonas
             // 
+            this.CboPersonas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboPersonas.FormattingEnabled = true;
             this.CboPersonas.Location = new System.Drawing.Point(195, 129);
             this.CboPersonas.Name = "CboPersonas";

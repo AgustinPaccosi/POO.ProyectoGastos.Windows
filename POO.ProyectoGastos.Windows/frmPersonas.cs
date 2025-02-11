@@ -19,17 +19,19 @@ namespace POO.ProyectoGastos.Windows
         public frmPersonas()
         {
             InitializeComponent();
-            _servicioPersonas= new ServiciosPersonas();
+            _servicioPersonas = new ServiciosPersonas();
         }
 
         private readonly ServiciosPersonas _servicioPersonas;
         private List<Persona> listaPersonas;
+        string texto = "";
 
         private void Personas_Load(object sender, EventArgs e)
         {
             try
             {
                 MostrarDatosEnGrilla();
+                BuscarCliente(listaPersonas, texto);
             }
             catch (Exception)
             {
@@ -54,8 +56,8 @@ namespace POO.ProyectoGastos.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            frmPersonasAE frm= new frmPersonasAE(_servicioPersonas);
-            DialogResult dr= frm.ShowDialog(this);
+            frmPersonasAE frm = new frmPersonasAE(_servicioPersonas);
+            DialogResult dr = frm.ShowDialog(this);
             MostrarDatosEnGrilla();
         }
 
@@ -130,6 +132,7 @@ namespace POO.ProyectoGastos.Windows
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+            MostrarDatosEnGrilla();
 
         }
 
@@ -142,5 +145,27 @@ namespace POO.ProyectoGastos.Windows
         {
             MostrarDatosEnGrilla();
         }
+
+        private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            var texto = toolStripTextBox1.Text;
+            BuscarCliente(listaPersonas, texto);
+        }
+        private void BuscarCliente(List<Persona> persona, string texto)
+        {
+            var listaFiltrada = persona;
+            if (texto.Length != 0)
+            {
+                Func<Persona, bool> condicion = c => c.Apellido.ToUpper().Contains(texto.ToUpper()) || c.Nombre.ToUpper().Contains(texto.ToUpper());
+                listaFiltrada = persona.Where(condicion).ToList();
+            }
+            GridHelper.MostrarDatosEnGrilla<Persona>(dgvDatos, listaFiltrada);
+        }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+            toolStripTextBox1.Text = ""; 
+        }
     }
 }
+

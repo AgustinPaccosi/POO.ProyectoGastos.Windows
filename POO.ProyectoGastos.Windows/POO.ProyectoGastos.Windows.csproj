@@ -101,11 +101,23 @@
     <Compile Include="frmGastos.Designer.cs">
       <DependentUpon>frmGastos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGastosAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGastosAE.Designer.cs">
+      <DependentUpon>frmGastosAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPersonasAE.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPersonasAE.Designer.cs">
       <DependentUpon>frmPersonasAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GastosTotales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GastosTotales.Designer.cs">
+      <DependentUpon>GastosTotales.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Combos\CombosHelpers.cs" />
     <Compile Include="Helpers\GridHelper\GridHelper.cs" />
@@ -150,6 +162,9 @@
     <EmbeddedResource Include="frmGastos.resx">
       <DependentUpon>frmGastos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGastosAE.resx">
+      <DependentUpon>frmGastosAE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPersonas.resx">
       <DependentUpon>frmPersonas.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GastosTotales.resx">
+      <DependentUpon>GastosTotales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

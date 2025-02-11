@@ -87,6 +87,7 @@
             // 
             // ComboPersonas
             // 
+            this.ComboPersonas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboPersonas.FormattingEnabled = true;
             this.ComboPersonas.Location = new System.Drawing.Point(144, 107);
             this.ComboPersonas.MaxDropDownItems = 25;
