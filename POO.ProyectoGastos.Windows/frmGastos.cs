@@ -58,7 +58,9 @@ namespace POO.ProyectoGastos.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-
+            frmGastosAE frm = new frmGastosAE(_servicioGastosHogar);
+            DialogResult dr= frm.ShowDialog(this);
+            MostrarDatosEnGrilla();
         }
     }
 }

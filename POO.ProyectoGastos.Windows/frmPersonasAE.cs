@@ -9,12 +9,12 @@ namespace POO.ProyectoGastos.Windows
 {
     public partial class frmPersonasAE : Form
     {
-        private IServiciosPersonas _servicioPersona;
+        private IServiciosPersonas servicio;
         //private IServiciosRoles _serviciosRoles;
         public frmPersonasAE(ServiciosPersonas servicioPersona)
         {
             InitializeComponent();
-            _servicioPersona = servicioPersona;
+            servicio = servicioPersona;
         }
 
         private Persona persona;
@@ -55,9 +55,9 @@ namespace POO.ProyectoGastos.Windows
                 persona.IdRol = (int)comboRol.SelectedValue;
                 try
                 {
-                    if (!_servicioPersona.Existe(persona))
+                    if (!servicio.Existe(persona))
                     {
-                        _servicioPersona.Guardar(persona);
+                        servicio.Guardar(persona);
                         if (!esEdicion)
                         {
                             MessageBox.Show("Registro agregado",

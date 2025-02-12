@@ -32,10 +32,7 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        public void Editar(int IdGasto)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public bool Existe(GastoHogar gastoHogar)
         {
