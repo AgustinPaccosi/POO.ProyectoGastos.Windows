@@ -78,5 +78,22 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 
             return lista;
         }
+
+        public List<DatosTarjetasDto> GetDatosTarjetasFiltrado(int IdPersona)
+        {
+            List<DatosTarjetasDto> lista = new List<DatosTarjetasDto>();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string SelectQuery = @"SELECT D.IdTarjeta, D.Numero, CONCAT(P.Nombre, ', ',  P.Apellido) As NombreCompleto
+                            FROM DatosTarjetas D
+                            INNER JOIN Personas P on p.IdPersona=D.IdPersona
+                            WHERE P.IdPersona=@IdPersona
+                            ORDER BY NombreCompleto";
+
+                lista = conn.Query<DatosTarjetasDto>(SelectQuery, new { IdPersona }).ToList();
+            }
+
+            return lista;
+        }
     }
 }

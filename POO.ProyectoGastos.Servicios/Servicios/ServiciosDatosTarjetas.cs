@@ -49,6 +49,19 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             return _repositorioDatos.GetDatosTarjetas();
         }
 
+        public List<DatosTarjetasDto> GetDatosFiltrados(int IdPersona)
+        {
+            try
+            {
+                return _repositorioDatos.GetDatosTarjetasFiltrado(IdPersona);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public void Guardar(DatoTarjeta datos)
         {
             try

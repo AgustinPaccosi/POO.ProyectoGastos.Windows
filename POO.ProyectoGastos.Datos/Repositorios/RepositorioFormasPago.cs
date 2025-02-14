@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using POO.ProyectoGastos.Comun.Interfaces;
+using POO.ProyectoGastos.Entidades;
 using POO.ProyectoGastos.Entidades.Dtos.Roles;
-using POO.ProyectoGastos.Entidades.Dtos.TipoGastos;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,21 +12,21 @@ using System.Threading.Tasks;
 
 namespace POO.ProyectoGastos.Datos.Repositorios
 {
-    public class RepositorioTiposGastos : IRepositorioTiposGastos
+    public class RepositorioFormasPago : IRepositorioFormasPagos
     {
         private readonly string cadenaConexion;
-        public RepositorioTiposGastos()
+        public RepositorioFormasPago()
         {
             cadenaConexion = ConfigurationManager.ConnectionStrings["MiConexion"].ToString();
 
         }
-        public List<ComboTiposGastosDto> GetTiposGastos()
+        public List<FormasPagos> GetFormasPagos()
         {
-            List<ComboTiposGastosDto> lista = new List<ComboTiposGastosDto>();
+            List<FormasPagos> lista = new List<FormasPagos>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string SelectQuery = "SELECT IdTipoGasto, TipoGasto FROM TiposGastos";
-                lista = conn.Query<ComboTiposGastosDto>(SelectQuery).ToList();
+                string SelectQuery = "SELECT IdFormaPago, FormaPago FROM FormasPagos";
+                lista = conn.Query<FormasPagos>(SelectQuery).ToList();
             }
             return lista;
 

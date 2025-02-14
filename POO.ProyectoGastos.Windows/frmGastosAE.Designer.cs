@@ -50,6 +50,9 @@
             this.comboNumTarje = new System.Windows.Forms.ComboBox();
             this.comboEmpresa = new System.Windows.Forms.ComboBox();
             this.checkPagado = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.comboGastoFijo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +94,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(425, 267);
+            this.label5.Location = new System.Drawing.Point(425, 233);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 16);
             this.label5.TabIndex = 4;
@@ -118,7 +121,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(425, 219);
+            this.label8.Location = new System.Drawing.Point(425, 185);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 16);
             this.label8.TabIndex = 7;
@@ -145,7 +148,7 @@
             // btnCancel
             // 
             this.btnCancel.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.cancel_24px;
-            this.btnCancel.Location = new System.Drawing.Point(614, 330);
+            this.btnCancel.Location = new System.Drawing.Point(501, 369);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(92, 81);
             this.btnCancel.TabIndex = 10;
@@ -157,7 +160,7 @@
             // btnOk
             // 
             this.btnOk.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.ok_24px;
-            this.btnOk.Location = new System.Drawing.Point(217, 330);
+            this.btnOk.Location = new System.Drawing.Point(215, 369);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(92, 81);
             this.btnOk.TabIndex = 11;
@@ -182,6 +185,7 @@
             this.comboPersonas.Name = "comboPersonas";
             this.comboPersonas.Size = new System.Drawing.Size(184, 24);
             this.comboPersonas.TabIndex = 13;
+            this.comboPersonas.SelectedIndexChanged += new System.EventHandler(this.comboPersonas_SelectedIndexChanged);
             // 
             // textDetalle
             // 
@@ -217,6 +221,7 @@
             this.comboFormaDePago.Name = "comboFormaDePago";
             this.comboFormaDePago.Size = new System.Drawing.Size(203, 24);
             this.comboFormaDePago.TabIndex = 17;
+            this.comboFormaDePago.SelectedIndexChanged += new System.EventHandler(this.comboFormaDePago_SelectedIndexChanged);
             // 
             // comboFondoComun
             // 
@@ -231,7 +236,7 @@
             // 
             this.comboNumTarje.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboNumTarje.FormattingEnabled = true;
-            this.comboNumTarje.Location = new System.Drawing.Point(553, 216);
+            this.comboNumTarje.Location = new System.Drawing.Point(553, 182);
             this.comboNumTarje.Name = "comboNumTarje";
             this.comboNumTarje.Size = new System.Drawing.Size(203, 24);
             this.comboNumTarje.TabIndex = 19;
@@ -240,7 +245,7 @@
             // 
             this.comboEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEmpresa.FormattingEnabled = true;
-            this.comboEmpresa.Location = new System.Drawing.Point(552, 264);
+            this.comboEmpresa.Location = new System.Drawing.Point(552, 230);
             this.comboEmpresa.Name = "comboEmpresa";
             this.comboEmpresa.Size = new System.Drawing.Size(204, 24);
             this.comboEmpresa.TabIndex = 20;
@@ -255,12 +260,44 @@
             this.checkPagado.Text = "Si";
             this.checkPagado.UseVisualStyleBackColor = true;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(427, 276);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 16);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Gasto Fijo:";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(553, 275);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(41, 20);
+            this.checkBox1.TabIndex = 23;
+            this.checkBox1.Text = "Si";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // comboGastoFijo
+            // 
+            this.comboGastoFijo.Enabled = false;
+            this.comboGastoFijo.FormattingEnabled = true;
+            this.comboGastoFijo.Location = new System.Drawing.Point(552, 310);
+            this.comboGastoFijo.Name = "comboGastoFijo";
+            this.comboGastoFijo.Size = new System.Drawing.Size(204, 24);
+            this.comboGastoFijo.TabIndex = 25;
+            // 
             // frmGastosAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 495);
             this.ControlBox = false;
+            this.Controls.Add(this.comboGastoFijo);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.checkPagado);
             this.Controls.Add(this.comboEmpresa);
             this.Controls.Add(this.comboNumTarje);
@@ -314,5 +351,8 @@
         private System.Windows.Forms.ComboBox comboNumTarje;
         private System.Windows.Forms.ComboBox comboEmpresa;
         private System.Windows.Forms.CheckBox checkPagado;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox comboGastoFijo;
     }
 }

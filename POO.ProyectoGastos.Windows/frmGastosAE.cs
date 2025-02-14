@@ -1,6 +1,7 @@
 ﻿using POO.ProyectoGastos.Entidades.Entidades;
 using POO.ProyectoGastos.Servicios.Interfaces;
 using POO.ProyectoGastos.Servicios.Servicios;
+using POO.ProyectoGastos.Windows.Helpers.Combos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,18 @@ namespace POO.ProyectoGastos.Windows
         private GastoHogar gastoHogar;
         private bool esEdicion = false;
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            CombosHelpers.CargarComboTiposGastos(ref comboTipoDeGasto);
+            CombosHelpers.CargarComboPersonas(ref comboPersonas);
+            CombosHelpers.CargarComboEmpresaNegocio(ref comboEmpresa);
+            CombosHelpers.CargarComboFormasPago(ref comboFormaDePago);
+            comboFondoComun.Enabled= false;
+            comboNumTarje.Enabled= false;
+            //comboGastoFijo.Enabled= false;
+
+        }
         private void btnOk_Click(object sender, EventArgs e)
         {
 
@@ -51,5 +64,72 @@ namespace POO.ProyectoGastos.Windows
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void comboPersonas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((int)comboPersonas.SelectedIndex!=0)
+            {
+                CombosHelpers.CargarcomboTarjetas(ref comboNumTarje, (int)comboPersonas.SelectedValue);
+            }
+           
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                comboGastoFijo.Enabled=true;
+            }
+            else { comboGastoFijo.Enabled = false; }
+        }
+
+        private void comboFormaDePago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((int)comboFormaDePago.SelectedIndex != 0)
+            {
+                switch ((int)comboFormaDePago.SelectedValue)
+                {
+                    case 1:
+                        comboNumTarje.Enabled = false;
+                        comboFondoComun.Enabled = true;
+                        CombosHelpers.CargarComboFondoComun(ref comboFondoComun);
+                        break;
+                    case 2:
+                        comboNumTarje.Enabled = true;
+                        comboFondoComun.Enabled = false;
+                        break;
+                    case 3:
+                        comboNumTarje.Enabled = true;
+                        comboFondoComun.Enabled = false;
+                        break;
+                    case 4:
+                        comboNumTarje.Enabled = false;
+                        comboFondoComun.Enabled = false;
+                        break;
+                    case 5:
+                        comboNumTarje.Enabled = false;
+                        comboFondoComun.Enabled = false;
+                        break;
+                }
+
+            }
+            //if ((int)comboFormaDePago.SelectedValue == 1)
+            //{
+
+            //}
+            //else if ((int)comboFormaDePago.SelectedValue == 2 )
+            //{
+            //    comboNumTarje.Enabled = true;
+            //}
+            //else if((int)comboFormaDePago.SelectedValue == 3)
+            //{
+            //    comboNumTarje.Enabled = true;
+            //}
+            //else 
+            //{ 
+            //    comboNumTarje.Enabled = false; 
+            //}
+        }
+        
     }
 }

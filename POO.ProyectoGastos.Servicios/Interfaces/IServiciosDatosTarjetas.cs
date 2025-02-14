@@ -14,6 +14,8 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
         void Borrar(int IdTarjeta);
         bool Existe(DatoTarjeta datos);
         List<DatosTarjetasDto> GetDatos();
+        List<DatosTarjetasDto> GetDatosFiltrados(int IdPersona);
+
 
     }
 }

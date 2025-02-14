@@ -1,4 +1,6 @@
-﻿using POO.ProyectoGastos.Entidades.Dtos.ComboPersonas;
+﻿using POO.ProyectoGastos.Entidades;
+using POO.ProyectoGastos.Entidades.Dtos.ComboPersonas;
+using POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto;
 using POO.ProyectoGastos.Entidades.Dtos.Roles;
 using POO.ProyectoGastos.Entidades.Dtos.TipoGastos;
 using POO.ProyectoGastos.Entidades.Dtos.TiposDeVencimiento;
@@ -80,6 +82,125 @@ namespace POO.ProyectoGastos.Windows.Helpers.Combos
             combo.SelectedIndex = 0;
 
         }
+
+        public static void CargarcomboTarjetas(ref ComboBox combo, int IdPersona)
+        {
+            IServiciosDatosTarjetas Servicios = new ServiciosDatosTarjetas();
+            var lista = Servicios.GetDatosFiltrados(IdPersona);
+            var defaultTarjeta = new DatosTarjetasDto()
+            {
+                IdTarjeta = 0,
+                Numero = "Seleccione Tarjeta"
+            };
+            lista.Insert(0, defaultTarjeta);
+            combo.DataSource = lista;
+            combo.DisplayMember = "Numero";
+            combo.ValueMember = "IdTarjeta";
+            combo.SelectedIndex = 0;
+
+        }
+        public static void CargarComboTipoDeGastos(ref ComboBox combo)
+        {
+            IServiciosTiposGastos servicios = new ServiciosTiposGastos();
+            var lista = servicios.GetTiposGastos();
+            var defaultTipoDeGasto = new ComboTiposGastosDto()
+            {
+                IdTipoGasto = 0,
+                TipoGasto = "Seleccione Tipo De Gasto"
+            };
+            lista.Insert(0, defaultTipoDeGasto);
+            combo.DataSource = lista;
+            combo.DisplayMember = "TipoGasto";
+            combo.ValueMember = "IdTipoGasto";
+            combo.SelectedIndex = 0;
+
+        }
+        public static void CargarComboEmpresaNegocio(ref ComboBox combo)
+        {
+            IServiciosEmpresasNegocios servicios = new ServiciosEmpresasNegocios();
+            var lista = servicios.GetEmpresasNegocios();
+            var defaultEmpresa = new EmpresaNegocio()
+            {
+                IdEmpNeg = 0,
+                Nombre = "Seleccione Empresa"
+            };
+            lista.Insert(0, defaultEmpresa);
+            combo.DataSource = lista;
+            combo.DisplayMember = "IdEmpNeg";
+            combo.ValueMember = "Nombre";
+            combo.SelectedIndex = 0;
+
+        }
+        //public static void CargarComboEmpresaNegocio(ref ComboBox combo)
+        //{
+        //    IServiciosEmpresasNegocios servicios = new ServiciosEmpresasNegocios();
+        //    var lista = servicios.GetEmpresasNegocios();
+        //    var defaultEmpresa = new EmpresaNegocio()
+        //    {
+        //        IdEmpNeg = 0,
+        //        Nombre = "Seleccione Empresa"
+        //    };
+        //    lista.Insert(0, defaultEmpresa);
+        //    combo.DataSource = lista;
+        //    combo.DisplayMember = "IdEmpNeg";
+        //    combo.ValueMember = "Nombre";
+        //    combo.SelectedIndex = 0;
+
+        //}
+        public static void CargarComboFormasPago(ref ComboBox combo)
+        {
+            IServiciosFormasPagos servicios = new ServiciosFormasPagos();
+            var lista = servicios.GetFormasPagos();
+            var defaultFormaPago = new FormasPagos()
+            {
+                IdFormaPago = 0,
+                FormaPago = "Seleccione La Forma de Pago"
+            };
+            lista.Insert(0, defaultFormaPago);
+            combo.DataSource = lista;
+            combo.DisplayMember = "FormaPago";
+            combo.ValueMember = "IdFormaPago";
+            combo.SelectedIndex = 0;
+
+        }
+
+        public static void CargarComboFondoComun(ref ComboBox combo)
+        {
+
+            IServiciosFondosComunes servicios = new ServiciosFondosComunes();
+            var lista = servicios.GetFondoComunDtos()
+                                 .Select(f => new
+                                 {
+                                     IdF = f.IdFondoComun,
+                                     FechaTexto = string.Concat(f.Fecha.ToString("MMMM").ToUpper(), " ", f.Fecha.Year.ToString()) // Convierte la fecha en nombre de mes
+                                 })
+                                 .ToList();
+
+            combo.DataSource = lista;
+            combo.DisplayMember = "FechaTexto"; // Mostrar el mes en el ComboBox
+            combo.ValueMember = "IdF";
+
+
+
+
+            //IServiciosFondosComunes servicios = new ServiciosFondosComunes();
+            //var lista = servicios.GetFondoComunDtos();
+            ////var defaultEmpresa = new EmpresaNegocio()
+            ////{
+            ////    IdEmpNeg = 0,
+            ////    Nombre = "Seleccione Empresa"
+            ////};
+            ////lista.Insert(0, defaultEmpresa);
+            //combo.DataSource = lista;
+            //combo.DisplayMember = "IdFondoComun";
+            //combo.ValueMember = "Fecha";
+            //combo.SelectedIndex = 0;
+
+        }
+
+
+
+
 
 
         //TODO Tabla Año

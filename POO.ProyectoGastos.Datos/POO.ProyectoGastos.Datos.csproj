@@ -50,6 +50,7 @@
     <Compile Include="Repositorios\RepositorioDatosTarjetas.cs" />
     <Compile Include="Repositorios\RepositorioDetalleFondosComunes.cs" />
     <Compile Include="Repositorios\RepositorioFondosComunes.cs" />
+    <Compile Include="Repositorios\RepositorioFormasPago.cs" />
     <Compile Include="Repositorios\RepositorioGastos.cs" />
     <Compile Include="Repositorios\RepositorioPersonas.cs" />
     <Compile Include="Repositorios\RepositorioRoles.cs" />

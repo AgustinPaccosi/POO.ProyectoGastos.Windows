@@ -46,6 +46,7 @@
     <Compile Include="Interfaces\IServiciosDetallesFondosComunes.cs" />
     <Compile Include="Interfaces\IServiciosEmpresasNegocios.cs" />
     <Compile Include="Interfaces\IServiciosFondosComunes.cs" />
+    <Compile Include="Interfaces\IServiciosFormasPagos.cs" />
     <Compile Include="Interfaces\IServiciosGastosHogar.cs" />
     <Compile Include="Interfaces\IServiciosPersonas.cs" />
     <Compile Include="Interfaces\IServiciosRoles.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Servicios\ServiciosDetallesFondosComunes.cs" />
     <Compile Include="Servicios\ServiciosEmpresasNegocios.cs" />
     <Compile Include="Servicios\ServiciosFondosComunes.cs" />
+    <Compile Include="Servicios\ServiciosFormasPagos.cs" />
     <Compile Include="Servicios\ServiciosGastosHogar.cs" />
     <Compile Include="Servicios\ServiciosPersonas.cs" />
     <Compile Include="Servicios\ServiciosRoles.cs" />

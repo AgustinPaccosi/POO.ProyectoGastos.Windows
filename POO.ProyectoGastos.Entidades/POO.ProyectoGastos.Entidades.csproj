@@ -56,6 +56,7 @@
     <Compile Include="Entidades\DetalleFondoComun.cs" />
     <Compile Include="Entidades\GastoHogar.cs" />
     <Compile Include="Entidades\Persona.cs" />
+    <Compile Include="Entidades\FormaPago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
