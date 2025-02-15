@@ -15,5 +15,6 @@ namespace POO.ProyectoGastos.Comun.Interfaces
         bool Existe(DatoTarjeta datos);
         List<DatosTarjetasDto> GetDatosTarjetas();
         List<DatosTarjetasDto> GetDatosTarjetasFiltrado(int IdPersona);
+        DatoTarjeta GetDatoTarjetaPorId(int id);
     }
 }

@@ -46,6 +46,19 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
+        public GastosFijos GetGastoFijoPorId(int id)
+        {
+            try
+            {
+                return _repositorioGastosFijos.GetGastoFijoPorId(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<GastosFijosDto> GetGastosFijos()
         {
             try

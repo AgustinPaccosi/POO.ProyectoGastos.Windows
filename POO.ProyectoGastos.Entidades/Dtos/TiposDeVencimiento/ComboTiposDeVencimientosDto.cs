@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace POO.ProyectoGastos.Entidades.Dtos.TiposDeVencimiento
 {
-    public class ComboTiposDeVencimientosDto
+    public class ComboTiposDeVencimientosDto:ICloneable
     {
         public int IdTipoDeVencimiento { get; set; }
         public string TipoDeVencimiento { get; set; }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

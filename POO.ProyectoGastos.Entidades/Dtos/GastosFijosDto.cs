@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POO.ProyectoGastos.Entidades.Dtos
 {
-    public class GastosFijosDto
+    public class GastosFijosDto:ICloneable
     {
         public int IdGastoFijo { get; set; }
         public string Nombre { get; set; }
@@ -15,5 +15,9 @@ namespace POO.ProyectoGastos.Entidades.Dtos
         public string TipoGasto { get; set; }
         public String TipoDeVencimiento { get; set; }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

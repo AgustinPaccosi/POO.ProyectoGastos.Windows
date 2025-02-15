@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textImporte = new System.Windows.Forms.TextBox();
             this.comboTipoDeGasto = new System.Windows.Forms.ComboBox();
-            this.textDetalle = new System.Windows.Forms.TextBox();
-            this.comboPersonas = new System.Windows.Forms.ComboBox();
+            this.textNombre = new System.Windows.Forms.TextBox();
+            this.ComboTipoDeVencimiento = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
@@ -40,6 +41,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // textImporte
@@ -59,23 +62,23 @@
             this.comboTipoDeGasto.Size = new System.Drawing.Size(184, 24);
             this.comboTipoDeGasto.TabIndex = 27;
             // 
-            // textDetalle
+            // textNombre
             // 
-            this.textDetalle.Location = new System.Drawing.Point(183, 202);
-            this.textDetalle.MaxLength = 50;
-            this.textDetalle.Multiline = true;
-            this.textDetalle.Name = "textDetalle";
-            this.textDetalle.Size = new System.Drawing.Size(230, 65);
-            this.textDetalle.TabIndex = 26;
+            this.textNombre.Location = new System.Drawing.Point(183, 202);
+            this.textNombre.MaxLength = 49;
+            this.textNombre.Multiline = true;
+            this.textNombre.Name = "textNombre";
+            this.textNombre.Size = new System.Drawing.Size(230, 65);
+            this.textNombre.TabIndex = 26;
             // 
-            // comboPersonas
+            // ComboTipoDeVencimiento
             // 
-            this.comboPersonas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboPersonas.FormattingEnabled = true;
-            this.comboPersonas.Location = new System.Drawing.Point(485, 47);
-            this.comboPersonas.Name = "comboPersonas";
-            this.comboPersonas.Size = new System.Drawing.Size(236, 24);
-            this.comboPersonas.TabIndex = 25;
+            this.ComboTipoDeVencimiento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboTipoDeVencimiento.FormattingEnabled = true;
+            this.ComboTipoDeVencimiento.Location = new System.Drawing.Point(485, 47);
+            this.ComboTipoDeVencimiento.Name = "ComboTipoDeVencimiento";
+            this.ComboTipoDeVencimiento.Size = new System.Drawing.Size(236, 24);
+            this.ComboTipoDeVencimiento.TabIndex = 25;
             // 
             // dateTimePicker1
             // 
@@ -95,6 +98,7 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOk
             // 
@@ -106,6 +110,7 @@
             this.btnOk.Text = "OK";
             this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // label10
             // 
@@ -152,6 +157,10 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Fecha:";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmGastosFijosAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -159,8 +168,8 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.textImporte);
             this.Controls.Add(this.comboTipoDeGasto);
-            this.Controls.Add(this.textDetalle);
-            this.Controls.Add(this.comboPersonas);
+            this.Controls.Add(this.textNombre);
+            this.Controls.Add(this.ComboTipoDeVencimiento);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
@@ -171,6 +180,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmGastosFijosAE";
             this.Text = "Gasto Fijo";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,8 +190,8 @@
 
         private System.Windows.Forms.TextBox textImporte;
         private System.Windows.Forms.ComboBox comboTipoDeGasto;
-        private System.Windows.Forms.TextBox textDetalle;
-        private System.Windows.Forms.ComboBox comboPersonas;
+        private System.Windows.Forms.TextBox textNombre;
+        private System.Windows.Forms.ComboBox ComboTipoDeVencimiento;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOk;
@@ -190,5 +200,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

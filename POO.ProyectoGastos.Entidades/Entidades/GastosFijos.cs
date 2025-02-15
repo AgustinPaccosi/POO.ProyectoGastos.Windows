@@ -11,7 +11,7 @@ namespace POO.ProyectoGastos.Entidades.Entidades
         public int IdGastoFijo { get; set; }
         public string Nombre { get; set; }
         public DateTime Vencimiento { get; set; }
-        public double MontoPagar { get; set; }
+        public decimal MontoPagar { get; set; }
         public int IdTipoGasto { get; set; }
         public int IdTipoDeVencimiento { get; set; }
 

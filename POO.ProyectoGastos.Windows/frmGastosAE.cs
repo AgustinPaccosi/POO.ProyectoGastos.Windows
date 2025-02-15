@@ -268,9 +268,9 @@ namespace POO.ProyectoGastos.Windows
             this.gastoHogar= gasto;
         }
 
-        internal GastoHogar GetGasto()
+        public GastoHogar GetGasto()
         {
-            throw new NotImplementedException();
+            return gastoHogar;
         }
     }
 }

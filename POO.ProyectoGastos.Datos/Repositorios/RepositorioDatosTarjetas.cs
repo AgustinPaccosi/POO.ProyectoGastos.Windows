@@ -95,5 +95,17 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 
             return lista;
         }
+
+        public DatoTarjeta GetDatoTarjetaPorId(int IdTarjeta)
+        {
+            DatoTarjeta dato = new DatoTarjeta();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectquery = @"SELECT IdTarjeta, Numero, IdPersona FROM DatosTarjetas where IdTarjeta=@IdTarjeta;";
+                dato = conn.QuerySingleOrDefault<DatoTarjeta>(selectquery, new { IdTarjeta = IdTarjeta });
+            }
+            return dato;
+
+        }
     }
 }

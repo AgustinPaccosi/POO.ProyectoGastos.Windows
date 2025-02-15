@@ -62,6 +62,19 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
+        public DatoTarjeta GetTarjetaPorId(int IdTarjeta)
+        {
+            try
+            {
+                return _repositorioDatos.GetDatoTarjetaPorId(IdTarjeta);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public void Guardar(DatoTarjeta datos)
         {
             try

@@ -106,7 +106,7 @@ namespace POO.ProyectoGastos.Windows
             }
             var r = dgvDatos.SelectedRows[0];
             GastosHogarDto gastodto = (GastosHogarDto)r.Tag;
-           // GastosHogarDto gastodtoCopia = (GastosHogarDto)gastodto.Clone;
+            GastosHogarDto gastodtoCopia = (GastosHogarDto)gastodto.Clone();
             //Persona personaCopia = (Persona)persona.Clone();
             GastoHogar gasto = _servicioGastosHogar.GetGastoHogarPorId(gastodto.IdGasto);
             //gastoDtoCopia
@@ -118,25 +118,25 @@ namespace POO.ProyectoGastos.Windows
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.Cancel)
                 {
-                    GridHelper.SetearFila(r, gastodto);
+                    GridHelper.SetearFila(r, gastodtoCopia);
 
                     return;
                 }
                 gasto = frm.GetGasto();
                 if (gasto != null)
                 {
-                    GridHelper.SetearFila(r, gasto);
+                    GridHelper.SetearFila(r, gastodto);
 
                 }
                 else
                 {
-                    GridHelper.SetearFila(r, gastodto);
+                    GridHelper.SetearFila(r, gastodtoCopia);
 
                 }
             }
             catch (Exception ex)
             {
-                GridHelper.SetearFila(r, gastodto);
+                GridHelper.SetearFila(r, gastodtoCopia);
                 MessageBox.Show(ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 

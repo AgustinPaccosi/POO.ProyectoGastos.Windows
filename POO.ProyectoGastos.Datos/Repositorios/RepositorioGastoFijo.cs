@@ -26,7 +26,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
         {
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string insertQuery = @"INSERT INTO dbo.GastosFijos (Nombre, Vencimiento, 
+                string insertQuery = @"INSERT INTO GastosFijos (Nombre, Vencimiento, 
                     MontoPagar, IdTipoGasto, IdTipoDeVencimiento)  
                     VALUES (@Nombre, @Vencimiento, @MontoPagar, 
                     @IdTipoGasto, @IdTipoDeVencimiento); 
@@ -90,9 +90,22 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             return cantidad > 0;
         }
 
-        public GastosFijos GetGastoFijoPorId(int id)
+        public GastosFijos GetGastoFijoPorId(int IdGastoFijo)
         {
-            throw new NotImplementedException();
+            GastosFijos gasto = new GastosFijos();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectquery = @"SELECT IdGastoFijo
+                    ,Nombre
+                     ,Vencimiento
+                     ,MontoPagar
+                       ,IdTipoGasto
+                     ,IdTipoDeVencimiento
+                    FROM GastosFijos Where IdGastoFijo=@IdGastoFijo ";
+                gasto = conn.QuerySingleOrDefault<GastosFijos>(selectquery, new { IdGastoFijo = IdGastoFijo });
+            }
+            return gasto;
+
         }
 
         public List<GastosFijosDto> GetGastosFijos()

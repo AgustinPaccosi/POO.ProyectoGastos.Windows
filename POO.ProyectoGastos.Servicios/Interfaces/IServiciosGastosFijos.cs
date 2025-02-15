@@ -17,5 +17,6 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
         //void Editar(int IdGasto);
         //int GetCantidad();
         List<GastosFijosDto> GetGastosFijos();
+        GastosFijos GetGastoFijoPorId(int id);
     }
 }
