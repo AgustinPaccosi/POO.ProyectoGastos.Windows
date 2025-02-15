@@ -27,7 +27,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             List<ComboTiposDeVencimientosDto> lista = new List<ComboTiposDeVencimientosDto>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string SelectQuery = "SELECT IdRol, Rol FROM Roles";
+                string SelectQuery = "SELECT IdTipoDeVencimiento, TipoDeVencimiento FROM TiposDeVencimientos";
                 lista = conn.Query<ComboTiposDeVencimientosDto>(SelectQuery).ToList();
             }
             return lista;

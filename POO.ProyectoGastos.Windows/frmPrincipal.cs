@@ -51,5 +51,11 @@ namespace POO.ProyectoGastos.Windows
             frmFondosComunes frm = new frmFondosComunes();
             frm.ShowDialog(this);
         }
+
+        private void BtnGastosFijos_Click(object sender, EventArgs e)
+        {
+            frmGastosFijos frm =new frmGastosFijos();
+            frm.ShowDialog(this);
+        }
     }
 }

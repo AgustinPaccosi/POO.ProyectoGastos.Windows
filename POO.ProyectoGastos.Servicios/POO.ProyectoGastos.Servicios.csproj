@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IServiciosGastosFijos.cs" />
     <Compile Include="Interfaces\IServiciosDatosTarjetas.cs" />
     <Compile Include="Interfaces\IServiciosDetallesFondosComunes.cs" />
     <Compile Include="Interfaces\IServiciosEmpresasNegocios.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Servicios\ServiciosEmpresasNegocios.cs" />
     <Compile Include="Servicios\ServiciosFondosComunes.cs" />
     <Compile Include="Servicios\ServiciosFormasPagos.cs" />
+    <Compile Include="Servicios\ServiciosGastosFijos.cs" />
     <Compile Include="Servicios\ServiciosGastosHogar.cs" />
     <Compile Include="Servicios\ServiciosPersonas.cs" />
     <Compile Include="Servicios\ServiciosRoles.cs" />

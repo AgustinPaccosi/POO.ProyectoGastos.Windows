@@ -107,11 +107,23 @@
     <Compile Include="frmGastosAE.Designer.cs">
       <DependentUpon>frmGastosAE.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGastosFijosAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGastosFijosAE.Designer.cs">
+      <DependentUpon>frmGastosFijosAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPersonasAE.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPersonasAE.Designer.cs">
       <DependentUpon>frmPersonasAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGastosFijos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGastosFijos.Designer.cs">
+      <DependentUpon>frmGastosFijos.cs</DependentUpon>
     </Compile>
     <Compile Include="GastosTotales.cs">
       <SubType>Form</SubType>
@@ -165,6 +177,9 @@
     <EmbeddedResource Include="frmGastosAE.resx">
       <DependentUpon>frmGastosAE.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGastosFijosAE.resx">
+      <DependentUpon>frmGastosFijosAE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPersonas.resx">
       <DependentUpon>frmPersonas.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGastosFijos.resx">
+      <DependentUpon>frmGastosFijos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GastosTotales.resx">
       <DependentUpon>GastosTotales.cs</DependentUpon>

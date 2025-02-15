@@ -25,7 +25,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 
         public void Agregar(GastoHogar gastoHogar)
         {
-            List<GastosHogarDto> lista = new List<GastosHogarDto>();
+            //List<GastosHogarDto> lista = new List<GastosHogarDto>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
                 string insertQuery = @"INSERT INTO Gastos(Fecha, Valor, IdTipoGasto, IdEmpNeg, IdPersona, IdFondoComun, 
@@ -104,7 +104,9 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             GastoHogar gasto = new GastoHogar();
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string selectquery = @"Select * from Gastos Where IdGasto=@IdGasto ";
+                string selectquery = @"SELECT IdGasto, Fecha, Valor, IdTipoGasto, IdEmpNeg, IdPersona,
+                    IdFondoComun, IdGastoFijo, IdFormaPago, IdTarjeta, Detalle, Pagado FROM Gastos
+                    Where IdGasto=@IdGasto ";
                 gasto = conn.QuerySingleOrDefault<GastoHogar>(selectquery, new { IdGasto = IdGasto });
             }
             return gasto;
@@ -116,7 +118,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             List<GastosHogarDto> lista=new List<GastosHogarDto>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string selectquery = @"	Select CAST(g.fecha AS DATE) AS Fecha, g.Valor, tg.TipoGasto, CONCAT(P.Nombre, ' ', P.Apellido) AS Persona, G.Detalle from Gastos G
+                string selectquery = @"	Select IdGasto, CAST(g.fecha AS DATE) AS Fecha, g.Valor, tg.TipoGasto, CONCAT(P.Nombre, ' ', P.Apellido) AS Persona, G.Detalle from Gastos G
 	                Inner Join TiposGastos TG on tg.IdTipoGasto=G.IdTipoGasto
 	                Inner Join Personas P on P.IdPersona=G.IdPersona
                     Order By Fecha desc";

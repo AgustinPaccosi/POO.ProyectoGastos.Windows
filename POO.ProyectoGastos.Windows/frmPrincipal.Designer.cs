@@ -33,9 +33,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.btnPersonas = new System.Windows.Forms.Button();
             this.btnGastosHgr = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.btnFondosComunes = new System.Windows.Forms.Button();
+            this.BtnGastosFijos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button5
@@ -67,9 +67,9 @@
             // 
             this.button3.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button3.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.city_50px;
-            this.button3.Location = new System.Drawing.Point(618, 63);
+            this.button3.Location = new System.Drawing.Point(618, 279);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(207, 181);
+            this.button3.Size = new System.Drawing.Size(207, 94);
             this.button3.TabIndex = 0;
             this.button3.Text = "Empresas Negocios";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -102,25 +102,13 @@
             this.btnGastosHgr.UseVisualStyleBackColor = false;
             this.btnGastosHgr.Click += new System.EventHandler(this.btnGastosHgr_Click);
             // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button6.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.cash_register_50px;
-            this.button6.Location = new System.Drawing.Point(367, 63);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(207, 181);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Gastos Totales";
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button6.UseVisualStyleBackColor = false;
-            // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button7.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.categorize_50px;
-            this.button7.Location = new System.Drawing.Point(618, 279);
+            this.button7.Location = new System.Drawing.Point(618, 372);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(207, 181);
+            this.button7.Size = new System.Drawing.Size(207, 88);
             this.button7.TabIndex = 0;
             this.button7.Text = "Datos Guardados";
             this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -131,7 +119,7 @@
             // 
             this.btnFondosComunes.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnFondosComunes.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.cash_register_50px;
-            this.btnFondosComunes.Location = new System.Drawing.Point(865, 63);
+            this.btnFondosComunes.Location = new System.Drawing.Point(618, 63);
             this.btnFondosComunes.Name = "btnFondosComunes";
             this.btnFondosComunes.Size = new System.Drawing.Size(207, 181);
             this.btnFondosComunes.TabIndex = 2;
@@ -140,21 +128,34 @@
             this.btnFondosComunes.UseVisualStyleBackColor = false;
             this.btnFondosComunes.Click += new System.EventHandler(this.btnFondosComunes_Click);
             // 
+            // BtnGastosFijos
+            // 
+            this.BtnGastosFijos.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.BtnGastosFijos.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.cash_register_50px;
+            this.BtnGastosFijos.Location = new System.Drawing.Point(367, 63);
+            this.BtnGastosFijos.Name = "BtnGastosFijos";
+            this.BtnGastosFijos.Size = new System.Drawing.Size(207, 181);
+            this.BtnGastosFijos.TabIndex = 3;
+            this.BtnGastosFijos.Text = "GastosFijos";
+            this.BtnGastosFijos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnGastosFijos.UseVisualStyleBackColor = false;
+            this.BtnGastosFijos.Click += new System.EventHandler(this.BtnGastosFijos_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 603);
+            this.ClientSize = new System.Drawing.Size(982, 603);
+            this.Controls.Add(this.BtnGastosFijos);
             this.Controls.Add(this.btnFondosComunes);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnPersonas);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.btnGastosHgr);
-            this.MaximumSize = new System.Drawing.Size(1150, 650);
-            this.MinimumSize = new System.Drawing.Size(1150, 650);
+            this.MaximumSize = new System.Drawing.Size(1000, 650);
+            this.MinimumSize = new System.Drawing.Size(1000, 650);
             this.Name = "frmPrincipal";
             this.Text = "Principal";
             this.ResumeLayout(false);
@@ -168,8 +169,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnFondosComunes;
+        private System.Windows.Forms.Button BtnGastosFijos;
     }
 }

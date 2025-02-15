@@ -1,4 +1,5 @@
-﻿using POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto;
+﻿using POO.ProyectoGastos.Entidades.Dtos;
+using POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto;
 using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
 using POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto;
 using POO.ProyectoGastos.Entidades.Dtos.GastosHogar;
@@ -81,6 +82,14 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
                     r.Cells[3].Value = $" $ {gastosHogar.Valor}";
                     r.Cells[4].Value = gastosHogar.Detalle != null ? gastosHogar.Detalle : "S/D";
                     break;
+                case GastosFijosDto gastoFijo:
+                    r.Cells[0].Value = gastoFijo.Nombre;
+                    r.Cells[1].Value = gastoFijo.TipoGasto;
+                    r.Cells[2].Value = gastoFijo.Vencimiento.ToShortDateString();
+                    r.Cells[3].Value = $" $ {gastoFijo.MontoPagar}";
+                    r.Cells[4].Value = gastoFijo.TipoDeVencimiento;
+                    break;
+
             }
             r.Tag = obj;
 
