@@ -17,6 +17,7 @@ namespace POO.ProyectoGastos.Comun.Interfaces
         void Editar(GastoHogar gastoHogar);
         List<GastosHogarDto> GetGastosHogar();
         int GetCantidad();
+        GastoHogar GetGastoPorId(int id);
 
     }
 }

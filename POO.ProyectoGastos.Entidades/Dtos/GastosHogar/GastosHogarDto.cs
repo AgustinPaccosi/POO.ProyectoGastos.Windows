@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POO.ProyectoGastos.Entidades.Dtos.GastosHogar
 {
-    public class GastosHogarDto
+    public class GastosHogarDto:ICloneable
     {
         public int IdGasto { get; set; }
         public DateTime Fecha { get; set; }
@@ -15,6 +15,9 @@ namespace POO.ProyectoGastos.Entidades.Dtos.GastosHogar
         public string Persona { get; set; }
         public string Detalle { get; set; }
 
-
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

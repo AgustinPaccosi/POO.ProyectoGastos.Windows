@@ -126,8 +126,8 @@ namespace POO.ProyectoGastos.Windows.Helpers.Combos
             };
             lista.Insert(0, defaultEmpresa);
             combo.DataSource = lista;
-            combo.DisplayMember = "IdEmpNeg";
-            combo.ValueMember = "Nombre";
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "IdEmpNeg";
             combo.SelectedIndex = 0;
 
         }
@@ -179,25 +179,21 @@ namespace POO.ProyectoGastos.Windows.Helpers.Combos
             combo.DataSource = lista;
             combo.DisplayMember = "FechaTexto"; // Mostrar el mes en el ComboBox
             combo.ValueMember = "IdF";
-
-
-
-
-            //IServiciosFondosComunes servicios = new ServiciosFondosComunes();
-            //var lista = servicios.GetFondoComunDtos();
-            ////var defaultEmpresa = new EmpresaNegocio()
-            ////{
-            ////    IdEmpNeg = 0,
-            ////    Nombre = "Seleccione Empresa"
-            ////};
-            ////lista.Insert(0, defaultEmpresa);
-            //combo.DataSource = lista;
-            //combo.DisplayMember = "IdFondoComun";
-            //combo.ValueMember = "Fecha";
-            //combo.SelectedIndex = 0;
-
         }
 
+        public static void CargarComboVacio(ref ComboBox combo,string info)
+        {
+            var defaultItem = new
+            {
+                Id = 0,
+                Descripcion = info
+            };
+
+            combo.DataSource = new[] { defaultItem };
+            combo.DisplayMember = "Descripcion";
+            combo.ValueMember = "Id";
+            combo.SelectedIndex = 0;
+        }
 
 
 

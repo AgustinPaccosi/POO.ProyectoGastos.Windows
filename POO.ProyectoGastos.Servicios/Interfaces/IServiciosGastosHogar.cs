@@ -18,6 +18,6 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
         int GetCantidad();
         List<GastosHogarDto> GetGastosHogar();
         //List<ComboPersonasDto> GetComboPersonasDtos();
-
+        GastoHogar GetGastoHogarPorId(int id);
     }
 }

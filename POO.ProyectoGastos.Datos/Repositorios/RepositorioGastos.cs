@@ -29,9 +29,9 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             using (var conn = new SqlConnection(cadenaConexion))
             {
                 string insertQuery = @"INSERT INTO Gastos(Fecha, Valor, IdTipoGasto, IdEmpNeg, IdPersona, IdFondoComun, 
-                    IdGastoFijo, IdFormaPago, IdDatosTarjeta, Detalle, Pagado)
+                    IdGastoFijo, IdFormaPago, IdTarjeta, Detalle, Pagado)
                     VALUES(@Fecha, @Valor, @IdTipoGasto, @IdEmpNeg, @IdPersona, @IdFondoComun, 
-                    @IdGastoFijo, @IdFormaPago, @IdDatosTarjeta, @Detalle, @Pagado); SELECT SCOPE_IDENTITY();";
+                    @IdGastoFijo, @IdFormaPago, @IdTarjeta, @Detalle, @Pagado); SELECT SCOPE_IDENTITY();";
                 
                 int id = conn.QuerySingle<int>(insertQuery, gastoHogar);
                 gastoHogar.IdGasto = id;
@@ -60,7 +60,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
                 string updateQuery = @"UPDATE Gastos SET Fecha = @Fecha, 
                 Valor = @Valor, IdTipoGasto = @IdTipoGasto, IdEmpNeg = @IdEmpNeg, IdPersona = @IdPersona,
                 IdFondoComun = @IdFondoComun, IdGastoFijo = @IdGastoFijo, IdFormaPago = @IdFormaPago, 
-                IdDatosTarjeta = @IdDatosTarjeta, Detalle = @Detalle, Pagado = @Pagado 
+                IdTarjeta = @IdTarjeta, Detalle = @Detalle, Pagado = @Pagado 
                 WHERE IdGasto=@IdGasto;";
                 conn.Execute(updateQuery, gastoHogar);
             }
@@ -76,9 +76,9 @@ namespace POO.ProyectoGastos.Datos.Repositorios
                 if (gastoHogar.IdGasto == 0)
                 {
                     selectQuery = @"SELECT COUNT(*) FROM Gastos WHERE  
-                        AND Fecha = @Fecha AND IdTipoGasto = @IdTipoGasto AND IdEmpNeg = @IdEmpNeg AND
+                        Fecha = @Fecha AND IdTipoGasto = @IdTipoGasto AND IdEmpNeg = @IdEmpNeg AND
                         IdPersona = @IdPersona AND IdFondoComun = @IdFondoComun AND IdGastoFijo = @IdGastoFijo 
-                        AND IdFormaPago = @IdFormaPago AND IdDatosTarjeta = @IdDatosTarjeta;";
+                        AND IdFormaPago = @IdFormaPago AND IdTarjeta = @IdTarjeta;";
                     cantidad = conn.ExecuteScalar<int>(selectQuery, gastoHogar);
                 }
                 else
@@ -86,7 +86,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
                     selectQuery = @"SELECT COUNT(*) FROM Gastos WHERE IdGasto = !@IdGasto 
                         AND Fecha = @Fecha AND IdTipoGasto = @IdTipoGasto AND IdEmpNeg = @IdEmpNeg AND
                         IdPersona = @IdPersona AND IdFondoComun = @IdFondoComun AND IdGastoFijo = @IdGastoFijo
-                        AND IdFormaPago = @IdFormaPago AND IdDatosTarjeta = @IdDatosTarjeta; ";
+                        AND IdFormaPago = @IdFormaPago AND IdTarjeta = @IdTarjeta; ";
                     cantidad = conn.ExecuteScalar<int>(selectQuery, gastoHogar);
 
                 }
@@ -97,6 +97,18 @@ namespace POO.ProyectoGastos.Datos.Repositorios
         public int GetCantidad()
         {
             throw new NotImplementedException();
+        }
+
+        public GastoHogar GetGastoPorId(int IdGasto)
+        {
+            GastoHogar gasto = new GastoHogar();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectquery = @"Select * from Gastos Where IdGasto=@IdGasto ";
+                gasto = conn.QuerySingleOrDefault<GastoHogar>(selectquery, new { IdGasto = IdGasto });
+            }
+            return gasto;
+
         }
 
         public List<GastosHogarDto> GetGastosHogar()
@@ -113,5 +125,6 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             return lista;
 
         }
+
     }
 }

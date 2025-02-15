@@ -52,6 +52,19 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             throw new NotImplementedException();
         }
 
+        public GastoHogar GetGastoHogarPorId(int id)
+        {
+            try
+            {
+                return _repositorioGastosHogar.GetGastoPorId(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<GastosHogarDto> GetGastosHogar()
         {
             try

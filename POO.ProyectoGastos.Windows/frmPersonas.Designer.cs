@@ -65,8 +65,8 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.dgvDatos);
             this.splitContainer1.Panel1.Controls.Add(this.toolStrip2);
+            this.splitContainer1.Panel1.Controls.Add(this.dgvDatos);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
             this.splitContainer1.Size = new System.Drawing.Size(882, 502);
             this.splitContainer1.SplitterDistance = 446;
@@ -85,7 +85,7 @@
             this.colApellido,
             this.colRol});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatos.Location = new System.Drawing.Point(0, 59);
+            this.dgvDatos.Location = new System.Drawing.Point(0, 0);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDatos.MultiSelect = false;
             this.dgvDatos.Name = "dgvDatos";
@@ -93,7 +93,7 @@
             this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.RowHeadersWidth = 51;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(882, 387);
+            this.dgvDatos.Size = new System.Drawing.Size(882, 446);
             this.dgvDatos.TabIndex = 0;
             // 
             // colNombre
