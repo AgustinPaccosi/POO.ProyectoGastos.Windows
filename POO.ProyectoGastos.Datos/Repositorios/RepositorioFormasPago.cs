@@ -31,5 +31,17 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             return lista;
 
         }
+        public FormasPagos GetFormasPagosPorId(int IdFormaPago)
+        {
+            FormasPagos lista = new FormasPagos();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string SelectQuery = "SELECT IdFormaPago, FormaPago FROM FormasPagos where IdFormaPago=@IdFormaPago";
+                lista = conn.QuerySingleOrDefault<FormasPagos>(SelectQuery, new { IdFormaPago = IdFormaPago });
+            }
+            return lista;
+
+        }
+
     }
 }

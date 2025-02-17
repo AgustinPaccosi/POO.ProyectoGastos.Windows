@@ -4,6 +4,7 @@ using POO.ProyectoGastos.Entidades.Dtos.ComboPersonas;
 using POO.ProyectoGastos.Entidades.Dtos.GastosHogar;
 using POO.ProyectoGastos.Entidades.Entidades;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -52,6 +53,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             }
         }
 
+
         public void Editar(GastoHogar gastoHogar)
         {
             using (var conn = new SqlConnection(cadenaConexion))
@@ -83,7 +85,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
                 }
                 else
                 {
-                    selectQuery = @"SELECT COUNT(*) FROM Gastos WHERE IdGasto = !@IdGasto 
+                    selectQuery = @"SELECT COUNT(*) FROM Gastos WHERE IdGasto != @IdGasto 
                         AND Fecha = @Fecha AND IdTipoGasto = @IdTipoGasto AND IdEmpNeg = @IdEmpNeg AND
                         IdPersona = @IdPersona AND IdFondoComun = @IdFondoComun AND IdGastoFijo = @IdGastoFijo
                         AND IdFormaPago = @IdFormaPago AND IdTarjeta = @IdTarjeta; ";
@@ -113,18 +115,75 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 
         }
 
-        public List<GastosHogarDto> GetGastosHogar()
+        public List<GastosHogarDto> GetGastosHogar(int? IdPersona,int? IdTipoGasto, DateTime? FechaInicio,DateTime? FechaFin, bool? Pagado )
         {
             List<GastosHogarDto> lista=new List<GastosHogarDto>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string selectquery = @"	Select IdGasto, CAST(g.fecha AS DATE) AS Fecha, g.Valor, tg.TipoGasto, CONCAT(P.Nombre, ' ', P.Apellido) AS Persona, G.Detalle from Gastos G
+                StringBuilder selectQuery = new StringBuilder();
+
+                selectQuery.AppendLine(@"	Select IdGasto, CAST(g.fecha AS DATE) AS Fecha, g.Valor, tg.TipoGasto, 
+                    CONCAT(P.Nombre, ' ', P.Apellido) AS Persona, G.Detalle, IdGastoFijo, g.Pagado, fp.FormaPago from Gastos G
 	                Inner Join TiposGastos TG on tg.IdTipoGasto=G.IdTipoGasto
 	                Inner Join Personas P on P.IdPersona=G.IdPersona
-                    Order By Fecha desc";
-                lista = conn.Query<GastosHogarDto>(selectquery).ToList();
+                    Inner Join FormasPagos fp on fp.IdFormaPago=g.IdFormaPago");
+                if (IdPersona != null || IdTipoGasto != null || FechaInicio!=null||FechaFin!=null||Pagado!=null)
+                {
+                    selectQuery.AppendLine(@"Where G.IdPersona=@IdPersona or g.IdTipoGasto=@IdTipoGasto
+                        or g.Fecha between CONVERT(DATE, @FechaInicio) AND CONVERT(DATE, @FechaFin) or G.Pagado=@Pagado ");
+                }
+                selectQuery.AppendLine("Order By Fecha desc");
+                var parametros = new { IdPersona, IdTipoGasto, FechaInicio, FechaFin, Pagado };
+                lista = conn.Query<GastosHogarDto>(selectQuery.ToString(), parametros).ToList();
             }
             return lista;
+
+        }
+
+        public decimal GetTotalGastosMes()
+        {
+            decimal total = 0;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectquery = @"Select Sum(Convert(numeric, Valor)) from Gastos Where  
+                    Fecha between DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1) AND GETDATE() ";
+                total = conn.ExecuteScalar<decimal>(selectquery);
+            }
+            return total;
+
+        }
+
+        public decimal GetTotalGastosFondoComun()
+        {
+            decimal total = 0;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectquery = @"Select Sum(Convert(numeric, Valor)) from Gastos Where  IdFormaPago=1 AND
+                    Fecha between DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1) AND GETDATE() ";
+                total = conn.ExecuteScalar<decimal>(selectquery);
+            }
+            return total;
+
+        }
+        public decimal Diferencia(int IdFondoComun)
+        {
+            decimal total = 0;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectquery = @"SELECT 
+                                 ( 
+                           (SELECT SUM(CONVERT(NUMERIC, Monto)) 
+                          FROM [Personas/FondosComunes]
+                             WHERE IdFondoComun = @IdFondoComun)
+                         - 
+                            (SELECT SUM(CONVERT(NUMERIC, Valor)) 
+                        FROM Gastos 
+                         WHERE IdFormaPago = 1 
+                           AND Fecha BETWEEN DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1) AND GETDATE())
+                        ) AS Diferencia;";
+                total = conn.QuerySingle<decimal>(selectquery, new { IdFondoComun= IdFondoComun } );
+            }
+            return total;
 
         }
 

@@ -22,9 +22,12 @@ namespace POO.ProyectoGastos.Windows
         {
             InitializeComponent();
             servicio=new ServiciosGastosFijos();
-            
+            serviciosTiposGastos = new ServiciosTiposGastos();
+            serviciosTiposDeVencimientos = new ServiciosTiposDeVencimientos();
         }
         private readonly ServiciosGastosFijos servicio;
+        private readonly ServiciosTiposGastos serviciosTiposGastos;
+        private readonly ServiciosTiposDeVencimientos serviciosTiposDeVencimientos;
         private List<GastosFijosDto> lista;
         string texto = "";
 
@@ -116,6 +119,12 @@ namespace POO.ProyectoGastos.Windows
                     return;
                 }
                 gasto = frm.GetGastoFijo();
+                gastoFijodto.Nombre = gasto.Nombre;
+                gastoFijodto.TipoGasto = serviciosTiposGastos.GetTiposGastosPorId(gasto.IdTipoGasto).TipoGasto;
+                gastoFijodto.Vencimiento = gasto.Vencimiento;
+                gastoFijodto.MontoPagar = gasto.MontoPagar;
+                gastoFijodto.TipoDeVencimiento = serviciosTiposDeVencimientos.GetTiposDeVencimientosPorId(gasto.IdTipoDeVencimiento).TipoDeVencimiento;
+
                 //gastoFijodto.TipoGasto=gasto.
                 if (gastoFijodto != null)
                 {
@@ -136,6 +145,11 @@ namespace POO.ProyectoGastos.Windows
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        private void tsbActualizar_Click(object sender, EventArgs e)
+        {
+            MostrarDatosEnGrilla();
         }
     }
 }

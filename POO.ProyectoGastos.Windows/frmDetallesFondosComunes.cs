@@ -90,7 +90,7 @@ namespace POO.ProyectoGastos.Windows
             }
             else 
             {
-                _servicioDetalles.Borrar(detalleFondo.IdFondoComun, detalleFondo.IdPersona ?? 0);
+                _servicioDetalles.Borrar(detalleFondo.IdFondoComun, detalleFondo.IdPersona ?? 0, detalleFondo.Monto);
 
             }
             //else

@@ -29,5 +29,17 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             return lista;
 
         }
+        public ComboRolDto GetRolPorId(int IdRol)
+        {
+            ComboRolDto dato = new ComboRolDto();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string SelectQuery = "SELECT IdRol, Rol FROM Roles where IdRol=@IdRol";
+                dato = conn.QuerySingleOrDefault<ComboRolDto>(SelectQuery, new {IdRol=IdRol });
+            }
+            return dato;
+
+        }
+
     }
 }

@@ -31,5 +31,18 @@ namespace POO.ProyectoGastos.Servicios.Servicios
                 throw;
             }
         }
+
+        public ComboTiposDeVencimientosDto GetTiposDeVencimientosPorId(int Id)
+        {
+            try
+            {
+                return _repositorioTiposDeVencimientos.GetTiposDeVencimientosPorId(Id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnPersonas = new System.Windows.Forms.Button();
             this.btnGastosHgr = new System.Windows.Forms.Button();
@@ -51,23 +50,11 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button4.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.categorize_50px;
-            this.button4.Location = new System.Drawing.Point(367, 279);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(207, 181);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Proximos Pagos";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button3.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.city_50px;
-            this.button3.Location = new System.Drawing.Point(618, 279);
+            this.button3.Location = new System.Drawing.Point(367, 366);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(207, 94);
             this.button3.TabIndex = 0;
@@ -106,9 +93,9 @@
             // 
             this.button7.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button7.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.categorize_50px;
-            this.button7.Location = new System.Drawing.Point(618, 372);
+            this.button7.Location = new System.Drawing.Point(618, 366);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(207, 88);
+            this.button7.Size = new System.Drawing.Size(207, 94);
             this.button7.TabIndex = 0;
             this.button7.Text = "Datos Guardados";
             this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -150,7 +137,6 @@
             this.Controls.Add(this.btnFondosComunes);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnPersonas);
             this.Controls.Add(this.btnGastosHgr);
@@ -167,7 +153,6 @@
         private System.Windows.Forms.Button btnGastosHgr;
         private System.Windows.Forms.Button btnPersonas;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnFondosComunes;

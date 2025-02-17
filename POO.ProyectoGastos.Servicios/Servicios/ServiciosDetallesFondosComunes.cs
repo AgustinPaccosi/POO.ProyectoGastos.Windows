@@ -19,11 +19,11 @@ namespace POO.ProyectoGastos.Servicios.Servicios
         {
             _repositorioDetalles = new RepositorioDetalleFondosComunes();
         }
-        public void Borrar(int IdFondo, int idPersona)
+        public void Borrar(int IdFondo, int idPersona, decimal Monto)
         {
             try
             {
-                _repositorioDetalles.Borrar(IdFondo, idPersona);
+                _repositorioDetalles.Borrar(IdFondo, idPersona, Monto);
             }
             catch (Exception)
             {

@@ -12,7 +12,7 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
     public interface IServiciosDetallesFondosComunes
     {
         void Guardar(DetalleFondoComun detalleFondo);
-        void Borrar(int IdFondo, int idPersona);
+        void Borrar(int IdFondo, int idPersona, decimal Monto);
         bool Existe(DetalleFondoComun detalleFondo);
         List<DetalleFondoComunDto> GetDetallesFondoComun(int idFondo);
 

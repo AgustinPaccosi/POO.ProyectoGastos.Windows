@@ -86,9 +86,19 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             return lista;
         }
 
-        public Persona GetPersonaPorId(int idPersona)
+        public Persona GetPersonaPorId(int IdPersona)
         {
-            throw new NotImplementedException();
+            Persona lista = new Persona();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string SelectQuery = @"SELECT p.IdPersona, p.Nombre, p.Apellido, r.Rol, p.IdRol
+                            FROM Personas p
+                            INNER JOIN Roles r ON p.IdRol = r.IdRol
+                            Where IdPersona=@IdPersona";
+                lista = conn.QueryFirstOrDefault<Persona>(SelectQuery,new { IdPersona=IdPersona});
+            }
+            return lista;
+
         }
 
         public List<Persona> GetPersonas()

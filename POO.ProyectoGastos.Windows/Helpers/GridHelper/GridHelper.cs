@@ -4,10 +4,12 @@ using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
 using POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto;
 using POO.ProyectoGastos.Entidades.Dtos.GastosHogar;
 using POO.ProyectoGastos.Entidades.Entidades;
+using POO.ProyectoGastos.Servicios.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +18,15 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
 {
     public static class GridHelper
     {
+        //private ServiciosFondosComunes fondo= new ServiciosFondosComunes();
+        static decimal valor;
+        public static void MontoDeFondoComun(decimal Monto)
+        {
+            //var monto = Monto;
+            //return monto;
+            valor = Monto;
+            
+        }
         internal static void MostrarDatosEnGrilla<T>(DataGridView dgv, List<T> lista)
         {
             GridHelper.LimpiarGrilla(dgv);
@@ -66,8 +77,9 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
                 case FondoComunDto fondo:
                     r.Cells[0].Value = fondo.Fecha.ToShortDateString();
                     r.Cells[1].Value = fondo.Fecha.ToString("MMMM").ToUpper();
-                    r.Cells[2].Value = $" $ {fondo.Monto}";
-                    r.Cells[3].Value = $" $ {fondo.RestoFinMes}";
+                    r.Cells[2].Value = $" $ {valor}";
+                    //r.Cells[2].Value = $" $ {fondo.RestoFinMes}";
+
                     break;
                 case DetalleFondoComunDto detalle:
                     r.Cells[0].Value = detalle.FechaDeCreacion.ToString("MMMM").ToUpper();
@@ -81,6 +93,9 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
                     r.Cells[2].Value = gastosHogar.Fecha.ToShortDateString();
                     r.Cells[3].Value = $" $ {gastosHogar.Valor}";
                     r.Cells[4].Value = gastosHogar.Detalle != null ? gastosHogar.Detalle : "S/D";
+                    r.Cells[5].Value = gastosHogar.IdGastoFijo == 0 ? "No" : "Si";
+                    r.Cells[6].Value = gastosHogar.Pagado == false ? "No" : "Si";
+                    r.Cells[7].Value = gastosHogar.FormaPago;
                     break;
                 case GastosFijosDto gastoFijo:
                     r.Cells[0].Value = gastoFijo.Nombre;

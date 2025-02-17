@@ -83,6 +83,24 @@
     <Compile Include="frmEmpresasNegociosAE.Designer.cs">
       <DependentUpon>frmEmpresasNegociosAE.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFiltroFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiltroFecha.Designer.cs">
+      <DependentUpon>frmFiltroFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFiltroPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiltroPersona.Designer.cs">
+      <DependentUpon>frmFiltroPersona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFiltroTipoGasto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiltroTipoGasto.Designer.cs">
+      <DependentUpon>frmFiltroTipoGasto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFondosComunes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +150,7 @@
       <DependentUpon>GastosTotales.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Combos\CombosHelpers.cs" />
+    <Compile Include="Helpers\Forms\FormHelpers.cs" />
     <Compile Include="Helpers\GridHelper\GridHelper.cs" />
     <Compile Include="frmPersonas.cs">
       <SubType>Form</SubType>
@@ -164,6 +183,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpresasNegociosAE.resx">
       <DependentUpon>frmEmpresasNegociosAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFiltroFecha.resx">
+      <DependentUpon>frmFiltroFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFiltroPersona.resx">
+      <DependentUpon>frmFiltroPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFiltroTipoGasto.resx">
+      <DependentUpon>frmFiltroTipoGasto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFondosComunes.resx">
       <DependentUpon>frmFondosComunes.cs</DependentUpon>

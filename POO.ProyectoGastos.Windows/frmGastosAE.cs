@@ -19,10 +19,12 @@ namespace POO.ProyectoGastos.Windows
     public partial class frmGastosAE : Form
     {
         private IServiciosGastosHogar servicio;
+        private IServiciosGastosFijos serviciosGastosFijos;
         public frmGastosAE(ServiciosGastosHogar serviciosGastos)
         {
             InitializeComponent();
             servicio = serviciosGastos;
+            serviciosGastosFijos = new ServiciosGastosFijos();
         }
 
         private GastoHogar gastoHogar;
@@ -47,6 +49,11 @@ namespace POO.ProyectoGastos.Windows
                 textDetalle.Text = gastoHogar.Detalle;
                 textImporte.Text = gastoHogar.Valor.ToString();
                 comboFormaDePago.SelectedValue = gastoHogar.IdFormaPago;
+                if (gastoHogar.IdGastoFijo != 0 && gastoHogar.IdGastoFijo!=null)
+                {
+                    checkGastoFijo.Checked=true;
+                    comboGastoFijo.SelectedValue = gastoHogar.IdGastoFijo;
+                }
                 //comboFormaDePago_SelectedIndexChanged(null, null);
             }
             //comboGastoFijo.Enabled= false;
@@ -56,6 +63,7 @@ namespace POO.ProyectoGastos.Windows
         {
             if (ValidarDatos())
             {
+
                 if (gastoHogar == null)
                 {
                     gastoHogar = new GastoHogar();
@@ -65,6 +73,7 @@ namespace POO.ProyectoGastos.Windows
                 gastoHogar.Valor=decimal.Parse(textImporte.Text);
                 gastoHogar.Detalle=textDetalle.Text;
                 //gastoHogar.IdGastoFijo = null;
+                
                 gastoHogar.TiposGastosDto = (ComboTiposGastosDto)comboTipoDeGasto.SelectedItem ;
                 gastoHogar.IdTipoGasto=(int)comboTipoDeGasto.SelectedValue;
                 gastoHogar.IdFormaPago= (int)comboFormaDePago.SelectedValue;
@@ -89,6 +98,10 @@ namespace POO.ProyectoGastos.Windows
                 if (comboEmpresa.SelectedIndex!=0)
                 {
                     gastoHogar.IdEmpNeg = (int)comboEmpresa.SelectedValue;
+                }
+                if (checkGastoFijo.Checked)
+                {
+                    gastoHogar.IdGastoFijo = (int)comboGastoFijo.SelectedValue;
                 }
                 try
                 {
@@ -135,6 +148,7 @@ namespace POO.ProyectoGastos.Windows
         }
         private bool ValidarDatos()
         {
+            errorProvider1.Clear();
             bool valido = true;
             if (string.IsNullOrEmpty(textImporte.Text) || !decimal.TryParse(textImporte.Text, out _))
             {
@@ -163,7 +177,7 @@ namespace POO.ProyectoGastos.Windows
                 valido = false;
                 errorProvider1.SetError(comboFormaDePago, "Elija una FORMA DE PAGO");
             }
-            if (comboFondoComun.SelectedIndex == 0 && (int)comboFormaDePago.SelectedValue!=1)
+            if ((int)comboFormaDePago.SelectedIndex==0)
             {
                 valido = false;
                 errorProvider1.SetError(comboFondoComun, "Elija un FONDO COMUN");
@@ -172,6 +186,11 @@ namespace POO.ProyectoGastos.Windows
             {
                 valido = false;
                 errorProvider1.SetError(comboNumTarje, "Elija una Tarjeta");
+            }
+            if (comboGastoFijo.SelectedIndex==0 && checkGastoFijo.Checked)
+            {
+                valido = false;
+                errorProvider1.SetError(comboGastoFijo, " Elija Un Gasto Fijo");
             }
             return valido;
         }
@@ -195,8 +214,18 @@ namespace POO.ProyectoGastos.Windows
             if (checkGastoFijo.Checked)
             {
                 comboGastoFijo.Enabled=true;
+                CombosHelpers.CargarComboGastoFijo(ref comboGastoFijo);
+                
+                comboTipoDeGasto.SelectedIndex = 0;
+                comboTipoDeGasto.Enabled=false;
             }
-            else { comboGastoFijo.Enabled = false; }
+            else
+            { 
+                comboGastoFijo.Enabled = false;
+                comboTipoDeGasto.Enabled = true;
+                CombosHelpers.CargarComboTipoDeGastos(ref comboTipoDeGasto);
+                CombosHelpers.CargarComboVacio(ref comboGastoFijo, " ");
+            }
         }
 
         private void comboFormaDePago_SelectedIndexChanged(object sender, EventArgs e)
@@ -216,13 +245,21 @@ namespace POO.ProyectoGastos.Windows
                         comboNumTarje.Enabled = true;
                         comboFondoComun.Enabled = false;
                         CombosHelpers.CargarComboVacio(ref comboFondoComun,"");
-                        CombosHelpers.CargarComboVacio(ref comboNumTarje, "Primero: Seleccione Persona");
+                        if (comboPersonas.SelectedIndex==0)
+                        {
+                            CombosHelpers.CargarComboVacio(ref comboNumTarje, "Primero: Seleccione Persona");
+
+                        }
                         break;
                     case 3:
                         comboNumTarje.Enabled = true;
                         comboFondoComun.Enabled = false;
                         CombosHelpers.CargarComboVacio(ref comboFondoComun, "");
-                        CombosHelpers.CargarComboVacio(ref comboNumTarje, "Primero: Seleccione Persona");
+                        if (comboPersonas.SelectedIndex == 0)
+                        {
+                            CombosHelpers.CargarComboVacio(ref comboNumTarje, "Primero: Seleccione Persona");
+
+                        }
 
                         break;
                     case 4:
@@ -271,6 +308,24 @@ namespace POO.ProyectoGastos.Windows
         public GastoHogar GetGasto()
         {
             return gastoHogar;
+        }
+
+        private void comboGastoFijo_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+            if ((int)comboGastoFijo.SelectedIndex!=0)
+            {
+                GastosFijos gastosFijos = serviciosGastosFijos.GetGastoFijoPorId((int)comboGastoFijo.SelectedValue);
+
+                comboTipoDeGasto.SelectedValue = gastosFijos.IdTipoGasto; 
+                textImporte.Text=gastosFijos.MontoPagar.ToString();
+                textImporte.Enabled = false;
+            }
+            else
+            {
+                textImporte.Clear();
+                textImporte.Enabled=true;
+            }
         }
     }
 }

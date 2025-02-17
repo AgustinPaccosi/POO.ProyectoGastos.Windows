@@ -32,5 +32,17 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             }
             return lista;
         }
+
+        public ComboTiposDeVencimientosDto GetTiposDeVencimientosPorId(int IdTipoDeVencimiento)
+        {
+            ComboTiposDeVencimientosDto dato = new ComboTiposDeVencimientosDto();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string SelectQuery = "SELECT IdTipoDeVencimiento, TipoDeVencimiento FROM TiposDeVencimientos Where IdTipoDeVencimiento=@IdTipoDeVencimiento";
+                dato = conn.QuerySingleOrDefault<ComboTiposDeVencimientosDto>(SelectQuery, new { IdTipoDeVencimiento = IdTipoDeVencimiento });
+            }
+            return dato;
+        }
+
     }
 }

@@ -10,5 +10,6 @@ namespace POO.ProyectoGastos.Comun.Interfaces
     public interface IRepositorioTiposGastos
     {
         List<ComboTiposGastosDto> GetTiposGastos();
+        ComboTiposGastosDto GetTiposGastosPorId(int IdTipoGasto);
     }
 }

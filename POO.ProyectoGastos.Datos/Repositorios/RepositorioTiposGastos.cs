@@ -2,6 +2,7 @@
 using POO.ProyectoGastos.Comun.Interfaces;
 using POO.ProyectoGastos.Entidades.Dtos.Roles;
 using POO.ProyectoGastos.Entidades.Dtos.TipoGastos;
+using POO.ProyectoGastos.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -20,6 +21,12 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             cadenaConexion = ConfigurationManager.ConnectionStrings["MiConexion"].ToString();
 
         }
+
+        public ComboTiposGastosDto GetComboTiposGastosPorId(int IdTipoGasto)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<ComboTiposGastosDto> GetTiposGastos()
         {
             List<ComboTiposGastosDto> lista = new List<ComboTiposGastosDto>();
@@ -31,5 +38,18 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             return lista;
 
         }
+
+        public ComboTiposGastosDto GetTiposGastosPorId(int IdTipoGasto)
+        {
+            ComboTiposGastosDto dato = new ComboTiposGastosDto();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string SelectQuery = "SELECT IdTipoGasto, TipoGasto FROM TiposGastos Where IdTipoGasto=@IdTipoGasto";
+                dato = conn.QuerySingleOrDefault<ComboTiposGastosDto>(SelectQuery, new { IdTipoGasto= IdTipoGasto });
+            }
+            return dato;
+
+        }
+
     }
 }

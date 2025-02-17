@@ -1,5 +1,6 @@
 ﻿using POO.ProyectoGastos.Entidades.Dtos.FondoComunDto;
 using POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto;
+using POO.ProyectoGastos.Entidades.Dtos.TiposDeVencimiento;
 using POO.ProyectoGastos.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,10 @@ namespace POO.ProyectoGastos.Comun.Interfaces
     public interface IRepositorioDetalleFondosComunes
     {
         void Agregar(DetalleFondoComun fondoPersona);
-        void Borrar(int idFondo, int idPersona);
+        void Borrar(int idFondo, int idPersona, decimal Monto);
         //void Editar(DetalleFondoComun fondoPersona);
         bool Existe(DetalleFondoComun fondoPersona);
         List<DetalleFondoComunDto> GetDetalleFondoComunDtos(int idFondo);
-
+         
     }
 }

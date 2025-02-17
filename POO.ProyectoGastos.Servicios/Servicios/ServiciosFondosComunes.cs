@@ -44,6 +44,11 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
+        public bool EstaRelacionado(int IdFondoComun)
+        {
+            return _repositorioFondosComunes.EstaRelacionado(IdFondoComun);
+        }
+
         public bool Existe(FondoComun fondo)
         {
             try
@@ -108,5 +113,18 @@ namespace POO.ProyectoGastos.Servicios.Servicios
                 throw;
             }       
          }
+
+        public decimal MontoEnFondoComun(int IdFondoComun)
+        {
+            try
+            {
+                return _repositorioFondosComunes.MontoEnFondoComun(IdFondoComun);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

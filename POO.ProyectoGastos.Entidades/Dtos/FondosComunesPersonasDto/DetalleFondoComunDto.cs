@@ -12,7 +12,7 @@ namespace POO.ProyectoGastos.Entidades.Dtos.FondosComunesPersonasDto
         public int? IdPersona { get; set; }
         public string NombreCompleto { get; set; }
         public DateTime FechaDeCreacion { get; set; }
-        public double Monto { get; set; }
+        public decimal Monto { get; set; }
         public DateTime FechaDeAporte { get; set; }
     }
 }

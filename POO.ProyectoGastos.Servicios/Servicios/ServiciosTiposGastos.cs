@@ -19,6 +19,19 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             _repositoriotiposGastos = new RepositorioTiposGastos();
         }
 
+        public ComboTiposGastosDto GetTiposGastosPorId(int IdTipoGasto)
+        {
+            try
+            {
+                return _repositoriotiposGastos.GetTiposGastosPorId(IdTipoGasto);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<ComboTiposGastosDto> GetTiposGastos()
         {
 			try

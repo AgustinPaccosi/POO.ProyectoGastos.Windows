@@ -10,10 +10,13 @@ namespace POO.ProyectoGastos.Entidades.Dtos.GastosHogar
     {
         public int IdGasto { get; set; }
         public DateTime Fecha { get; set; }
-        public double Valor { get; set; }
+        public decimal Valor { get; set; }
         public string TipoGasto { get; set; }
         public string Persona { get; set; }
         public string Detalle { get; set; }
+        public int IdGastoFijo { get; set; }
+        public bool Pagado { get; set; }
+        public string FormaPago { get; set; }
 
         public object Clone()
         {

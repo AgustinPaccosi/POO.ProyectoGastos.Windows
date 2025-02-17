@@ -113,7 +113,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             List<FondoComunDto> lista = new List<FondoComunDto>();
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string SelectQuery = @"SELECT IdFondoComun, Fecha, Monto, ISNULL(RestoFinMes, 0) AS RestoFinMes
+                string SelectQuery = @"SELECT IdFondoComun, Fecha, Monto, (Select sum(Convert( numeric,Monto)) from [Personas/FondosComunes] where IdFondoComun=45) AS RestoFinMes
                             FROM FondosComunes 
                             ORDER BY Fecha DESC";
                 lista = conn.Query<FondoComunDto>(SelectQuery).ToList();
@@ -135,6 +135,30 @@ namespace POO.ProyectoGastos.Datos.Repositorios
         public List<FondoComun> GetFondos()
         {
             throw new NotImplementedException();
+        }
+        public bool EstaRelacionado(int IdFondoComun)
+        {
+            var cantidad = 0;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT COUNT(*) FROM [Personas/FondosComunes] 
+                        WHERE IdFondoComun = @IdFondoComun;";
+
+                cantidad = conn.ExecuteScalar<int>(selectQuery, new { IdFondoComun=IdFondoComun });
+            }
+            return cantidad > 0;
+        }
+
+        public decimal MontoEnFondoComun(int IdFondoComun)
+        {
+            decimal total = 0;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectquery = @"Select sum(Convert(numeric,Monto)) from [Personas/FondosComunes] where IdFondoComun=@IdFondoComun";
+                total = conn.QuerySingle<decimal>(selectquery, new { IdFondoComun = IdFondoComun });
+            }
+            return total;
+
         }
     }
 }

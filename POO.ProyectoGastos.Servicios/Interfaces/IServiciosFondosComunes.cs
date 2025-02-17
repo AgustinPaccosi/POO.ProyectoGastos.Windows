@@ -17,6 +17,9 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
         bool Existe(FondoComun fondo);
         int GetCantidad();
         List<FondoComunDto> GetFondoComunDtos();
+        bool EstaRelacionado(int IdFondoComun);
+        decimal MontoEnFondoComun(int IdFondoComun);
+
 
     }
 }

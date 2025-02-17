@@ -15,5 +15,7 @@ namespace POO.ProyectoGastos.Comun.Interfaces
         bool CreacionFondoAutomatico();
         List<FondoComun> GetFondos();
         List<FondoComunDto> GetFondoComunDtos();
+        bool EstaRelacionado(int IdFondoComun);
+        decimal MontoEnFondoComun (int IdFondoComun);
     }
 }

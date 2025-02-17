@@ -64,6 +64,19 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
+        public Persona GetPersonaPorId(int id)
+        {
+            try
+            {
+                return _repositorioPersonas.GetPersonaPorId(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<Persona> GetPersonas()
         {
             try

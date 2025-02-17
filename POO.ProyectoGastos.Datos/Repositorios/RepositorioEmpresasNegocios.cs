@@ -73,6 +73,20 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             return cantidad > 0;
         }
 
+        public EmpresaNegocio GetEmpresaNegocioPorId(int IdEmpNeg)
+        {
+            EmpresaNegocio lista = new EmpresaNegocio();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string SelectQuery = @"SELECT IdEmpNeg, Nombre, Direccion, Telefono
+                            FROM EmpresasNegocios
+                            Where IdEmpNeg=@IdEmpNeg";
+                lista = conn.QuerySingleOrDefault<EmpresaNegocio>(SelectQuery, new { IdEmpNeg = IdEmpNeg });
+            }
+            return lista;
+
+        }
+
         public List<EmpresaNegocio> GetEmpresasNegocios()
         {
             List<EmpresaNegocio> lista = new List<EmpresaNegocio>();

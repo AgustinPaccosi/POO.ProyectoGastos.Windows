@@ -30,18 +30,22 @@ namespace POO.ProyectoGastos.Windows
         {
             try
             {
+                tsbNuevo.Enabled= false;
+                tsbNuevo.BackColor = Color.Gray;
                 if (!_servicioFondos.ExisteFUltimoMes())
                 {
                     if (_servicioFondos.CreacionFondoAutomatico())
                     {
                         MessageBox.Show("Actualización Exitosa", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    
                     //if (_servicioFondos.CreacionFondoAutomatico())
                     //{
                     //    MessageBox.Show("Actualización Exitosa", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //}
 
                 }
+                //GridHelper.MontoDeFondoComun(_servicioFondos.MontoEnFondoComun(_servicioFondos.GetFondoComunDtos().Max(f => f.IdFondoComun)));
                 MostrarDatosEnGrilla();
                 
             }
@@ -59,8 +63,11 @@ namespace POO.ProyectoGastos.Windows
 
             foreach (var fondo in listaFondos)
             {
+
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
+                GridHelper.MontoDeFondoComun(_servicioFondos.MontoEnFondoComun(fondo.IdFondoComun));
                 GridHelper.SetearFila(r, fondo);
+
                 GridHelper.AgregarFila(dgvDatos, r);
             }
         }
@@ -105,16 +112,49 @@ namespace POO.ProyectoGastos.Windows
             try
             {
                 //TODO: Se debe controlar que no este relacionado
-                DialogResult dr = MessageBox.Show("¿Desea borrar el registro seleccionado?",
-                    "Confirmar",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (dr == DialogResult.No) { return; }
-                _servicioFondos.Borrar(fondo.IdFondoComun);
-                GridHelper.QuitarFila(dgvDatos, r);
+
+                //if (!_servicioFondos.EstaRelacionado(fondo.IdFondoComun))
+                //{
+                //    DialogResult dr = MessageBox.Show("¿Desea borrar el registro seleccionado?",
+                //        "Confirmar",
+                //        MessageBoxButtons.YesNo,
+                //        MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Debe Borrar las Relaciones Primero, las personas aportantes.", "Mensaje",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
+                //if (dr == DialogResult.No) { return; }_servicioFondos.Borrar(fondo.IdFondoComun);
+                //GridHelper.QuitarFila(dgvDatos, r);
                 //lblCantidad.Text = _servicio.GetCantidad().ToString();
-                MessageBox.Show("Registro borrado", "Mensaje",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Registro borrado", "Mensaje",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                DialogResult dr = DialogResult.No;
+                if (!_servicioFondos.EstaRelacionado(fondo.IdFondoComun))
+                {
+                    dr = MessageBox.Show("¿Desea borrar el registro seleccionado?", "Confirmar",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                    if (dr == DialogResult.No) return; // Si el usuario elige "No", se cancela la acción
+
+                    _servicioFondos.Borrar(fondo.IdFondoComun);
+                    GridHelper.QuitarFila(dgvDatos, r);
+                    // lblCantidad.Text = _servicio.GetCantidad().ToString();
+                    MessageBox.Show("Registro borrado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _servicioFondos.Borrar(fondo.IdFondoComun);
+                    //GridHelper.QuitarFila(dgvDatos, r);
+                    //MessageBox.Show("Registro borrado", "Mensaje",
+                    //     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("Debe borrar las relaciones primero, las personas aportantes.", "Mensaje",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {

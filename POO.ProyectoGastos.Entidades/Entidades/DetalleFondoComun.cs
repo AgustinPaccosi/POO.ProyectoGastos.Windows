@@ -10,7 +10,7 @@ namespace POO.ProyectoGastos.Entidades.Entidades
     {
         public int IdFondoComun { get; set; }
         public int IdPersona { get; set; }
-        public double Monto { get; set; }
+        public string Monto { get; set; }
         public DateTime Fecha { get; set; }
     }
 }

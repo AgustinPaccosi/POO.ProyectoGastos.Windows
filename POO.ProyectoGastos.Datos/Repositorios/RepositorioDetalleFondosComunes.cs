@@ -39,13 +39,22 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             }
         }
 
-        public void Borrar(int IdFondoComun, int IdPersona)
+        public void Borrar(int IdFondoComun, int IdPersona, decimal Monto)
         {
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string deleteQuery = @"DELETE FROM [Personas/FondosComunes] 
-                     WHERE IdFondoComun=@IdFondoComun and IdPersona=@IdPersona and MONTH(Fecha) = MONTH(GETDATE()) ";
-                conn.Execute(deleteQuery, new { IdFondoComun = IdFondoComun, IdPersona= IdPersona });
+                if (IdPersona!=null)
+                {
+                    string deleteQuery = @"DELETE FROM [Personas/FondosComunes]
+                     WHERE IdFondoComun=@IdFondoComun and IdPersona=@IdPersona and Monto = @Monto ";
+                    conn.Execute(deleteQuery, new { IdFondoComun = IdFondoComun, IdPersona = IdPersona, Monto = Monto }); 
+                }
+                else
+                {
+                    //string deleteQuery = @"DELETE FROM [Personas/FondosComunes]
+                    // WHERE IdFondoComun=@IdFondoComun  and Monto = @Monto ";
+                    //conn.Execute(deleteQuery, new { IdFondoComun = IdFondoComun, Monto = Monto });
+                }
             }
         }
 
@@ -60,10 +69,23 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             var cantidad = 0;
             using (var conn = new SqlConnection(cadenaConexion))
             {
+                //No Deberia ser Necesario
                 string selectQuery = @"SELECT COUNT(*) FROM [Personas/FondosComunes] 
-                        WHERE IdFondoComun = @IdFondoComun AND IdPersona = @IdPersona and MONTH(Fecha) = MONTH(GETDATE());";
+                        WHERE IdFondoComun = @IdFondoComun AND IdPersona = @IdPersona and Monto =@Monto;";
 
-                cantidad = conn.ExecuteScalar<int>(selectQuery, new { detalleFondo.IdFondoComun, detalleFondo.IdPersona });
+                cantidad = conn.ExecuteScalar<int>(selectQuery, new { detalleFondo.IdFondoComun, detalleFondo.IdPersona, detalleFondo.Monto });
+            }
+            return cantidad > 0;
+        }
+        public bool EstaRelacionado(int IdFondoComun)
+        {
+            var cantidad = 0;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                string selectQuery = @"SELECT COUNT(*) FROM [Personas/FondosComunes] 
+                        WHERE IdFondoComun = @IdFondoComun;";
+
+                cantidad = conn.ExecuteScalar<int>(selectQuery, new { IdFondoComun });
             }
             return cantidad > 0;
         }

@@ -15,7 +15,7 @@ namespace POO.ProyectoGastos.Comun.Interfaces
         void Editar(Persona presona);
         bool Existe(Persona persona);
         List<Persona> GetPersonas();
-        Persona GetPersonaPorId(int idPersona);
+        Persona GetPersonaPorId(int IdPersona);
         List<ComboPersonasDto> GetComboPersonasDtos();
     }
 }

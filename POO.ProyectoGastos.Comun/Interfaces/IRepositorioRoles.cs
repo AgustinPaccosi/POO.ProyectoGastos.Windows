@@ -11,6 +11,6 @@ namespace POO.ProyectoGastos.Comun.Interfaces
     public interface IRepositorioRoles
     {
         List<ComboRolDto> GetRoles();
-
+        ComboRolDto GetRolPorId(int IdRol);
     }
 }

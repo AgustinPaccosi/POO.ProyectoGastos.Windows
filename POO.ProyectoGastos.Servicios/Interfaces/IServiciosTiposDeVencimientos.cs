@@ -10,5 +10,6 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
     public interface IServiciosTiposDeVencimientos
     {
         List<ComboTiposDeVencimientosDto> GetTiposDeVencimientos();
+        ComboTiposDeVencimientosDto GetTiposDeVencimientosPorId(int Id);
     }
 }

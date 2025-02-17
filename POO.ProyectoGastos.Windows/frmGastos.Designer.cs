@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGastos));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
@@ -38,24 +38,32 @@
             this.colFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColGastoFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColPagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColFondo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
+            this.tsbBuscar = new System.Windows.Forms.ToolStripDropDownButton();
+            this.personaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDeGastoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ultimos30DiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblFondo = new System.Windows.Forms.Label();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblGastosConFondo = new System.Windows.Forms.Label();
+            this.lblFondoComun = new System.Windows.Forms.Label();
+            this.lblTotalGastos = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblResto = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -80,11 +88,14 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.lblResto);
+            this.splitContainer1.Panel2.Controls.Add(this.label5);
+            this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.lblFondo);
-            this.splitContainer1.Panel2.Controls.Add(this.lblCantidad);
-            this.splitContainer1.Panel2.Controls.Add(this.lblTotal);
+            this.splitContainer1.Panel2.Controls.Add(this.lblGastosConFondo);
+            this.splitContainer1.Panel2.Controls.Add(this.lblFondoComun);
+            this.splitContainer1.Panel2.Controls.Add(this.lblTotalGastos);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Size = new System.Drawing.Size(1039, 559);
             this.splitContainer1.SplitterDistance = 441;
@@ -93,17 +104,21 @@
             // dgvDatos
             // 
             this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToDeleteRows = false;
             this.dgvDatos.AllowUserToResizeColumns = false;
             this.dgvDatos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTipoGasto,
             this.colPersona,
             this.colFecha,
             this.colMonto,
-            this.colDetalle});
+            this.colDetalle,
+            this.ColGastoFijo,
+            this.ColPagado,
+            this.ColFondo});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 59);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(4);
@@ -119,8 +134,8 @@
             // colTipoGasto
             // 
             this.colTipoGasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colTipoGasto.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colTipoGasto.DefaultCellStyle = dataGridViewCellStyle2;
             this.colTipoGasto.HeaderText = "Tipo de Gasto";
             this.colTipoGasto.MinimumWidth = 6;
             this.colTipoGasto.Name = "colTipoGasto";
@@ -158,6 +173,30 @@
             this.colDetalle.Name = "colDetalle";
             this.colDetalle.ReadOnly = true;
             // 
+            // ColGastoFijo
+            // 
+            this.ColGastoFijo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColGastoFijo.HeaderText = "GastoFijo";
+            this.ColGastoFijo.MinimumWidth = 6;
+            this.ColGastoFijo.Name = "ColGastoFijo";
+            this.ColGastoFijo.ReadOnly = true;
+            // 
+            // ColPagado
+            // 
+            this.ColPagado.HeaderText = "Pagado";
+            this.ColPagado.MinimumWidth = 6;
+            this.ColPagado.Name = "ColPagado";
+            this.ColPagado.ReadOnly = true;
+            this.ColPagado.Width = 125;
+            // 
+            // ColFondo
+            // 
+            this.ColFondo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColFondo.HeaderText = "Forma De Pago";
+            this.ColFondo.MinimumWidth = 6;
+            this.ColFondo.Name = "ColFondo";
+            this.ColFondo.ReadOnly = true;
+            // 
             // toolStrip2
             // 
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -169,8 +208,6 @@
             this.tsbBuscar,
             this.tsbActualizar,
             this.toolStripSeparator2,
-            this.tsbImprimir,
-            this.toolStripSeparator3,
             this.tsbCerrar});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
@@ -218,13 +255,46 @@
             // 
             // tsbBuscar
             // 
+            this.tsbBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.personaToolStripMenuItem,
+            this.tipoDeGastoToolStripMenuItem,
+            this.ultimos30DiasToolStripMenuItem,
+            this.pagadoToolStripMenuItem});
             this.tsbBuscar.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.filter_32px;
             this.tsbBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(56, 56);
+            this.tsbBuscar.Size = new System.Drawing.Size(66, 56);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // personaToolStripMenuItem
+            // 
+            this.personaToolStripMenuItem.Name = "personaToolStripMenuItem";
+            this.personaToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.personaToolStripMenuItem.Text = "Persona";
+            this.personaToolStripMenuItem.Click += new System.EventHandler(this.personaToolStripMenuItem_Click);
+            // 
+            // tipoDeGastoToolStripMenuItem
+            // 
+            this.tipoDeGastoToolStripMenuItem.Name = "tipoDeGastoToolStripMenuItem";
+            this.tipoDeGastoToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.tipoDeGastoToolStripMenuItem.Text = "Tipo De Gasto";
+            this.tipoDeGastoToolStripMenuItem.Click += new System.EventHandler(this.tipoDeGastoToolStripMenuItem_Click);
+            // 
+            // ultimos30DiasToolStripMenuItem
+            // 
+            this.ultimos30DiasToolStripMenuItem.Name = "ultimos30DiasToolStripMenuItem";
+            this.ultimos30DiasToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.ultimos30DiasToolStripMenuItem.Text = "Rango Fechas";
+            this.ultimos30DiasToolStripMenuItem.Click += new System.EventHandler(this.ultimos30DiasToolStripMenuItem_Click);
+            // 
+            // pagadoToolStripMenuItem
+            // 
+            this.pagadoToolStripMenuItem.Name = "pagadoToolStripMenuItem";
+            this.pagadoToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.pagadoToolStripMenuItem.Text = "Pagado";
+            this.pagadoToolStripMenuItem.Click += new System.EventHandler(this.pagadoToolStripMenuItem_Click);
             // 
             // tsbActualizar
             // 
@@ -235,26 +305,12 @@
             this.tsbActualizar.Size = new System.Drawing.Size(79, 56);
             this.tsbActualizar.Text = "Actualizar";
             this.tsbActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbActualizar.Click += new System.EventHandler(this.tsbActualizar_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 59);
-            // 
-            // tsbImprimir
-            // 
-            this.tsbImprimir.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.print_32px;
-            this.tsbImprimir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(70, 56);
-            this.tsbImprimir.Text = "Imprimir";
-            this.tsbImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 59);
             // 
             // tsbCerrar
             // 
@@ -284,7 +340,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(522, 32);
+            this.label1.Location = new System.Drawing.Point(857, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 16);
@@ -294,55 +350,86 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(69, 59);
+            this.label2.Location = new System.Drawing.Point(37, 16);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 16);
             this.label2.TabIndex = 59;
             this.label2.Text = "Fondo Comun: ";
             // 
-            // lblFondo
+            // lblGastosConFondo
             // 
-            this.lblFondo.AutoSize = true;
-            this.lblFondo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFondo.Location = new System.Drawing.Point(198, 59);
-            this.lblFondo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblFondo.Name = "lblFondo";
-            this.lblFondo.Size = new System.Drawing.Size(17, 17);
-            this.lblFondo.TabIndex = 61;
-            this.lblFondo.Text = "0";
+            this.lblGastosConFondo.AutoSize = true;
+            this.lblGastosConFondo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGastosConFondo.Location = new System.Drawing.Point(241, 43);
+            this.lblGastosConFondo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGastosConFondo.Name = "lblGastosConFondo";
+            this.lblGastosConFondo.Size = new System.Drawing.Size(17, 17);
+            this.lblGastosConFondo.TabIndex = 61;
+            this.lblGastosConFondo.Text = "0";
             // 
-            // lblCantidad
+            // lblFondoComun
             // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(198, 31);
-            this.lblCantidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(17, 17);
-            this.lblCantidad.TabIndex = 62;
-            this.lblCantidad.Text = "0";
+            this.lblFondoComun.AutoSize = true;
+            this.lblFondoComun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFondoComun.Location = new System.Drawing.Point(241, 16);
+            this.lblFondoComun.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFondoComun.Name = "lblFondoComun";
+            this.lblFondoComun.Size = new System.Drawing.Size(17, 17);
+            this.lblFondoComun.TabIndex = 62;
+            this.lblFondoComun.Text = "0";
             // 
-            // lblTotal
+            // lblTotalGastos
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(617, 32);
-            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(17, 17);
-            this.lblTotal.TabIndex = 62;
-            this.lblTotal.Text = "0";
+            this.lblTotalGastos.AutoSize = true;
+            this.lblTotalGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalGastos.Location = new System.Drawing.Point(952, 31);
+            this.lblTotalGastos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalGastos.Name = "lblTotalGastos";
+            this.lblTotalGastos.Size = new System.Drawing.Size(17, 17);
+            this.lblTotalGastos.TabIndex = 62;
+            this.lblTotalGastos.Text = "0";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 32);
+            this.label3.Location = new System.Drawing.Point(37, 43);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 16);
+            this.label3.Size = new System.Drawing.Size(196, 16);
             this.label3.TabIndex = 60;
-            this.label3.Text = "Cantidad de Gastos:";
+            this.label3.Text = "Total Gastos Pagados Con F.C.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(37, 80);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(157, 16);
+            this.label4.TabIndex = 63;
+            this.label4.Text = "Queda En Fondo Comun:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(190, 59);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 16);
+            this.label5.TabIndex = 64;
+            this.label5.Text = "-----------------------";
+            // 
+            // lblResto
+            // 
+            this.lblResto.AutoSize = true;
+            this.lblResto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResto.Location = new System.Drawing.Point(241, 80);
+            this.lblResto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblResto.Name = "lblResto";
+            this.lblResto.Size = new System.Drawing.Size(17, 17);
+            this.lblResto.TabIndex = 65;
+            this.lblResto.Text = "0";
             // 
             // frmGastos
             // 
@@ -375,24 +462,32 @@
         private System.Windows.Forms.ToolStripButton tsbBorrar;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsbBuscar;
         private System.Windows.Forms.ToolStripButton tsbActualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsbImprimir;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblFondo;
-        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label lblGastosConFondo;
+        private System.Windows.Forms.Label lblTotalGastos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.Label lblFondoComun;
+        private System.Windows.Forms.ToolStripDropDownButton tsbBuscar;
+        private System.Windows.Forms.ToolStripMenuItem personaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tipoDeGastoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ultimos30DiasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pagadoToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTipoGasto;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPersona;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMonto;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColGastoFijo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColPagado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColFondo;
+        private System.Windows.Forms.Label lblResto;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

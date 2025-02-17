@@ -14,6 +14,6 @@ namespace POO.ProyectoGastos.Comun.Interfaces
         void Editar(EmpresaNegocio empresa);
         bool Existe(EmpresaNegocio empresa);
         List<EmpresaNegocio> GetEmpresasNegocios();
-
+        EmpresaNegocio GetEmpresaNegocioPorId(int id);
     }
 }

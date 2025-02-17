@@ -256,6 +256,8 @@
             // checkPagado
             // 
             this.checkPagado.AutoSize = true;
+            this.checkPagado.Checked = true;
+            this.checkPagado.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkPagado.Location = new System.Drawing.Point(552, 49);
             this.checkPagado.Name = "checkPagado";
             this.checkPagado.Size = new System.Drawing.Size(41, 20);
@@ -285,12 +287,14 @@
             // 
             // comboGastoFijo
             // 
+            this.comboGastoFijo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboGastoFijo.Enabled = false;
             this.comboGastoFijo.FormattingEnabled = true;
             this.comboGastoFijo.Location = new System.Drawing.Point(552, 310);
             this.comboGastoFijo.Name = "comboGastoFijo";
             this.comboGastoFijo.Size = new System.Drawing.Size(260, 24);
             this.comboGastoFijo.TabIndex = 25;
+            this.comboGastoFijo.SelectedValueChanged += new System.EventHandler(this.comboGastoFijo_SelectedValueChanged);
             // 
             // errorProvider1
             // 

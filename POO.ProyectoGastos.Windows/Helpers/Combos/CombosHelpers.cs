@@ -1,4 +1,5 @@
 ﻿using POO.ProyectoGastos.Entidades;
+using POO.ProyectoGastos.Entidades.Dtos;
 using POO.ProyectoGastos.Entidades.Dtos.ComboPersonas;
 using POO.ProyectoGastos.Entidades.Dtos.DatosTrjetasDto;
 using POO.ProyectoGastos.Entidades.Dtos.Roles;
@@ -168,14 +169,14 @@ namespace POO.ProyectoGastos.Windows.Helpers.Combos
         {
 
             IServiciosFondosComunes servicios = new ServiciosFondosComunes();
-            var lista = servicios.GetFondoComunDtos()
+            var lista = servicios.GetFondoComunDtos()//.Max(c => c.IdFondoComun);
                                  .Select(f => new
                                  {
                                      IdF = f.IdFondoComun,
                                      FechaTexto = string.Concat(f.Fecha.ToString("MMMM").ToUpper(), " ", f.Fecha.Year.ToString()) // Convierte la fecha en nombre de mes
                                  })
                                  .ToList();
-
+            //var fondo=servicios.
             combo.DataSource = lista;
             combo.DisplayMember = "FechaTexto"; // Mostrar el mes en el ComboBox
             combo.ValueMember = "IdF";
@@ -193,6 +194,23 @@ namespace POO.ProyectoGastos.Windows.Helpers.Combos
             combo.DisplayMember = "Descripcion";
             combo.ValueMember = "Id";
             combo.SelectedIndex = 0;
+        }
+
+        public static void CargarComboGastoFijo(ref ComboBox combo)
+        {
+            IServiciosGastosFijos servicios = new ServiciosGastosFijos();
+            var lista = servicios.GetGastosFijos();
+            var defaultgastoFijo = new GastosFijosDto()
+            {
+                IdGastoFijo = 0,
+                Nombre = "Seleccione El Gasto Fijo"
+            };
+            lista.Insert(0, defaultgastoFijo);
+            combo.DataSource = lista;
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "IdGastoFijo";
+            combo.SelectedIndex = 0;
+
         }
 
 

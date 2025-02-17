@@ -12,6 +12,7 @@ namespace POO.ProyectoGastos.Comun.Interfaces
     {
 
         List<FormasPagos> GetFormasPagos();
+        FormasPagos GetFormasPagosPorId(int id);
 
-    }
+    } 
 }

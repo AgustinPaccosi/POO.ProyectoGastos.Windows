@@ -45,7 +45,7 @@ namespace POO.ProyectoGastos.Windows
                 }
                 detalleFondo.IdFondoComun = fondo.IdFondoComun;
                 detalleFondo.IdPersona = (int)CboPersonas.SelectedValue;
-                detalleFondo.Monto = double.Parse(txtcantidad.Text);
+                detalleFondo.Monto = txtcantidad.Text;
                 detalleFondo.Fecha = DateTime.Now;
                 try
                 {

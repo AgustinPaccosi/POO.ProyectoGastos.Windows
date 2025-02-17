@@ -77,7 +77,7 @@ namespace POO.ProyectoGastos.Windows
 
                         }
                         gastoFijo = null;
-                        //InicializarControles();
+                        InicializarControles();
                     }
                     else
                     {
@@ -101,6 +101,15 @@ namespace POO.ProyectoGastos.Windows
             }
 
         }
+
+        private void InicializarControles()
+        {
+            comboTipoDeGasto.SelectedValue=0;
+            ComboTipoDeVencimiento.SelectedValue = 0;
+            textImporte.Clear();
+            textNombre.Clear();
+        }
+
         private bool ValidarDatos()
         {
             bool valido = true;

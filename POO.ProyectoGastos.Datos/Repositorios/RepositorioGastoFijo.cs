@@ -38,12 +38,12 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             }
         }
 
-        public void Borrar(int IdGasto)
+        public void Borrar(int IdGastoFijo)
         {
             using (var conn = new SqlConnection(cadenaConexion))
             {
                 string deleteQuery = "DELETE FROM GastosFijos WHERE IdGastoFijo=@IdGastoFijo";
-                conn.Execute(deleteQuery, new { IdGasto = IdGasto });
+                conn.Execute(deleteQuery, new { IdGastoFijo = IdGastoFijo });
             }
 
         }

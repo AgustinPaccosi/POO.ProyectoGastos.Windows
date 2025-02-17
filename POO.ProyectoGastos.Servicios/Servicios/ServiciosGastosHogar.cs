@@ -32,7 +32,6 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        
 
         public bool Existe(GastoHogar gastoHogar)
         {
@@ -65,17 +64,58 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        public List<GastosHogarDto> GetGastosHogar()
+        public List<GastosHogarDto> GetGastosHogar(int? IdPersona, int? IdTipoDeGasto, DateTime? FechaInicio, DateTime? FechaFin, bool? Pagado)
         {
             try
             {
-                return _repositorioGastosHogar.GetGastosHogar();
+                return _repositorioGastosHogar.GetGastosHogar(IdPersona, IdTipoDeGasto, FechaInicio, FechaFin, Pagado);
             }
             catch (Exception)
             {
 
                 throw;
             }        }
+
+        public decimal GetTotalGastosFondoComun()
+        {
+            try
+            {
+                return _repositorioGastosHogar.GetTotalGastosFondoComun();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public decimal GetTotalGastosMes()
+        {
+            try
+            {
+                return _repositorioGastosHogar.GetTotalGastosMes();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+        public decimal Diferencia(int IdFondo)
+        {
+            try
+            {
+                return _repositorioGastosHogar.Diferencia(IdFondo);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
 
         public void Guardar(GastoHogar gastoHogar)
         {

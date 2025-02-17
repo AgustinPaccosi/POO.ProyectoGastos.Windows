@@ -17,6 +17,7 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
         int GetCantidad();
         List<Persona> GetPersonas();
         List<ComboPersonasDto> GetComboPersonasDtos();
+        Persona GetPersonaPorId(int id);
 
     }
 }
