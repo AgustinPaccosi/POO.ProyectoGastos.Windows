@@ -42,6 +42,10 @@
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Coltipodegasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnFin = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
@@ -52,10 +56,6 @@
             this.lblRegistros = new System.Windows.Forms.Label();
             this.lblPaginas = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Coltipodegasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -78,7 +78,7 @@
             this.tsbCerrar});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1009, 59);
+            this.toolStrip2.Size = new System.Drawing.Size(1032, 59);
             this.toolStrip2.TabIndex = 16;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -197,8 +197,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.lblRegistros);
             this.splitContainer1.Panel2.Controls.Add(this.lblPaginas);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(1009, 441);
-            this.splitContainer1.SplitterDistance = 336;
+            this.splitContainer1.Size = new System.Drawing.Size(1032, 444);
+            this.splitContainer1.SplitterDistance = 338;
             this.splitContainer1.TabIndex = 17;
             // 
             // dgvDatos
@@ -219,8 +219,40 @@
             this.dgvDatos.RowHeadersWidth = 51;
             this.dgvDatos.RowTemplate.Height = 24;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(1009, 336);
+            this.dgvDatos.Size = new System.Drawing.Size(1032, 338);
             this.dgvDatos.TabIndex = 0;
+            // 
+            // ColNombre
+            // 
+            this.ColNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColNombre.HeaderText = "Nombre";
+            this.ColNombre.MinimumWidth = 6;
+            this.ColNombre.Name = "ColNombre";
+            this.ColNombre.ReadOnly = true;
+            // 
+            // Coltipodegasto
+            // 
+            this.Coltipodegasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Coltipodegasto.HeaderText = "Tipo De Gasto";
+            this.Coltipodegasto.MinimumWidth = 6;
+            this.Coltipodegasto.Name = "Coltipodegasto";
+            this.Coltipodegasto.ReadOnly = true;
+            // 
+            // ColMonto
+            // 
+            this.ColMonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColMonto.HeaderText = "Monto";
+            this.ColMonto.MinimumWidth = 6;
+            this.ColMonto.Name = "ColMonto";
+            this.ColMonto.ReadOnly = true;
+            // 
+            // Col
+            // 
+            this.Col.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Col.HeaderText = "TipoDeVencimiento";
+            this.Col.MinimumWidth = 6;
+            this.Col.Name = "Col";
+            this.Col.ReadOnly = true;
             // 
             // btnFin
             // 
@@ -327,45 +359,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Registros:";
             // 
-            // ColNombre
-            // 
-            this.ColNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColNombre.HeaderText = "Nombre";
-            this.ColNombre.MinimumWidth = 6;
-            this.ColNombre.Name = "ColNombre";
-            this.ColNombre.ReadOnly = true;
-            // 
-            // Coltipodegasto
-            // 
-            this.Coltipodegasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Coltipodegasto.HeaderText = "Tipo De Gasto";
-            this.Coltipodegasto.MinimumWidth = 6;
-            this.Coltipodegasto.Name = "Coltipodegasto";
-            this.Coltipodegasto.ReadOnly = true;
-            // 
-            // ColMonto
-            // 
-            this.ColMonto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColMonto.HeaderText = "Monto";
-            this.ColMonto.MinimumWidth = 6;
-            this.ColMonto.Name = "ColMonto";
-            this.ColMonto.ReadOnly = true;
-            // 
-            // Col
-            // 
-            this.Col.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Col.HeaderText = "TipoDeVencimiento";
-            this.Col.MinimumWidth = 6;
-            this.Col.Name = "Col";
-            this.Col.ReadOnly = true;
-            // 
             // frmGastosFijos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 500);
+            this.ClientSize = new System.Drawing.Size(1032, 503);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip2);
+            this.MaximumSize = new System.Drawing.Size(1050, 550);
+            this.MinimumSize = new System.Drawing.Size(1050, 550);
             this.Name = "frmGastosFijos";
             this.Text = "GastosFijos";
             this.Load += new System.EventHandler(this.GastosFijos_Load);

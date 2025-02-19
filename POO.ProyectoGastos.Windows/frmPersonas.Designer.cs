@@ -61,7 +61,7 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dgvDatos);
             this.splitContainer1.Panel1.Controls.Add(this.toolStrip2);
-            this.splitContainer1.Size = new System.Drawing.Size(882, 502);
+            this.splitContainer1.Size = new System.Drawing.Size(882, 503);
             this.splitContainer1.SplitterDistance = 446;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -204,8 +204,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 502);
+            this.ClientSize = new System.Drawing.Size(882, 503);
             this.Controls.Add(this.splitContainer1);
+            this.MaximumSize = new System.Drawing.Size(900, 550);
+            this.MinimumSize = new System.Drawing.Size(900, 550);
             this.Name = "frmPersonas";
             this.Text = "Grupo Familiar";
             this.Load += new System.EventHandler(this.Personas_Load);

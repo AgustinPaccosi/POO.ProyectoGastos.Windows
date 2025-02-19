@@ -123,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(782, 333);
             this.Controls.Add(this.comboRol);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
@@ -132,6 +132,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
+            this.MaximumSize = new System.Drawing.Size(800, 380);
+            this.MinimumSize = new System.Drawing.Size(800, 380);
             this.Name = "frmPersonasAE";
             this.Text = "Personas";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

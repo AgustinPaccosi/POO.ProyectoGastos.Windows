@@ -100,6 +100,7 @@
             // txtcantidad
             // 
             this.txtcantidad.Location = new System.Drawing.Point(195, 196);
+            this.txtcantidad.MaxLength = 15;
             this.txtcantidad.Name = "txtcantidad";
             this.txtcantidad.Size = new System.Drawing.Size(252, 22);
             this.txtcantidad.TabIndex = 9;

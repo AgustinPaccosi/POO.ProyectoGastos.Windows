@@ -75,8 +75,8 @@
             this.splitContainer1.Panel1.Controls.Add(this.dgvDatos);
             this.splitContainer1.Panel1.Controls.Add(this.toolStrip2);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 399;
+            this.splitContainer1.Size = new System.Drawing.Size(822, 453);
+            this.splitContainer1.SplitterDistance = 401;
             this.splitContainer1.TabIndex = 2;
             // 
             // dgvDatos
@@ -99,7 +99,7 @@
             this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.RowHeadersWidth = 51;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(800, 340);
+            this.dgvDatos.Size = new System.Drawing.Size(822, 342);
             this.dgvDatos.TabIndex = 0;
             // 
             // colNombre
@@ -132,7 +132,7 @@
             this.tsbCerrar});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(800, 59);
+            this.toolStrip2.Size = new System.Drawing.Size(822, 59);
             this.toolStrip2.TabIndex = 15;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -201,7 +201,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(800, 399);
+            this.dataGridView1.Size = new System.Drawing.Size(822, 401);
             this.dataGridView1.TabIndex = 1;
             // 
             // errorProvider1
@@ -212,9 +212,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(822, 453);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(840, 500);
+            this.MinimumSize = new System.Drawing.Size(840, 500);
             this.Name = "frmDatosTarjetas";
             this.Text = "Datos T. Guardados";
             this.Load += new System.EventHandler(this.frmDatosTarjetas_Load);

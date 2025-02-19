@@ -108,13 +108,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(682, 403);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label4);
+            this.MaximumSize = new System.Drawing.Size(700, 450);
+            this.MinimumSize = new System.Drawing.Size(700, 450);
             this.Name = "frmFiltroFecha";
             this.Text = "frmFiltroFecha";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

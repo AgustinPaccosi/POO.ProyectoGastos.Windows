@@ -304,7 +304,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 495);
+            this.ClientSize = new System.Drawing.Size(852, 503);
             this.ControlBox = false;
             this.Controls.Add(this.comboGastoFijo);
             this.Controls.Add(this.checkGastoFijo);
@@ -331,6 +331,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(870, 550);
+            this.MinimumSize = new System.Drawing.Size(870, 550);
             this.Name = "frmGastosAE";
             this.Text = "Gasto";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

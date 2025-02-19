@@ -41,7 +41,7 @@
             // 
             this.comboFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboFormaPago.FormattingEnabled = true;
-            this.comboFormaPago.Location = new System.Drawing.Point(230, 99);
+            this.comboFormaPago.Location = new System.Drawing.Point(199, 75);
             this.comboFormaPago.Name = "comboFormaPago";
             this.comboFormaPago.Size = new System.Drawing.Size(285, 24);
             this.comboFormaPago.TabIndex = 17;
@@ -49,7 +49,7 @@
             // btnCancel
             // 
             this.btnCancel.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.cancel_24px;
-            this.btnCancel.Location = new System.Drawing.Point(404, 184);
+            this.btnCancel.Location = new System.Drawing.Point(373, 160);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(111, 101);
             this.btnCancel.TabIndex = 16;
@@ -62,7 +62,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.ok_24px;
-            this.btnGuardar.Location = new System.Drawing.Point(150, 184);
+            this.btnGuardar.Location = new System.Drawing.Point(119, 160);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(111, 101);
             this.btnGuardar.TabIndex = 15;
@@ -75,7 +75,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(80, 80);
+            this.label4.Location = new System.Drawing.Point(49, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(195, 16);
             this.label4.TabIndex = 14;
@@ -89,11 +89,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(632, 323);
             this.Controls.Add(this.comboFormaPago);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label4);
+            this.MaximumSize = new System.Drawing.Size(650, 370);
+            this.MinimumSize = new System.Drawing.Size(650, 370);
             this.Name = "frmFiltroPorFormaDePago";
             this.Text = "frmFiltroPorFormaDePago";
             this.Load += new System.EventHandler(this.frmFiltroPorFormaDePago_Load);

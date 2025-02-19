@@ -95,11 +95,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 373);
+            this.ClientSize = new System.Drawing.Size(632, 323);
             this.Controls.Add(this.comboPersona);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label4);
+            this.MaximumSize = new System.Drawing.Size(650, 370);
+            this.MinimumSize = new System.Drawing.Size(650, 370);
             this.Name = "frmFiltroPersona";
             this.Text = "frmFiltros";
             this.Load += new System.EventHandler(this.frmFiltroPersona_Load);

@@ -43,7 +43,7 @@
             // 
             this.comboTipoDeGasto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipoDeGasto.FormattingEnabled = true;
-            this.comboTipoDeGasto.Location = new System.Drawing.Point(233, 111);
+            this.comboTipoDeGasto.Location = new System.Drawing.Point(171, 72);
             this.comboTipoDeGasto.Name = "comboTipoDeGasto";
             this.comboTipoDeGasto.Size = new System.Drawing.Size(285, 24);
             this.comboTipoDeGasto.TabIndex = 17;
@@ -51,7 +51,7 @@
             // btnCancel
             // 
             this.btnCancel.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.cancel_24px;
-            this.btnCancel.Location = new System.Drawing.Point(427, 174);
+            this.btnCancel.Location = new System.Drawing.Point(365, 135);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(111, 101);
             this.btnCancel.TabIndex = 16;
@@ -64,7 +64,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.ok_24px;
-            this.btnGuardar.Location = new System.Drawing.Point(173, 174);
+            this.btnGuardar.Location = new System.Drawing.Point(111, 135);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(111, 101);
             this.btnGuardar.TabIndex = 15;
@@ -77,7 +77,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(115, 92);
+            this.label4.Location = new System.Drawing.Point(53, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(166, 16);
             this.label4.TabIndex = 14;
@@ -95,11 +95,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(632, 323);
             this.Controls.Add(this.comboTipoDeGasto);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label4);
+            this.MaximumSize = new System.Drawing.Size(650, 370);
+            this.MinimumSize = new System.Drawing.Size(650, 370);
             this.Name = "frmFiltroTipoGasto";
             this.Text = "frmFiltroTipoGasto";
             this.Load += new System.EventHandler(this.frmFiltroTipoGasto_Load);

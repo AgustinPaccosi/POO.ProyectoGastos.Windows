@@ -41,7 +41,7 @@
             // 
             this.button5.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button5.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.shutdown_48px;
-            this.button5.Location = new System.Drawing.Point(683, 493);
+            this.button5.Location = new System.Drawing.Point(665, 448);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(114, 102);
             this.button5.TabIndex = 1;
@@ -54,7 +54,7 @@
             // 
             this.button3.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button3.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.city_50px;
-            this.button3.Location = new System.Drawing.Point(367, 366);
+            this.button3.Location = new System.Drawing.Point(367, 315);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(207, 94);
             this.button3.TabIndex = 0;
@@ -67,9 +67,9 @@
             // 
             this.btnPersonas.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnPersonas.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.client_management_50px;
-            this.btnPersonas.Location = new System.Drawing.Point(108, 279);
+            this.btnPersonas.Location = new System.Drawing.Point(108, 315);
             this.btnPersonas.Name = "btnPersonas";
-            this.btnPersonas.Size = new System.Drawing.Size(207, 181);
+            this.btnPersonas.Size = new System.Drawing.Size(207, 94);
             this.btnPersonas.TabIndex = 0;
             this.btnPersonas.Text = "Grupo Familiar";
             this.btnPersonas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -93,7 +93,7 @@
             // 
             this.button7.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.button7.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.categorize_50px;
-            this.button7.Location = new System.Drawing.Point(618, 366);
+            this.button7.Location = new System.Drawing.Point(618, 315);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(207, 94);
             this.button7.TabIndex = 0;

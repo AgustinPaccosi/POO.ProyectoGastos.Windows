@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFondosComunes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.colFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
@@ -42,9 +45,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -65,8 +65,8 @@
             this.splitContainer1.Panel1.Controls.Add(this.dgvDatos);
             this.splitContainer1.Panel1.Controls.Add(this.toolStrip2);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(962, 556);
-            this.splitContainer1.SplitterDistance = 493;
+            this.splitContainer1.Size = new System.Drawing.Size(982, 593);
+            this.splitContainer1.SplitterDistance = 525;
             this.splitContainer1.TabIndex = 2;
             // 
             // dgvDatos
@@ -75,8 +75,8 @@
             this.dgvDatos.AllowUserToDeleteRows = false;
             this.dgvDatos.AllowUserToResizeColumns = false;
             this.dgvDatos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colFecha,
@@ -91,8 +91,34 @@
             this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.RowHeadersWidth = 51;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(962, 434);
+            this.dgvDatos.Size = new System.Drawing.Size(982, 466);
             this.dgvDatos.TabIndex = 0;
+            // 
+            // colFecha
+            // 
+            this.colFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colFecha.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colFecha.HeaderText = "Fecha";
+            this.colFecha.MinimumWidth = 6;
+            this.colFecha.Name = "colFecha";
+            this.colFecha.ReadOnly = true;
+            // 
+            // colMes
+            // 
+            this.colMes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colMes.HeaderText = "Mes";
+            this.colMes.MinimumWidth = 6;
+            this.colMes.Name = "colMes";
+            this.colMes.ReadOnly = true;
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCantidad.HeaderText = "Cantidad";
+            this.colCantidad.MinimumWidth = 6;
+            this.colCantidad.Name = "colCantidad";
+            this.colCantidad.ReadOnly = true;
             // 
             // toolStrip2
             // 
@@ -107,7 +133,7 @@
             this.tsbCerrar});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(962, 59);
+            this.toolStrip2.Size = new System.Drawing.Size(982, 59);
             this.toolStrip2.TabIndex = 15;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -187,41 +213,17 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(962, 493);
+            this.dataGridView1.Size = new System.Drawing.Size(982, 525);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // colFecha
-            // 
-            this.colFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colFecha.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colFecha.HeaderText = "Fecha";
-            this.colFecha.MinimumWidth = 6;
-            this.colFecha.Name = "colFecha";
-            this.colFecha.ReadOnly = true;
-            // 
-            // colMes
-            // 
-            this.colMes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colMes.HeaderText = "Mes";
-            this.colMes.MinimumWidth = 6;
-            this.colMes.Name = "colMes";
-            this.colMes.ReadOnly = true;
-            // 
-            // colCantidad
-            // 
-            this.colCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCantidad.HeaderText = "Cantidad";
-            this.colCantidad.MinimumWidth = 6;
-            this.colCantidad.Name = "colCantidad";
-            this.colCantidad.ReadOnly = true;
             // 
             // frmFondosComunes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 556);
+            this.ClientSize = new System.Drawing.Size(982, 593);
             this.Controls.Add(this.splitContainer1);
+            this.MaximumSize = new System.Drawing.Size(1000, 640);
+            this.MinimumSize = new System.Drawing.Size(1000, 640);
             this.Name = "frmFondosComunes";
             this.Text = "Fondos Comunes";
             this.Load += new System.EventHandler(this.frmFondosComunes_Load);

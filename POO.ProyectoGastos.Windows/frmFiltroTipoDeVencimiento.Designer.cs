@@ -41,7 +41,7 @@
             // 
             this.comboTipoDeVencimiento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipoDeVencimiento.FormattingEnabled = true;
-            this.comboTipoDeVencimiento.Location = new System.Drawing.Point(261, 116);
+            this.comboTipoDeVencimiento.Location = new System.Drawing.Point(206, 79);
             this.comboTipoDeVencimiento.Name = "comboTipoDeVencimiento";
             this.comboTipoDeVencimiento.Size = new System.Drawing.Size(285, 24);
             this.comboTipoDeVencimiento.TabIndex = 21;
@@ -49,7 +49,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(111, 97);
+            this.label4.Location = new System.Drawing.Point(56, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(204, 16);
             this.label4.TabIndex = 18;
@@ -58,7 +58,7 @@
             // btnCancel
             // 
             this.btnCancel.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.cancel_24px;
-            this.btnCancel.Location = new System.Drawing.Point(435, 201);
+            this.btnCancel.Location = new System.Drawing.Point(380, 164);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(111, 101);
             this.btnCancel.TabIndex = 20;
@@ -71,7 +71,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.ok_24px;
-            this.btnGuardar.Location = new System.Drawing.Point(181, 201);
+            this.btnGuardar.Location = new System.Drawing.Point(126, 164);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(111, 101);
             this.btnGuardar.TabIndex = 19;
@@ -89,11 +89,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(632, 323);
             this.Controls.Add(this.comboTipoDeVencimiento);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label4);
+            this.MaximumSize = new System.Drawing.Size(650, 370);
+            this.MinimumSize = new System.Drawing.Size(650, 370);
             this.Name = "frmFiltroTipoDeVencimiento";
             this.Text = "frmFiltroTipoDeVencimiento";
             this.Load += new System.EventHandler(this.frmFiltroTipoDeVencimiento_Load);
