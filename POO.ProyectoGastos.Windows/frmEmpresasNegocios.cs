@@ -144,7 +144,7 @@ namespace POO.ProyectoGastos.Windows
         private void tsbBuscar_Click(object sender, EventArgs e)
         {
             tsbBuscar.Text = "";
-            DeshabilitarBotones();
+            //DeshabilitarBotones();
         }
 
         private void DeshabilitarBotones()
@@ -160,10 +160,10 @@ namespace POO.ProyectoGastos.Windows
             tsbNuevo.Enabled = true;
         }
 
-        private void tsbBuscar_Leave(object sender, EventArgs e)
-        {
-            tsbBuscar.Text = "Buscar";
-        }
+        //private void tsbBuscar_Leave(object sender, EventArgs e)
+        //{
+        //    tsbBuscar.Text = "Buscar";
+        //}
         private void BuscarCliente(List<EmpresaNegocio> empresa, string texto)
         {
             var listaFiltrada = empresa;

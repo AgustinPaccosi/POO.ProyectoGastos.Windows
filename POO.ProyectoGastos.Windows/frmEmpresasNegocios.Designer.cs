@@ -214,7 +214,6 @@
             this.tsbBuscar.Size = new System.Drawing.Size(140, 59);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbBuscar.Leave += new System.EventHandler(this.tsbBuscar_Leave);
             this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
             this.tsbBuscar.TextChanged += new System.EventHandler(this.tsbBuscar_TextChanged);
             // 

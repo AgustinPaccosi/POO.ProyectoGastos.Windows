@@ -146,7 +146,7 @@ namespace POO.ProyectoGastos.Windows
 
         private void tsbActualizar_Click(object sender, EventArgs e)
         {
-            HabilitarBotones();
+            //HabilitarBotones();
             MostrarDatosEnGrilla();
         }
 
@@ -169,26 +169,26 @@ namespace POO.ProyectoGastos.Windows
         private void toolStripTextBox1_Click(object sender, EventArgs e)
         {
             toolStripTextBox1.Text = "";
-            DeshabilitarBotones();
+            //DeshabilitarBotones();
         }
 
-        private void toolStripTextBox1_Leave(object sender, EventArgs e)
-        {
-            toolStripTextBox1.Text = "Buscar";
-            //MostrarDatosEnGrilla();
-        }
-        private void DeshabilitarBotones()
-        {
-            tsbBorrar.Enabled = false;
-            tsbEditar.Enabled = false;
-            tsbNuevo.Enabled = false;
-        }
-        private void HabilitarBotones()
-        {
-            tsbBorrar.Enabled = true;
-            tsbEditar.Enabled = true;
-            tsbNuevo.Enabled = true;
-        }
+        //private void toolStripTextBox1_Leave(object sender, EventArgs e)
+        //{
+        //    toolStripTextBox1.Text = "Buscar";
+        //    //MostrarDatosEnGrilla();
+        //}
+        //private void DeshabilitarBotones()
+        //{
+        //    tsbBorrar.Enabled = false;
+        //    tsbEditar.Enabled = false;
+        //    tsbNuevo.Enabled = false;
+        //}
+        //private void HabilitarBotones()
+        //{
+        //    tsbBorrar.Enabled = true;
+        //    tsbEditar.Enabled = true;
+        //    tsbNuevo.Enabled = true;
+        //}
 
     }
 }

@@ -28,7 +28,7 @@ namespace POO.ProyectoGastos.Windows
                 esEdicion = true;
                 txtNombre.Text = persona.Nombre;
                 txtApellido.Text = persona.Apellido;
-                comboRol.SelectedIndex = persona.IdRol;
+                comboRol.SelectedValue = persona.IdRol;
             }
         }
         public Persona GetPersona()
