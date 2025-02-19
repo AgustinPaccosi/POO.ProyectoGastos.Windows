@@ -64,11 +64,11 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        public List<GastosHogarDto> GetGastosHogar(int? IdPersona, int? IdTipoDeGasto, DateTime? FechaInicio, DateTime? FechaFin, bool? Pagado)
+        public List<GastosHogarDto> GetGastosHogar(int? IdPersona, int? IdTipoDeGasto, DateTime? FechaInicio, DateTime? FechaFin, bool? Pagado, int? IdFormaPago)
         {
             try
             {
-                return _repositorioGastosHogar.GetGastosHogar(IdPersona, IdTipoDeGasto, FechaInicio, FechaFin, Pagado);
+                return _repositorioGastosHogar.GetGastosHogar(IdPersona, IdTipoDeGasto, FechaInicio, FechaFin, Pagado, IdFormaPago);
             }
             catch (Exception)
             {

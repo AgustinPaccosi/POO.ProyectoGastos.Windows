@@ -135,7 +135,14 @@ namespace POO.ProyectoGastos.Windows
                 valido = false;
                 errorProvider1.SetError(ComboTipoDeVencimiento, "Elija un Tipo De Vencimiento");
             }
-            
+            if (int.TryParse(textNombre.Text, out _))
+            {
+                valido = false;
+                errorProvider1.SetError(textNombre, " Elija Un Gasto Fijo");
+
+            }
+
+
             return valido;
         }
 

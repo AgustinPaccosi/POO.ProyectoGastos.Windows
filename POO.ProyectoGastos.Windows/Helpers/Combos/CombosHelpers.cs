@@ -199,7 +199,7 @@ namespace POO.ProyectoGastos.Windows.Helpers.Combos
         public static void CargarComboGastoFijo(ref ComboBox combo)
         {
             IServiciosGastosFijos servicios = new ServiciosGastosFijos();
-            var lista = servicios.GetGastosFijos();
+            var lista = servicios.GetGastosFijosCombo();
             var defaultgastoFijo = new GastosFijosDto()
             {
                 IdGastoFijo = 0,

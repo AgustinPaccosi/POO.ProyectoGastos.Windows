@@ -95,6 +95,18 @@
     <Compile Include="frmFiltroPersona.Designer.cs">
       <DependentUpon>frmFiltroPersona.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFiltroPorFormaDePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiltroPorFormaDePago.Designer.cs">
+      <DependentUpon>frmFiltroPorFormaDePago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFiltroTipoDeVencimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiltroTipoDeVencimiento.Designer.cs">
+      <DependentUpon>frmFiltroTipoDeVencimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFiltroTipoGasto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +201,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFiltroPersona.resx">
       <DependentUpon>frmFiltroPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFiltroPorFormaDePago.resx">
+      <DependentUpon>frmFiltroPorFormaDePago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFiltroTipoDeVencimiento.resx">
+      <DependentUpon>frmFiltroTipoDeVencimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFiltroTipoGasto.resx">
       <DependentUpon>frmFiltroTipoGasto.cs</DependentUpon>

@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPersonas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.ColPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
@@ -39,15 +43,11 @@
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
-            this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.ColPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -64,6 +64,49 @@
             this.splitContainer1.Size = new System.Drawing.Size(882, 502);
             this.splitContainer1.SplitterDistance = 446;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // dgvDatos
+            // 
+            this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToDeleteRows = false;
+            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColPersona,
+            this.ColApellido,
+            this.ColRol});
+            this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDatos.Location = new System.Drawing.Point(0, 59);
+            this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
+            this.dgvDatos.RowHeadersWidth = 51;
+            this.dgvDatos.RowTemplate.Height = 24;
+            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDatos.Size = new System.Drawing.Size(882, 387);
+            this.dgvDatos.TabIndex = 18;
+            // 
+            // ColPersona
+            // 
+            this.ColPersona.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColPersona.HeaderText = "Nombre";
+            this.ColPersona.MinimumWidth = 6;
+            this.ColPersona.Name = "ColPersona";
+            this.ColPersona.ReadOnly = true;
+            // 
+            // ColApellido
+            // 
+            this.ColApellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColApellido.HeaderText = "Apellido";
+            this.ColApellido.MinimumWidth = 6;
+            this.ColApellido.Name = "ColApellido";
+            this.ColApellido.ReadOnly = true;
+            // 
+            // ColRol
+            // 
+            this.ColRol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColRol.HeaderText = "Rol";
+            this.ColRol.MinimumWidth = 6;
+            this.ColRol.Name = "ColRol";
+            this.ColRol.ReadOnly = true;
             // 
             // toolStrip2
             // 
@@ -127,6 +170,7 @@
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(200, 59);
             this.toolStripTextBox1.Text = "Buscar";
+            this.toolStripTextBox1.Leave += new System.EventHandler(this.toolStripTextBox1_Leave);
             this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
             this.toolStripTextBox1.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged);
             // 
@@ -157,49 +201,6 @@
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
-            // dgvDatos
-            // 
-            this.dgvDatos.AllowUserToAddRows = false;
-            this.dgvDatos.AllowUserToDeleteRows = false;
-            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColPersona,
-            this.ColApellido,
-            this.ColRol});
-            this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatos.Location = new System.Drawing.Point(0, 59);
-            this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.RowHeadersWidth = 51;
-            this.dgvDatos.RowTemplate.Height = 24;
-            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(882, 387);
-            this.dgvDatos.TabIndex = 18;
-            // 
-            // ColPersona
-            // 
-            this.ColPersona.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColPersona.HeaderText = "Nombre";
-            this.ColPersona.MinimumWidth = 6;
-            this.ColPersona.Name = "ColPersona";
-            this.ColPersona.ReadOnly = true;
-            // 
-            // ColApellido
-            // 
-            this.ColApellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColApellido.HeaderText = "Apellido";
-            this.ColApellido.MinimumWidth = 6;
-            this.ColApellido.Name = "ColApellido";
-            this.ColApellido.ReadOnly = true;
-            // 
-            // ColRol
-            // 
-            this.ColRol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColRol.HeaderText = "Rol";
-            this.ColRol.MinimumWidth = 6;
-            this.ColRol.Name = "ColRol";
-            this.ColRol.ReadOnly = true;
-            // 
             // frmPersonas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -213,9 +214,9 @@
             this.splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
 
         }

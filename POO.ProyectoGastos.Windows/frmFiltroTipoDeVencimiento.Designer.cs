@@ -1,6 +1,6 @@
 ﻿namespace POO.ProyectoGastos.Windows
 {
-    partial class frmFiltroTipoGasto
+    partial class frmFiltroTipoDeVencimiento
     {
         /// <summary>
         /// Required designer variable.
@@ -29,32 +29,39 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.comboTipoDeGasto = new System.Windows.Forms.ComboBox();
+            this.comboTipoDeVencimiento = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboTipoDeGasto
+            // comboTipoDeVencimiento
             // 
-            this.comboTipoDeGasto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboTipoDeGasto.FormattingEnabled = true;
-            this.comboTipoDeGasto.Location = new System.Drawing.Point(233, 111);
-            this.comboTipoDeGasto.Name = "comboTipoDeGasto";
-            this.comboTipoDeGasto.Size = new System.Drawing.Size(285, 24);
-            this.comboTipoDeGasto.TabIndex = 17;
+            this.comboTipoDeVencimiento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboTipoDeVencimiento.FormattingEnabled = true;
+            this.comboTipoDeVencimiento.Location = new System.Drawing.Point(261, 116);
+            this.comboTipoDeVencimiento.Name = "comboTipoDeVencimiento";
+            this.comboTipoDeVencimiento.Size = new System.Drawing.Size(285, 24);
+            this.comboTipoDeVencimiento.TabIndex = 21;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(111, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(204, 16);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Seleccione Tipo De Vencimiento";
             // 
             // btnCancel
             // 
             this.btnCancel.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.cancel_24px;
-            this.btnCancel.Location = new System.Drawing.Point(427, 174);
+            this.btnCancel.Location = new System.Drawing.Point(435, 201);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(111, 101);
-            this.btnCancel.TabIndex = 16;
+            this.btnCancel.TabIndex = 20;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -64,47 +71,33 @@
             // btnGuardar
             // 
             this.btnGuardar.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.ok_24px;
-            this.btnGuardar.Location = new System.Drawing.Point(173, 174);
+            this.btnGuardar.Location = new System.Drawing.Point(181, 201);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(111, 101);
-            this.btnGuardar.TabIndex = 15;
+            this.btnGuardar.TabIndex = 19;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(115, 92);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 16);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Seleccione Tipo De Gasto";
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // errorProvider2
-            // 
-            this.errorProvider2.ContainerControl = this;
-            // 
-            // frmFiltroTipoGasto
+            // frmFiltroTipoDeVencimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.comboTipoDeGasto);
+            this.Controls.Add(this.comboTipoDeVencimiento);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label4);
-            this.Name = "frmFiltroTipoGasto";
-            this.Text = "frmFiltroTipoGasto";
-            this.Load += new System.EventHandler(this.frmFiltroTipoGasto_Load);
+            this.Name = "frmFiltroTipoDeVencimiento";
+            this.Text = "frmFiltroTipoDeVencimiento";
+            this.Load += new System.EventHandler(this.frmFiltroTipoDeVencimiento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,11 +105,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboTipoDeGasto;
+        private System.Windows.Forms.ComboBox comboTipoDeVencimiento;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }

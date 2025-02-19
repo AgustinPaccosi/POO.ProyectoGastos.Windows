@@ -23,9 +23,10 @@ namespace POO.ProyectoGastos.Windows
         private readonly ServiciosFondosComunes serviciosFondosComunes;
         int? IdPersona;
         int? IdTipoDeGasto;
-        DateTime? FechaInicio;
-        DateTime? FechaFin;
+        DateTime? FechaInicio= DateTime.Now.AddDays(-30);
+        DateTime? FechaFin=DateTime.Now;
         bool? Pagado;
+        int? IdFormaPago;
 
         private List<GastosHogarDto> listaGastosHogar;
 
@@ -49,6 +50,7 @@ namespace POO.ProyectoGastos.Windows
             {
                 MostrarCantidades();
                 MostrarDatosEnGrilla();
+                
             }
             catch (Exception)
             {
@@ -79,7 +81,7 @@ namespace POO.ProyectoGastos.Windows
         private void MostrarDatosEnGrilla()
         {
             GridHelper.LimpiarGrilla(dgvDatos);
-            listaGastosHogar = _servicioGastosHogar.GetGastosHogar(IdPersona,IdTipoDeGasto,FechaInicio,FechaFin,Pagado);
+            listaGastosHogar = _servicioGastosHogar.GetGastosHogar(IdPersona,IdTipoDeGasto,FechaInicio,FechaFin,Pagado,IdFormaPago);
 
             foreach (var gastoHogar in listaGastosHogar)
             {
@@ -192,9 +194,13 @@ namespace POO.ProyectoGastos.Windows
             
             IdPersona = null;
             IdTipoDeGasto = null;
-            FechaInicio = null;
-            FechaFin = null; 
+            //FechaInicio = null;
+            //FechaFin = null;
             Pagado = null;
+            IdFormaPago = null;
+            FechaInicio = DateTime.Now.AddDays(-30);
+            FechaFin = DateTime.Now;
+
             MostrarDatosEnGrilla();
             HabilitarBotones();
             MostrarCantidades();
@@ -216,12 +222,15 @@ namespace POO.ProyectoGastos.Windows
             frmFiltroPersona frm= new frmFiltroPersona();
 
             DialogResult dr=frm.ShowDialog(this);
+
             if (dr == DialogResult.Cancel)
             {
                 return;
             }
             var persona = frm.GetPersona();
             IdPersona = persona.IdPersona;
+            FechaInicio = null;
+            FechaFin = null;
             MostrarDatosEnGrilla();
             DeshabilitarBotones();
             EsconderMontos();
@@ -250,6 +259,8 @@ namespace POO.ProyectoGastos.Windows
             }
             var tipoGasto = frm.GetTipoDegasto();
             IdTipoDeGasto = tipoGasto.IdTipoGasto;
+            FechaInicio = null;
+            FechaFin = null;
             MostrarDatosEnGrilla();
             DeshabilitarBotones();
             EsconderMontos();
@@ -260,6 +271,8 @@ namespace POO.ProyectoGastos.Windows
         private void pagadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Pagado = true;
+            FechaInicio = null;
+            FechaFin = null;
             MostrarDatosEnGrilla();
             DeshabilitarBotones();
             EsconderMontos();
@@ -293,6 +306,26 @@ namespace POO.ProyectoGastos.Windows
             lblGastosConFondo.Visible= false;
             lblResto.Visible= false;
             lblTotalGastos.Visible = false;
+
+        }
+
+        private void formaDePagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFiltroPorFormaDePago frm = new frmFiltroPorFormaDePago();
+
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel)
+            {
+                return;
+            }
+            var formaDePago = frm.GetTipoFormaDePago();
+            IdFormaPago = formaDePago.IdFormaPago;
+            FechaInicio = null;
+            FechaFin = null;
+
+            MostrarDatosEnGrilla();
+            DeshabilitarBotones();
+            EsconderMontos();
 
         }
     }

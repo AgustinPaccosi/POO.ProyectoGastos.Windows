@@ -1,7 +1,9 @@
-﻿using POO.ProyectoGastos.Entidades.Dtos;
+﻿using Microsoft.Win32;
+using POO.ProyectoGastos.Entidades.Dtos;
 using POO.ProyectoGastos.Entidades.Entidades;
 using POO.ProyectoGastos.Servicios.Interfaces;
 using POO.ProyectoGastos.Servicios.Servicios;
+using POO.ProyectoGastos.Windows.Helpers.Forms;
 using POO.ProyectoGastos.Windows.Helpers.GridHelper;
 using System;
 using System.Collections.Generic;
@@ -30,12 +32,18 @@ namespace POO.ProyectoGastos.Windows
         private readonly ServiciosTiposDeVencimientos serviciosTiposDeVencimientos;
         private List<GastosFijosDto> lista;
         string texto = "";
-
+        int paginaActual=1;
+        int registrosPorPaginas = 4;
+        int registros = 0;
+        int paginas = 0;
+        int? IdTipoDeVencimiento;
+        int? IdTipoGasto;
+        
         private void GastosFijos_Load(object sender, EventArgs e)
         {
             try
             {
-                MostrarDatosEnGrilla();
+                MostrarDatos();
 
             }
             catch (Exception)
@@ -45,16 +53,28 @@ namespace POO.ProyectoGastos.Windows
             }
         }
 
+        private void MostrarDatos()
+        {
+            registros = servicio.GetCantidad(IdTipoDeVencimiento, IdTipoGasto);
+            paginas = FormHelpers.CalcularPaginas(registros, registrosPorPaginas);
+
+            MostrarDatosEnGrilla();
+        }
+
         private void MostrarDatosEnGrilla()
         {
             GridHelper.LimpiarGrilla(dgvDatos);
-            lista = servicio.GetGastosFijos();
+            lista = servicio.GetGastosFijos(registrosPorPaginas, paginaActual,IdTipoDeVencimiento,IdTipoGasto);
             foreach (var gasto in lista)
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
                 GridHelper.SetearFila(r, gasto);
                 GridHelper.AgregarFila(dgvDatos, r);
             }
+            lblPaginaActual.Text = paginaActual.ToString();
+            lblRegistros.Text=registros.ToString();
+            lblPaginas.Text=paginas.ToString();
+            HabilitarBotones();
         }
 
 
@@ -62,7 +82,7 @@ namespace POO.ProyectoGastos.Windows
         {
             frmGastosFijosAE frm=new frmGastosFijosAE(servicio);
             DialogResult dr= frm.ShowDialog(this);
-            MostrarDatosEnGrilla();
+            MostrarDatos();
         }
 
         private void tsbBorrar_Click(object sender, EventArgs e)
@@ -86,12 +106,17 @@ namespace POO.ProyectoGastos.Windows
                 //lblCantidad.Text = _servicio.GetCantidad().ToString();
                 MessageBox.Show("Registro borrado", "Mensaje",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarDatos();
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string mensaje = ex.Message.Contains("FK_") ? "ESTA RELACIONADO" : ex.Message;
+
+                MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                //MessageBox.Show(ex.Message, "Error",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
@@ -149,7 +174,122 @@ namespace POO.ProyectoGastos.Windows
 
         private void tsbActualizar_Click(object sender, EventArgs e)
         {
+            IdTipoDeVencimiento = null;
+            IdTipoGasto = null;
+            paginaActual = 1;
+            MostrarDatos();
+        }
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == paginas)
+            {
+                return;
+            }
+            paginaActual++;
             MostrarDatosEnGrilla();
+            if (IdTipoDeVencimiento!=null || IdTipoGasto !=null)
+            {
+                DeshabilitarBotones();
+
+            }
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == 1)
+            {
+                return;
+            }
+            paginaActual--;
+            MostrarDatosEnGrilla();
+            if (IdTipoDeVencimiento != null || IdTipoGasto != null)
+            {
+                DeshabilitarBotones();
+
+            }
+
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            paginaActual = paginas;
+            MostrarDatosEnGrilla();
+            if (IdTipoDeVencimiento != null || IdTipoGasto != null)
+            {
+                DeshabilitarBotones();
+
+            }
+
+        }
+
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            paginaActual = 1;
+            MostrarDatosEnGrilla();
+            if (IdTipoDeVencimiento != null || IdTipoGasto != null)
+            {
+                DeshabilitarBotones();
+
+            }
+
+        }
+
+        private void tipoDeGastoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFiltroTipoGasto frm = new frmFiltroTipoGasto();
+
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel)
+            {
+                return;
+            }
+            var tipoGasto = frm.GetTipoDegasto();
+            IdTipoGasto = tipoGasto.IdTipoGasto;
+            MostrarDatos();
+            DeshabilitarBotones();
+
+        }
+        private void HabilitarBotones()
+        {
+            tsbNuevo.Enabled = true;
+            tsbEditar.Enabled = true;
+            tsbBorrar.Enabled = true;
+            tsbBuscar.Enabled = true;
+            tsbBuscar.BackColor = SystemColors.Window;
+            tsbCerrar.Enabled = true;
+
+        }
+
+        private void DeshabilitarBotones()
+        {
+            tsbNuevo.Enabled = false;
+            tsbEditar.Enabled = false;
+            tsbBorrar.Enabled = false;
+            tsbBuscar.Enabled = false;
+            tsbBuscar.BackColor = SystemColors.GrayText;
+            tsbCerrar.Enabled = false;
+
+        }
+
+        private void tipoDeVencimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFiltroTipoDeVencimiento frm = new frmFiltroTipoDeVencimiento();
+
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel)
+            {
+                return;
+            }
+            var tipoDeVencimiento = frm.GetTipoDeVencimiento();
+            IdTipoDeVencimiento = tipoDeVencimiento.IdTipoDeVencimiento;
+            MostrarDatos();
+            DeshabilitarBotones();
+
+        }
+
+        private void tsbCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

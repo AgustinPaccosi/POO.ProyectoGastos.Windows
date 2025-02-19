@@ -51,19 +51,20 @@
             this.tipoDeGastoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ultimos30DiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pagadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formaDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblResto = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblGastosConFondo = new System.Windows.Forms.Label();
             this.lblFondoComun = new System.Windows.Forms.Label();
             this.lblTotalGastos = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblResto = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -97,8 +98,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.lblFondoComun);
             this.splitContainer1.Panel2.Controls.Add(this.lblTotalGastos);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Size = new System.Drawing.Size(1039, 559);
-            this.splitContainer1.SplitterDistance = 441;
+            this.splitContainer1.Size = new System.Drawing.Size(1182, 653);
+            this.splitContainer1.SplitterDistance = 515;
             this.splitContainer1.TabIndex = 0;
             // 
             // dgvDatos
@@ -128,7 +129,7 @@
             this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.RowHeadersWidth = 51;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(1039, 382);
+            this.dgvDatos.Size = new System.Drawing.Size(1182, 456);
             this.dgvDatos.TabIndex = 16;
             // 
             // colTipoGasto
@@ -211,7 +212,7 @@
             this.tsbCerrar});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1039, 59);
+            this.toolStrip2.Size = new System.Drawing.Size(1182, 59);
             this.toolStrip2.TabIndex = 15;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -259,7 +260,8 @@
             this.personaToolStripMenuItem,
             this.tipoDeGastoToolStripMenuItem,
             this.ultimos30DiasToolStripMenuItem,
-            this.pagadoToolStripMenuItem});
+            this.pagadoToolStripMenuItem,
+            this.formaDePagoToolStripMenuItem});
             this.tsbBuscar.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.filter_32px;
             this.tsbBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -271,30 +273,37 @@
             // personaToolStripMenuItem
             // 
             this.personaToolStripMenuItem.Name = "personaToolStripMenuItem";
-            this.personaToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.personaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.personaToolStripMenuItem.Text = "Persona";
             this.personaToolStripMenuItem.Click += new System.EventHandler(this.personaToolStripMenuItem_Click);
             // 
             // tipoDeGastoToolStripMenuItem
             // 
             this.tipoDeGastoToolStripMenuItem.Name = "tipoDeGastoToolStripMenuItem";
-            this.tipoDeGastoToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.tipoDeGastoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.tipoDeGastoToolStripMenuItem.Text = "Tipo De Gasto";
             this.tipoDeGastoToolStripMenuItem.Click += new System.EventHandler(this.tipoDeGastoToolStripMenuItem_Click);
             // 
             // ultimos30DiasToolStripMenuItem
             // 
             this.ultimos30DiasToolStripMenuItem.Name = "ultimos30DiasToolStripMenuItem";
-            this.ultimos30DiasToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.ultimos30DiasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ultimos30DiasToolStripMenuItem.Text = "Rango Fechas";
             this.ultimos30DiasToolStripMenuItem.Click += new System.EventHandler(this.ultimos30DiasToolStripMenuItem_Click);
             // 
             // pagadoToolStripMenuItem
             // 
             this.pagadoToolStripMenuItem.Name = "pagadoToolStripMenuItem";
-            this.pagadoToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.pagadoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pagadoToolStripMenuItem.Text = "Pagado";
             this.pagadoToolStripMenuItem.Click += new System.EventHandler(this.pagadoToolStripMenuItem_Click);
+            // 
+            // formaDePagoToolStripMenuItem
+            // 
+            this.formaDePagoToolStripMenuItem.Name = "formaDePagoToolStripMenuItem";
+            this.formaDePagoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.formaDePagoToolStripMenuItem.Text = "Forma De Pago";
+            this.formaDePagoToolStripMenuItem.Click += new System.EventHandler(this.formaDePagoToolStripMenuItem_Click);
             // 
             // tsbActualizar
             // 
@@ -334,8 +343,39 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1039, 441);
+            this.dataGridView1.Size = new System.Drawing.Size(1182, 515);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // lblResto
+            // 
+            this.lblResto.AutoSize = true;
+            this.lblResto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResto.Location = new System.Drawing.Point(241, 80);
+            this.lblResto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblResto.Name = "lblResto";
+            this.lblResto.Size = new System.Drawing.Size(17, 17);
+            this.lblResto.TabIndex = 65;
+            this.lblResto.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(190, 59);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 16);
+            this.label5.TabIndex = 64;
+            this.label5.Text = "-----------------------";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(37, 80);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(157, 16);
+            this.label4.TabIndex = 63;
+            this.label4.Text = "Queda En Fondo Comun:";
             // 
             // label1
             // 
@@ -400,43 +440,14 @@
             this.label3.TabIndex = 60;
             this.label3.Text = "Total Gastos Pagados Con F.C.";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 80);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(157, 16);
-            this.label4.TabIndex = 63;
-            this.label4.Text = "Queda En Fondo Comun:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(190, 59);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 16);
-            this.label5.TabIndex = 64;
-            this.label5.Text = "-----------------------";
-            // 
-            // lblResto
-            // 
-            this.lblResto.AutoSize = true;
-            this.lblResto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResto.Location = new System.Drawing.Point(241, 80);
-            this.lblResto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblResto.Name = "lblResto";
-            this.lblResto.Size = new System.Drawing.Size(17, 17);
-            this.lblResto.TabIndex = 65;
-            this.lblResto.Text = "0";
-            // 
             // frmGastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1039, 559);
+            this.ClientSize = new System.Drawing.Size(1182, 653);
             this.Controls.Add(this.splitContainer1);
+            this.MaximumSize = new System.Drawing.Size(1200, 700);
+            this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "frmGastos";
             this.Text = "Gastos Del Hogar";
             this.Load += new System.EventHandler(this.Gastos_Load);
@@ -489,5 +500,6 @@
         private System.Windows.Forms.Label lblResto;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripMenuItem formaDePagoToolStripMenuItem;
     }
 }

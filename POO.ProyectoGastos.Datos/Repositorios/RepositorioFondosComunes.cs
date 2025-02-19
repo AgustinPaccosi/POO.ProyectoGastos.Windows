@@ -154,7 +154,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             decimal total = 0;
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string selectquery = @"Select sum(Convert(numeric,Monto)) from [Personas/FondosComunes] where IdFondoComun=@IdFondoComun";
+                string selectquery = @"Select ISNULL(sum(Convert(numeric,Monto)),0) from [Personas/FondosComunes] where IdFondoComun=@IdFondoComun";
                 total = conn.QuerySingle<decimal>(selectquery, new { IdFondoComun = IdFondoComun });
             }
             return total;

@@ -117,48 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="colTipoGasto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
-  <metadata name="colPersona.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colFecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colMonto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colDetalle.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ColGastoFijo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ColPagado.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ColFondo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>141, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tsbNuevo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJKSURBVFhH7ZXNS1RRGMbnP+h/aNnMxUVfRiv/AVctXbSw
-        LLEPcVGSaJkQIxMaRIoR7YTGhVg6n+W5Y2JOGjRJKBRBCdPGJEa9n+rbe+SdYS5z6HbONVo0DzxcOHPn
-        eX537jnvhOoSafitHUeDiofy1g2KURcGKQE8/7wLD5c5hH2botSEYUoAC8VdKGzswaN3ASEwTBng684+
-        FH4EhMCwQADcH4JAYFhggDLEiAoEhh0KAPcKQQwvmR0U7y8MUwJ4WnBg/KNb48fvHf55nOL9xW+uDj4k
-        1wHqAP8xAA4ifv03AINvbLicNOAWM/MU7y/8ojLAvQULenIW9M9bcBd9Ccu7EutwLWOsU7y/MEgZ4CYz
-        oXXGqDianIcSOwOZTF+J4v2FQcoAnVkTRtNTsMUa4RtrBkM/Aa6ulb1qv9SKjh6ZoCqxMEgaYAh9Z86C
-        tqQJ09lYdanIn6hKLAyUAojiRruSNuHCzA6MpSdhgzWJSiveZNqeyyJRyB4/QpVeYagUwP28BRcTBsSz
-        ozVlPl6iSq8wVPoVdOPmu574Dtv6aVGR0DbTzlOlVxgoDTCAR47v+i+vzgnLRDZfa0ep0isMlAbAcw6x
-        ZE5Y9BuPUKVXGCgFwIcPf3p+/Ep6o6ioxpsvtH2XaU+o0isMlQLgR7A3Zx5Mvc5EEdZmW4SlZf9MHTOc
-        XMMpqqsVhkq/Au7YogXtKQOeZcaExRWzyJ//L6jI0cMn+c+LE6/P1cMrvJQ/NV77cf0Brl+lW/+++LCx
-        9UjKmQ2fpaUqhUK/APw/I0tQMUbkAAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

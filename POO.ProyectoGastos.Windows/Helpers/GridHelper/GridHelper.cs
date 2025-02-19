@@ -100,9 +100,10 @@ namespace POO.ProyectoGastos.Windows.Helpers.GridHelper
                 case GastosFijosDto gastoFijo:
                     r.Cells[0].Value = gastoFijo.Nombre;
                     r.Cells[1].Value = gastoFijo.TipoGasto;
-                    r.Cells[2].Value = gastoFijo.Vencimiento.ToShortDateString();
-                    r.Cells[3].Value = $" $ {gastoFijo.MontoPagar}";
-                    r.Cells[4].Value = gastoFijo.TipoDeVencimiento;
+                    //r.Cells[2].Value = $"El {gastoFijo.Vencimiento.Day} de cada mes";
+                    //r.Cells[2].Value = gastoFijo.Vencimiento.ToShortDateString();
+                    r.Cells[2].Value = $" $ {gastoFijo.MontoPagar}";
+                    r.Cells[3].Value = gastoFijo.TipoDeVencimiento;
                     break;
 
             }

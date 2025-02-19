@@ -16,7 +16,7 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
         bool Existe(GastoHogar gastoHogar);
         //void Editar(int IdGasto);
         int GetCantidad();
-        List<GastosHogarDto> GetGastosHogar(int? IdPersona, int? IdTipoDeGasto, DateTime? FechaInicio, DateTime? FechaFin, bool? Pagado);
+        List<GastosHogarDto> GetGastosHogar(int? IdPersona, int? IdTipoDeGasto, DateTime? FechaInicio, DateTime? FechaFin, bool? Pagado, int? IdFormaPago);
         //List<ComboPersonasDto> GetComboPersonasDtos();
         GastoHogar GetGastoHogarPorId(int id);
 

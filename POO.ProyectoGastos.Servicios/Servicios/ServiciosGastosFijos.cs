@@ -46,6 +46,19 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
+        public int GetCantidad(int? IdTipoDeVencimiento, int? IdTipoGasto)
+        {
+            try
+            {
+                return _repositorioGastosFijos.GetCantidad(IdTipoDeVencimiento, IdTipoGasto);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public GastosFijos GetGastoFijoPorId(int id)
         {
             try
@@ -59,11 +72,11 @@ namespace POO.ProyectoGastos.Servicios.Servicios
             }
         }
 
-        public List<GastosFijosDto> GetGastosFijos()
+        public List<GastosFijosDto> GetGastosFijos(int reguistrosPorPagina, int paginaActual, int? IdTipoDeVencimiento, int? IdTipoGasto)
         {
             try
             {
-                return _repositorioGastosFijos.GetGastosFijos();
+                return _repositorioGastosFijos.GetGastosFijos(reguistrosPorPagina, paginaActual, IdTipoDeVencimiento, IdTipoGasto);
             }
             catch (Exception)
             {
@@ -71,6 +84,24 @@ namespace POO.ProyectoGastos.Servicios.Servicios
                 throw;
             }
         }
+
+        public List<GastosFijosDto> GetGastosFijosCombo()
+        {
+            try
+            {
+                return _repositorioGastosFijos.GetGastosFijosCombo();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        //public List<GastosFijosDto> GetGastosFijos(int reguistrosPorPagina, int paginaActual, int? IdTipoDeVencimiento, int? IdTipoGasto)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public void Guardar(GastosFijos gastosFijos)
         {

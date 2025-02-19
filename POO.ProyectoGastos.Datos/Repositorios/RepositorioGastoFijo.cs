@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.Win32;
 using POO.ProyectoGastos.Comun.Interfaces;
 using POO.ProyectoGastos.Entidades.Dtos;
 using POO.ProyectoGastos.Entidades.Dtos.GastosHogar;
@@ -108,7 +109,55 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 
         }
 
-        public List<GastosFijosDto> GetGastosFijos()
+        public List<GastosFijosDto> GetGastosFijos(int reguistrosPorPagina, int paginaActual, int? IdTipoDeVencimiento, int? IdTipoGasto)
+        {
+            List<GastosFijosDto> lista = new List<GastosFijosDto>();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                StringBuilder selectQuery = new StringBuilder();
+
+                selectQuery.AppendLine(@"SELECT IdGastoFijo, Nombre, Vencimiento, MontoPagar, tg.TipoGasto, tv.TipoDeVencimiento 
+                               FROM dbo.GastosFijos gf
+                               INNER JOIN TiposGastos tg ON tg.IdTipoGasto = gf.IdTipoGasto
+                               INNER JOIN TiposDeVencimientos tv ON tv.IdTipoDeVencimiento = gf.IdTipoDeVencimiento");
+                if (IdTipoDeVencimiento!=null||IdTipoGasto!=null)
+                {
+                    selectQuery.AppendLine("Where tv.IdTipoDeVencimiento=@IdTipoDeVencimiento or tg.IdTipoGasto=@IdTipoGasto");
+                }
+                selectQuery.AppendLine("ORDER BY Vencimiento DESC OFFSET @registrosSaltados ROWS FETCH NEXT @registrosPorPagina ROWS ONLY");
+                var parametros = new { IdTipoDeVencimiento, IdTipoGasto, registrosSaltados = reguistrosPorPagina * (paginaActual - 1), registrosPorPagina= reguistrosPorPagina };
+                lista = conn.Query<GastosFijosDto>(selectQuery.ToString(), parametros).ToList();
+            }
+            return lista;
+        }
+
+        public int GetCantidad(int? IdTipoDeVencimiento, int? IdTipoGasto)
+        {
+            int cantidad = 0;
+            string selectQuery;
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                if (IdTipoDeVencimiento == null && IdTipoGasto==null)
+                {
+                    selectQuery = "SELECT COUNT(*) FROM GastosFijos";
+                    cantidad = conn.ExecuteScalar<int>(selectQuery);
+                }
+                else if (IdTipoDeVencimiento == null && IdTipoGasto != null)
+                {
+                    selectQuery = "SELECT COUNT(*) FROM GastosFijos WHERE IdTipoGasto=@IdTipoGasto ";
+                    cantidad = conn.ExecuteScalar<int>(selectQuery, new { IdTipoGasto = IdTipoGasto });
+                }
+                else
+                {
+                    selectQuery = "SELECT COUNT(*) FROM GastosFijos WHERE IdTipoDeVencimiento=@IdTipoDeVencimiento ";
+                    cantidad = conn.ExecuteScalar<int>(selectQuery, new { IdTipoDeVencimiento = IdTipoDeVencimiento });
+
+                }
+            }
+            return cantidad;
+        }
+
+        public List<GastosFijosDto> GetGastosFijosCombo()
         {
             List<GastosFijosDto> lista = new List<GastosFijosDto>();
             using (var conn = new SqlConnection(cadenaConexion))

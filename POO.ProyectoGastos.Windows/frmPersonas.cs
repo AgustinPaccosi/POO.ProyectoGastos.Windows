@@ -86,8 +86,11 @@ namespace POO.ProyectoGastos.Windows
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message, "Error",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string mensaje = ex.Message.Contains("FK_") ? "ESTA RELACIONADO" : ex.Message;
+
+                MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
@@ -143,6 +146,7 @@ namespace POO.ProyectoGastos.Windows
 
         private void tsbActualizar_Click(object sender, EventArgs e)
         {
+            HabilitarBotones();
             MostrarDatosEnGrilla();
         }
 
@@ -164,8 +168,28 @@ namespace POO.ProyectoGastos.Windows
 
         private void toolStripTextBox1_Click(object sender, EventArgs e)
         {
-            toolStripTextBox1.Text = ""; 
+            toolStripTextBox1.Text = "";
+            DeshabilitarBotones();
         }
+
+        private void toolStripTextBox1_Leave(object sender, EventArgs e)
+        {
+            toolStripTextBox1.Text = "Buscar";
+            //MostrarDatosEnGrilla();
+        }
+        private void DeshabilitarBotones()
+        {
+            tsbBorrar.Enabled = false;
+            tsbEditar.Enabled = false;
+            tsbNuevo.Enabled = false;
+        }
+        private void HabilitarBotones()
+        {
+            tsbBorrar.Enabled = true;
+            tsbEditar.Enabled = true;
+            tsbNuevo.Enabled = true;
+        }
+
     }
 }
 

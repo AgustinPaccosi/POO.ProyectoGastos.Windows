@@ -192,6 +192,11 @@ namespace POO.ProyectoGastos.Windows
                 valido = false;
                 errorProvider1.SetError(comboGastoFijo, " Elija Un Gasto Fijo");
             }
+            if (int.TryParse(textDetalle.Text, out _))
+            {
+                valido = false;
+                errorProvider1.SetError(textDetalle, "Debe contener por lo menos una explicacion");
+            }
             return valido;
         }
         private void btnCancel_Click(object sender, EventArgs e)

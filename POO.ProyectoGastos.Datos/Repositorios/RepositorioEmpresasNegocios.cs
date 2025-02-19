@@ -63,10 +63,9 @@ namespace POO.ProyectoGastos.Datos.Repositorios
                 }
                 else
                 {
-                    selectQuery = "SELECT COUNT(*) FROM Personas" +
+                    selectQuery = "SELECT COUNT(*) FROM EmpresasNegocios" +
                         " WHERE Nombre=@Nombre AND IdEmpNeg!=@IdEmpNeg";
-                    cantidad = conn.ExecuteScalar<int>(selectQuery,
-                            empresa);
+                    cantidad = conn.ExecuteScalar<int>(selectQuery, empresa);
 
                 }
             }

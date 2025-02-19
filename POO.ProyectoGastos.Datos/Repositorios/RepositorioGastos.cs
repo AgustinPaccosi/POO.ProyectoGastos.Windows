@@ -115,7 +115,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 
         }
 
-        public List<GastosHogarDto> GetGastosHogar(int? IdPersona,int? IdTipoGasto, DateTime? FechaInicio,DateTime? FechaFin, bool? Pagado )
+        public List<GastosHogarDto> GetGastosHogar(int? IdPersona,int? IdTipoGasto, DateTime? FechaInicio,DateTime? FechaFin, bool? Pagado, int? IdFormaPago )
         {
             List<GastosHogarDto> lista=new List<GastosHogarDto>();
             using (var conn = new SqlConnection(cadenaConexion))
@@ -127,13 +127,14 @@ namespace POO.ProyectoGastos.Datos.Repositorios
 	                Inner Join TiposGastos TG on tg.IdTipoGasto=G.IdTipoGasto
 	                Inner Join Personas P on P.IdPersona=G.IdPersona
                     Inner Join FormasPagos fp on fp.IdFormaPago=g.IdFormaPago");
-                if (IdPersona != null || IdTipoGasto != null || FechaInicio!=null||FechaFin!=null||Pagado!=null)
+                if (IdPersona != null || IdTipoGasto != null || FechaInicio!=null||FechaFin!=null||Pagado!=null||IdFormaPago!=null)
+                //if (IdPersona != null || IdTipoGasto != null ||  Pagado != null || IdFormaPago != null)
                 {
                     selectQuery.AppendLine(@"Where G.IdPersona=@IdPersona or g.IdTipoGasto=@IdTipoGasto
-                        or g.Fecha between CONVERT(DATE, @FechaInicio) AND CONVERT(DATE, @FechaFin) or G.Pagado=@Pagado ");
+                        or g.Fecha between CONVERT(DATE, @FechaInicio) AND CONVERT(DATE, @FechaFin) or G.Pagado=@Pagado or g.IdFormaPago=@IdFormaPago ");
                 }
                 selectQuery.AppendLine("Order By Fecha desc");
-                var parametros = new { IdPersona, IdTipoGasto, FechaInicio, FechaFin, Pagado };
+                var parametros = new { IdPersona, IdTipoGasto, FechaInicio, FechaFin, Pagado, IdFormaPago };
                 lista = conn.Query<GastosHogarDto>(selectQuery.ToString(), parametros).ToList();
             }
             return lista;
@@ -145,7 +146,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             decimal total = 0;
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string selectquery = @"Select Sum(Convert(numeric, Valor)) from Gastos Where  
+                string selectquery = @"Select IsNull(Sum(Convert(numeric, Valor)),0) from Gastos Where  
                     Fecha between DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1) AND GETDATE() ";
                 total = conn.ExecuteScalar<decimal>(selectquery);
             }
@@ -158,7 +159,7 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             decimal total = 0;
             using (var conn = new SqlConnection(cadenaConexion))
             {
-                string selectquery = @"Select Sum(Convert(numeric, Valor)) from Gastos Where  IdFormaPago=1 AND
+                string selectquery = @"Select ISNULL(Sum(Convert(numeric, Valor)),0) from Gastos Where  IdFormaPago=1 AND
                     Fecha between DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1) AND GETDATE() ";
                 total = conn.ExecuteScalar<decimal>(selectquery);
             }
@@ -172,11 +173,11 @@ namespace POO.ProyectoGastos.Datos.Repositorios
             {
                 string selectquery = @"SELECT 
                                  ( 
-                           (SELECT SUM(CONVERT(NUMERIC, Monto)) 
+                           (SELECT ISNULL(SUM(CONVERT(NUMERIC, Monto)),0) 
                           FROM [Personas/FondosComunes]
                              WHERE IdFondoComun = @IdFondoComun)
                          - 
-                            (SELECT SUM(CONVERT(NUMERIC, Valor)) 
+                            (SELECT ISNULL(SUM(CONVERT(NUMERIC, Valor)),0) 
                         FROM Gastos 
                          WHERE IdFormaPago = 1 
                            AND Fecha BETWEEN DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1) AND GETDATE())

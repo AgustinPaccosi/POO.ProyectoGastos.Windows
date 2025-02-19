@@ -3,6 +3,7 @@ using POO.ProyectoGastos.Servicios.Servicios;
 using POO.ProyectoGastos.Windows.Helpers.GridHelper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace POO.ProyectoGastos.Windows
@@ -75,9 +76,13 @@ namespace POO.ProyectoGastos.Windows
             }
             catch (Exception ex)
             {
+                string mensaje = ex.Message.Contains("FK_") ? "ESTA RELACIONADO" : ex.Message;
 
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                //MessageBox.Show(ex.Message, "Error",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
@@ -127,12 +132,54 @@ namespace POO.ProyectoGastos.Windows
 
         private void tsbActualizar_Click(object sender, EventArgs e)
         {
+            HabilitarBotones();
             MostrarDatosEnGrilla();
         }
 
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tsbBuscar_Click(object sender, EventArgs e)
+        {
+            tsbBuscar.Text = "";
+            DeshabilitarBotones();
+        }
+
+        private void DeshabilitarBotones()
+        {
+            tsbBorrar.Enabled = false;
+            tsbEditar.Enabled = false;
+            tsbNuevo.Enabled = false;
+        }
+        private void HabilitarBotones()
+        {
+            tsbBorrar.Enabled = true;
+            tsbEditar.Enabled = true;
+            tsbNuevo.Enabled = true;
+        }
+
+        private void tsbBuscar_Leave(object sender, EventArgs e)
+        {
+            tsbBuscar.Text = "Buscar";
+        }
+        private void BuscarCliente(List<EmpresaNegocio> empresa, string texto)
+        {
+            var listaFiltrada = empresa;
+            if (texto.Length != 0)
+            {
+                Func<EmpresaNegocio, bool> condicion = c => c.Nombre.ToUpper().Contains(texto.ToUpper()) || c.Nombre.ToUpper().Contains(texto.ToUpper());
+                listaFiltrada = empresa.Where(condicion).ToList();
+            }
+            GridHelper.MostrarDatosEnGrilla<EmpresaNegocio>(dgvDatos, listaFiltrada);
+        }
+
+        private void tsbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            var texto = tsbBuscar.Text;
+            BuscarCliente(listaEmpresas, texto);
+
         }
     }
 }

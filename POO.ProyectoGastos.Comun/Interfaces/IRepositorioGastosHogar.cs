@@ -15,7 +15,7 @@ namespace POO.ProyectoGastos.Comun.Interfaces
         void Borrar(int IdGasto);
         bool Existe(GastoHogar gastoHogar);
         void Editar(GastoHogar gastoHogar);
-        List<GastosHogarDto> GetGastosHogar(int? IdPersona, int? IdTipoDeGasto, DateTime? FechaInicio, DateTime? FechaFin, bool? Pagado);
+        List<GastosHogarDto> GetGastosHogar(int? IdPersona, int? IdTipoDeGasto, DateTime? FechaInicio, DateTime? FechaFin, bool? Pagado, int? IdFormaPago);
         int GetCantidad();
         GastoHogar GetGastoPorId(int id);
 

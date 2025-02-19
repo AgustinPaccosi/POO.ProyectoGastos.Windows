@@ -84,9 +84,13 @@ namespace POO.ProyectoGastos.Windows
             }
             catch (Exception ex)
             {
+                string mensaje = ex.Message.Contains("FK_") ? "ESTA RELACIONADO" : ex.Message;
 
-                MessageBox.Show(ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                //MessageBox.Show(ex.Message, "Error",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 

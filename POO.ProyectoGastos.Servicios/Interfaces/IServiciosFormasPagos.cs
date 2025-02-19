@@ -11,5 +11,6 @@ namespace POO.ProyectoGastos.Servicios.Interfaces
     public interface IServiciosFormasPagos
     {
         List<FormasPagos> GetFormasPagos();
+        FormasPagos GetFormasPagosPorId(int id);
     }
 }

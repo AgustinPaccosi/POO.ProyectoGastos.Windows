@@ -15,9 +15,11 @@ namespace POO.ProyectoGastos.Comun.Interfaces
         void Borrar(int IdGasto);
         bool Existe(GastosFijos gastoFijo);
         void Editar(GastosFijos gastoFijo);
-        List<GastosFijosDto> GetGastosFijos();
+        List<GastosFijosDto> GetGastosFijos(int reguistrosPorPagina, int paginaActual, int? IdTipoDeVencimiento, int? IdTipoGasto);
+        int GetCantidad(int? IdTipoDeVencimiento, int? IdTipoGasto);
         //int GetCantidad();
         GastosFijos GetGastoFijoPorId(int id);
+        List<GastosFijosDto> GetGastosFijosCombo();
 
     }
 }

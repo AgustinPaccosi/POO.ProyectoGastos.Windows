@@ -29,5 +29,18 @@ namespace POO.ProyectoGastos.Servicios.Servicios
                 throw;
             }
         }
+
+        public FormasPagos GetFormasPagosPorId(int id)
+        {
+            try
+            {
+                return repositorioFormasPagos.GetFormasPagosPorId(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

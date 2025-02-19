@@ -1,6 +1,6 @@
 ﻿namespace POO.ProyectoGastos.Windows
 {
-    partial class frmFiltroTipoGasto
+    partial class frmFiltroPorFormaDePago
     {
         /// <summary>
         /// Required designer variable.
@@ -29,29 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.comboTipoDeGasto = new System.Windows.Forms.ComboBox();
+            this.comboFormaPago = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboTipoDeGasto
+            // comboFormaPago
             // 
-            this.comboTipoDeGasto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboTipoDeGasto.FormattingEnabled = true;
-            this.comboTipoDeGasto.Location = new System.Drawing.Point(233, 111);
-            this.comboTipoDeGasto.Name = "comboTipoDeGasto";
-            this.comboTipoDeGasto.Size = new System.Drawing.Size(285, 24);
-            this.comboTipoDeGasto.TabIndex = 17;
+            this.comboFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboFormaPago.FormattingEnabled = true;
+            this.comboFormaPago.Location = new System.Drawing.Point(230, 99);
+            this.comboFormaPago.Name = "comboFormaPago";
+            this.comboFormaPago.Size = new System.Drawing.Size(285, 24);
+            this.comboFormaPago.TabIndex = 17;
             // 
             // btnCancel
             // 
             this.btnCancel.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.cancel_24px;
-            this.btnCancel.Location = new System.Drawing.Point(427, 174);
+            this.btnCancel.Location = new System.Drawing.Point(404, 184);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(111, 101);
             this.btnCancel.TabIndex = 16;
@@ -64,7 +62,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Image = global::POO.ProyectoGastos.Windows.Properties.Resources.ok_24px;
-            this.btnGuardar.Location = new System.Drawing.Point(173, 174);
+            this.btnGuardar.Location = new System.Drawing.Point(150, 184);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(111, 101);
             this.btnGuardar.TabIndex = 15;
@@ -77,34 +75,29 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(115, 92);
+            this.label4.Location = new System.Drawing.Point(80, 80);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 16);
+            this.label4.Size = new System.Drawing.Size(195, 16);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Seleccione Tipo De Gasto";
+            this.label4.Text = "Seleccione La Forma De Pago:";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // errorProvider2
-            // 
-            this.errorProvider2.ContainerControl = this;
-            // 
-            // frmFiltroTipoGasto
+            // frmFiltroPorFormaDePago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.comboTipoDeGasto);
+            this.Controls.Add(this.comboFormaPago);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label4);
-            this.Name = "frmFiltroTipoGasto";
-            this.Text = "frmFiltroTipoGasto";
-            this.Load += new System.EventHandler(this.frmFiltroTipoGasto_Load);
+            this.Name = "frmFiltroPorFormaDePago";
+            this.Text = "frmFiltroPorFormaDePago";
+            this.Load += new System.EventHandler(this.frmFiltroPorFormaDePago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,11 +105,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboTipoDeGasto;
+        private System.Windows.Forms.ComboBox comboFormaPago;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }
